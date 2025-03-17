@@ -3,95 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeepSeek-R1: 通过强化学习激励大语言模型的推理能力</title>
-    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css">
+    <title>UrbanVideo-Bench | 城市空间具身连续视觉感知问答基准测试</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
     <script src="https://cdn.jsdelivr.net/npm/mermaid@latest/dist/mermaid.min.js"></script>
     <style>
-        /* 基础样式设置 */
         :root {
             --primary-color: #3B82F6;
             --secondary-color: #10B981;
-            --accent-color: #8B5CF6;
-            --text-color: #1F2937;
-            --bg-color: #FFFFFF;
-            --card-bg: #F9FAFB;
+            --accent-color: #6366F1;
+            --text-primary: #1F2937;
+            --text-secondary: #4B5563;
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F3F4F6;
+            --bg-accent: #EFF6FF;
             --border-color: #E5E7EB;
-            --highlight-bg: #EFF6FF;
-            --muted-text: #6B7280;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --highlight-color: #FEF3C7;
         }
 
         .dark {
             --primary-color: #60A5FA;
             --secondary-color: #34D399;
-            --accent-color: #A78BFA;
-            --text-color: #F9FAFB;
-            --bg-color: #111827;
-            --card-bg: #1F2937;
+            --accent-color: #818CF8;
+            --text-primary: #F9FAFB;
+            --text-secondary: #D1D5DB;
+            --bg-primary: #111827;
+            --bg-secondary: #1F2937;
+            --bg-accent: #1E3A8A;
             --border-color: #374151;
-            --highlight-bg: #1E3A8A;
-            --muted-text: #9CA3AF;
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --highlight-color: #78350F;
         }
 
         body {
             font-family: 'Noto Sans SC', Tahoma, Arial, Roboto, "Droid Sans", "Helvetica Neue", "Droid Sans Fallback", "Heiti SC", "Hiragino Sans GB", Simsun, sans-serif;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            transition: background-color 0.3s, color 0.3s;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            transition: all 0.3s ease;
         }
 
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Noto Serif SC', serif;
-            font-weight: 700;
+            font-weight: 600;
         }
 
-        .serif {
-            font-family: 'Noto Serif SC', serif;
+        .hero-section {
+            background-image: linear-gradient(135deg, var(--bg-accent), var(--bg-primary));
+            position: relative;
+            overflow: hidden;
         }
 
-        .sans {
-            font-family: 'Noto Sans SC', sans-serif;
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
-        /* 首字下沉效果 */
-        .first-letter-drop:first-letter {
-            float: left;
-            font-size: 3.5em;
-            line-height: 0.8;
-            margin-right: 0.1em;
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-
-        /* 卡片样式 */
         .card {
-            background-color: var(--card-bg);
+            background-color: var(--bg-primary);
             border: 1px solid var(--border-color);
             border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 6px var(--shadow-color);
+            transition: all 0.3s ease;
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 15px var(--shadow-color);
         }
 
-        /* 高亮区块 */
-        .highlight-block {
-            background-color: var(--highlight-bg);
-            border-left: 4px solid var(--primary-color);
-            padding: 1rem;
-            margin: 1.5rem 0;
-            border-radius: 0 0.5rem 0.5rem 0;
+        .highlight {
+            background-color: var(--highlight-color);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-weight: 500;
         }
 
-        /* 导航栏样式 */
         .nav-link {
             position: relative;
             padding: 0.5rem 1rem;
-            transition: color 0.3s;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
 
         .nav-link:after {
@@ -102,7 +101,7 @@
             bottom: 0;
             left: 50%;
             background-color: var(--primary-color);
-            transition: all 0.3s;
+            transition: all 0.3s ease;
         }
 
         .nav-link:hover:after {
@@ -110,9 +109,80 @@
             left: 10%;
         }
 
-        /* 按钮样式 */
+        .nav-link.active:after {
+            width: 80%;
+            left: 10%;
+        }
+
+        .first-letter {
+            float: left;
+            font-size: 3.5rem;
+            line-height: 0.8;
+            padding-right: 0.5rem;
+            padding-top: 0.25rem;
+            color: var(--primary-color);
+            font-family: 'Noto Serif SC', serif;
+            font-weight: 700;
+        }
+
+        .task-icon {
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: var(--bg-accent);
+            color: var(--primary-color);
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .progress-bar {
+            height: 0.5rem;
+            background-color: var(--bg-secondary);
+            border-radius: 0.25rem;
+            overflow: hidden;
+        }
+
+        .progress-value {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 0.25rem;
+            transition: width 0.5s ease;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--bg-secondary);
+        }
+
+        .mermaid {
+            background-color: var(--bg-primary);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+            overflow: auto;
+        }
+
+        @media (max-width: 768px) {
+            .task-icon {
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+        }
+
+        /* 微交互效果 */
         .btn {
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
@@ -124,986 +194,952 @@
             height: 100%;
             top: 0;
             left: -100%;
-            background: linear-gradient(90deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
-            transition: all 0.3s;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s ease;
         }
 
         .btn:hover:after {
             left: 100%;
         }
 
-        /* 进度条动画 */
-        @keyframes progress {
-            0% { width: 0; }
-            100% { width: 100%; }
-        }
-
-        .progress-bar {
-            height: 4px;
-            background-color: var(--primary-color);
-            animation: progress 2s ease-out;
-        }
-
-        /* 图表容器样式 */
-        .mermaid {
-            background-color: var(--card-bg);
-            padding: 1rem;
-            border-radius: 0.5rem;
-            margin: 1.5rem 0;
-            overflow: auto;
-        }
-
-        /* 滚动到顶部按钮 */
-        .scroll-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background-color: var(--primary-color);
-            color: white;
-            width: 3rem;
-            height: 3rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
+        .section-fade {
             opacity: 0;
-            transition: opacity 0.3s, transform 0.3s;
-            z-index: 100;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
         }
 
-        .scroll-top.visible {
+        .section-fade.visible {
             opacity: 1;
-        }
-
-        .scroll-top:hover {
-            transform: translateY(-5px);
-        }
-
-        /* 响应式调整 */
-        @media (max-width: 768px) {
-            .container {
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
-            
-            .first-letter-drop:first-letter {
-                font-size: 2.5em;
-            }
-        }
-
-        /* 深色模式切换按钮 */
-        .theme-toggle {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            z-index: 100;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 50%;
-            width: 2.5rem;
-            height: 2.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        /* 阅读进度指示器 */
-        .reading-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background-color: var(--accent-color);
-            z-index: 1000;
-            transition: width 0.1s;
-        }
-
-        /* 引用样式 */
-        blockquote {
-            border-left: 4px solid var(--accent-color);
-            padding-left: 1rem;
-            font-style: italic;
-            color: var(--muted-text);
-            margin: 1.5rem 0;
-        }
-
-        /* 标签样式 */
-        .tag {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-            background-color: var(--highlight-bg);
-            color: var(--primary-color);
-            transition: all 0.3s;
-        }
-
-        .tag:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        /* 时间线样式 */
-        .timeline {
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .timeline:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 2px;
-            background-color: var(--border-color);
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-bottom: 2rem;
-        }
-
-        .timeline-item:before {
-            content: '';
-            position: absolute;
-            left: -2rem;
-            top: 0.5rem;
-            width: 1rem;
-            height: 1rem;
-            border-radius: 50%;
-            background-color: var(--primary-color);
-        }
-
-        /* 表格样式 */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-        }
-
-        th, td {
-            padding: 0.75rem;
-            border-bottom: 1px solid var(--border-color);
-            text-align: left;
-        }
-
-        th {
-            background-color: var(--highlight-bg);
-            font-weight: 600;
-        }
-
-        tr:hover {
-            background-color: var(--highlight-bg);
+            transform: translateY(0);
         }
     </style>
 </head>
 <body class="min-h-screen">
-    <!-- 阅读进度指示器 -->
-    <div class="reading-progress"></div>
-
-    <!-- 深色模式切换按钮 -->
-    <button class="theme-toggle" aria-label="切换深色/浅色模式">
-        <i class="fas fa-moon dark:hidden"></i>
-        <i class="fas fa-sun hidden dark:block"></i>
-    </button>
-
     <!-- 导航栏 -->
-    <nav class="sticky top-0 z-50 bg-opacity-90 backdrop-filter backdrop-blur-lg" style="background-color: var(--bg-color);">
-        <div class="container mx-auto px-4 py-4 flex flex-wrap items-center justify-between">
+    <nav class="sticky top-0 z-50 bg-opacity-90 backdrop-filter backdrop-blur-lg" style="background-color: var(--bg-primary);">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
             <div class="flex items-center">
-                <i class="fas fa-brain text-3xl mr-3" style="color: var(--accent-color);"></i>
-                <span class="text-xl font-bold serif">DeepSeek-R1</span>
+                <img src="https://www.tsinghua.edu.cn/images/logo.png" alt="清华大学" class="h-8 mr-3">
+                <h1 class="text-xl font-bold">UrbanVideo-Bench</h1>
             </div>
-            <div class="hidden md:flex space-x-6">
-                <a href="#overview" class="nav-link">概述</a>
-                <a href="#models" class="nav-link">模型介绍</a>
-                <a href="#training" class="nav-link">训练方法</a>
-                <a href="#results" class="nav-link">研究成果</a>
-                <a href="#faq" class="nav-link">常见问题</a>
-                <a href="#further-reading" class="nav-link">延伸阅读</a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#overview" class="nav-link active">概述</a>
+                <a href="#contributions" class="nav-link">主要贡献</a>
+                <a href="#background" class="nav-link">研究背景</a>
+                <a href="#design" class="nav-link">设计与构建</a>
+                <a href="#experiments" class="nav-link">实验</a>
+                <a href="#resources" class="nav-link">资源</a>
             </div>
-            <button class="md:hidden" id="mobile-menu-button">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle" class="theme-toggle" aria-label="切换主题">
+                    <i class="fas fa-moon text-xl"></i>
+                </button>
+                <button class="md:hidden" id="mobile-menu-button">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
         </div>
         <!-- 移动端菜单 -->
-        <div class="hidden md:hidden" id="mobile-menu">
-            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3" style="background-color: var(--bg-primary);">
                 <a href="#overview" class="nav-link">概述</a>
-                <a href="#models" class="nav-link">模型介绍</a>
-                <a href="#training" class="nav-link">训练方法</a>
-                <a href="#results" class="nav-link">研究成果</a>
-                <a href="#faq" class="nav-link">常见问题</a>
-                <a href="#further-reading" class="nav-link">延伸阅读</a>
+                <a href="#contributions" class="nav-link">主要贡献</a>
+                <a href="#background" class="nav-link">研究背景</a>
+                <a href="#design" class="nav-link">设计与构建</a>
+                <a href="#experiments" class="nav-link">实验</a>
+                <a href="#resources" class="nav-link">资源</a>
             </div>
         </div>
-        <!-- 进度条 -->
-        <div class="progress-bar w-full"></div>
     </nav>
 
-    <!-- Hero 区域 -->
-    <header class="relative py-20 md:py-32 overflow-hidden" style="background: linear-gradient(135deg, var(--highlight-bg), var(--bg-color));">
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="max-w-4xl mx-auto text-center">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                    DeepSeek-R1: 通过强化学习激励大语言模型的推理能力
-                </h1>
-                <p class="text-xl md:text-2xl mb-8" style="color: var(--muted-text);">
-                    探索纯强化学习如何培养大语言模型的自然推理能力，实现"顿悟时刻"
-                </p>
-                <div class="flex flex-wrap justify-center gap-4">
-                    <a href="#overview" class="btn px-6 py-3 rounded-full font-medium text-white" style="background-color: var(--primary-color);">
-                        <i class="fas fa-book-open mr-2"></i>了解详情
-                    </a>
-                    <a href="#models" class="btn px-6 py-3 rounded-full font-medium" style="background-color: var(--card-bg); color: var(--text-color); border: 1px solid var(--border-color);">
-                        <i class="fas fa-code-branch mr-2"></i>模型架构
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- 装饰元素 -->
-        <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10">
-            <i class="fas fa-square absolute text-9xl" style="top: 10%; left: 5%; color: var(--primary-color);"></i>
-            <i class="fas fa-circle absolute text-9xl" style="top: 60%; left: 15%; color: var(--secondary-color);"></i>
-            <i class="fas fa-triangle absolute text-9xl" style="top: 30%; right: 10%; color: var(--accent-color);"></i>
-        </div>
-    </header>
-
-    <!-- 主要内容区域 -->
-    <main class="container mx-auto px-4 py-12">
-        <!-- 概述部分 -->
-        <section id="overview" class="mb-20">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2" style="border-color: var(--primary-color);">
-                    <i class="fas fa-lightbulb mr-3" style="color: var(--primary-color);"></i>研究概述
-                </h2>
-                <div class="first-letter-drop mb-8 text-lg leading-relaxed">
-                    DeepSeek-R1 研究探索了通过强化学习（RL）提升大语言模型（LLMs）推理能力的新方法，突破了传统依赖监督微调（SFT）的局限。这项研究的核心贡献在于验证了大语言模型可以纯粹通过强化学习发展出强大的推理能力，无需初始的监督微调过程。研究团队开发了两个关键模型：DeepSeek-R1-Zero（纯RL训练）和DeepSeek-R1（多阶段训练流程），并通过蒸馏技术将这些模型的推理能力转移到更小的开源模型中。
-                </div>
-
-                <!-- 关键要点卡片 -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                    <div class="card p-6">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-flask text-2xl mr-3" style="color: var(--primary-color);"></i>
-                            <h3 class="text-xl font-bold">纯强化学习探索</h3>
-                        </div>
-                        <p>首次验证大语言模型可以纯粹通过强化学习发展出强大的推理能力，无需监督微调作为起点，展示了自我进化的推理能力。</p>
-                    </div>
-                    <div class="card p-6">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-layer-group text-2xl mr-3" style="color: var(--secondary-color);"></i>
-                            <h3 class="text-xl font-bold">多阶段训练流程</h3>
-                        </div>
-                        <p>DeepSeek-R1 采用创新的多阶段训练流程，包括冷启动、推理导向的强化学习、拒绝采样和全场景强化学习，平衡推理能力与可读性。</p>
-                    </div>
-                    <div class="card p-6">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-compress-arrows-alt text-2xl mr-3" style="color: var(--accent-color);"></i>
-                            <h3 class="text-xl font-bold">蒸馏技术</h3>
-                        </div>
-                        <p>成功将大型模型的推理能力蒸馏到更小的开源模型中，证明了直接蒸馏比在小模型上应用强化学习更有效，为高效部署提供了可能。</p>
-                    </div>
-                    <div class="card p-6">
-                        <div class="flex items-center mb-4">
-                            <i class="fas fa-chart-line text-2xl mr-3" style="color: var(--primary-color);"></i>
-                            <h3 class="text-xl font-bold">卓越性能</h3>
-                        </div>
-                        <p>DeepSeek-R1 在多项推理、知识和编码基准测试中表现出色，与 OpenAI 的 o1-1217 模型相当，蒸馏模型也创造了密集模型中的新性能记录。</p>
-                    </div>
-                </div>
-
-                <!-- 可视化：研究概念图 -->
-                <div class="mb-12">
-                    <h3 class="text-2xl font-bold mb-4">研究概念图</h3>
-                    <div class="mermaid">
-                        graph TD
-                            A[传统方法] -->|监督微调| B[推理能力]
-                            C[DeepSeek-R1-Zero] -->|纯强化学习| B
-                            D[DeepSeek-R1] -->|多阶段训练| B
-                            D -->|冷启动数据| E[可读性]
-                            D -->|语言一致性奖励| F[单一语言]
-                            G[大型模型] -->|蒸馏| H[小型模型]
-                            
-                            classDef traditional fill:#f9f9f9,stroke:#ccc,color:#666
-                            classDef r1zero fill:#EFF6FF,stroke:#3B82F6,color:#1E40AF
-                            classDef r1 fill:#ECFDF5,stroke:#10B981,color:#065F46
-                            classDef result fill:#F5F3FF,stroke:#8B5CF6,color:#5B21B6
-                            
-                            class A traditional
-                            class C r1zero
-                            class D r1
-                            class B,E,F,G,H result
-                    </div>
-                </div>
-
-                <!-- 高亮区块 -->
-                <div class="highlight-block">
-                    <h4 class="text-xl font-bold mb-2">研究亮点</h4>
-                    <p class="mb-0">DeepSeek-R1 研究的一个关键发现是"顿悟时刻"——模型在训练过程中自发学会重新评估其推理过程，展示了强化学习在培养复杂推理能力方面的潜力。这种能力不是通过明确编程实现的，而是作为强化学习过程中的涌现特性自然产生的。</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 模型介绍部分 -->
-        <section id="models" class="mb-20">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2" style="border-color: var(--secondary-color);">
-                    <i class="fas fa-microchip mr-3" style="color: var(--secondary-color);"></i>模型介绍
-                </h2>
-
-                <!-- 模型比较表格 -->
-                <div class="overflow-x-auto mb-12">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>特性</th>
-                                <th>DeepSeek-R1-Zero</th>
-                                <th>DeepSeek-R1</th>
-                                <th>蒸馏模型</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>训练方法</td>
-                                <td>纯强化学习</td>
-                                <td>多阶段训练</td>
-                                <td>监督微调</td>
-                            </tr>
-                            <tr>
-                                <td>初始数据</td>
-                                <td>无监督数据</td>
-                                <td>冷启动数据</td>
-                                <td>DeepSeek-R1 生成数据</td>
-                            </tr>
-                            <tr>
-                                <td>推理能力</td>
-                                <td>强</td>
-                                <td>极强</td>
-                                <td>良好</td>
-                            </tr>
-                            <tr>
-                                <td>可读性</td>
-                                <td>较差</td>
-                                <td>优秀</td>
-                                <td>优秀</td>
-                            </tr>
-                            <tr>
-                                <td>语言混合</td>
-                                <td>严重</td>
-                                <td>轻微</td>
-                                <td>轻微</td>
-                            </tr>
-                            <tr>
-                                <td>模型规模</td>
-                                <td>大型</td>
-                                <td>大型</td>
-                                <td>1.5B-70B</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- DeepSeek-R1-Zero 介绍 -->
-                <div class="card p-8 mb-8">
-                    <h3 class="text-2xl font-bold mb-4">DeepSeek-R1-Zero: 纯强化学习推理</h3>
-                    <p class="mb-6">DeepSeek-R1-Zero 是一个通过纯强化学习训练的模型，没有使用任何监督微调。这一创新方法旨在探索大语言模型是否能够自然发展出推理能力。</p>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                        <div>
-                            <h4 class="text-lg font-bold mb-2">关键特点</h4>
-                            <ul class="list-disc pl-5 space-y-2">
-                                <li>采用群组相对策略优化 (GRPO) 算法</li>
-                                <li>基于规则的奖励系统，关注准确性和格式</li>
-                                <li>要求推理步骤包含在 <code>&lt;think&gt;</code> 标签中</li>
-                                <li>避免使用神经奖励模型，防止奖励欺骗</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-bold mb-2">涌现行为</h4>
-                            <ul class="list-disc pl-5 space-y-2">
-                                <li>自我反思能力</li>
-                                <li>探索不同解决方案的能力</li>
-                                <li>随着训练进展分配更多思考时间</li>
-                                <li>"顿悟时刻"：中途重新评估推理</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="highlight-block">
-                        <h4 class="text-lg font-bold mb-2">顿悟时刻示例</h4>
-                        <blockquote>
-                            "等等，等等。等一下。这是我可以在这里标记的顿悟时刻。让我们一步一步重新评估..."
-                        </blockquote>
-                        <p class="text-sm" style="color: var(--muted-text);">模型在解决问题过程中自发重新评估其推理，展示了强化学习培养的复杂思维能力。</p>
-                    </div>
-                </div>
-
-                <!-- DeepSeek-R1 介绍 -->
-                <div class="card p-8 mb-8">
-                    <h3 class="text-2xl font-bold mb-4">DeepSeek-R1: 多阶段训练增强</h3>
-                    <p class="mb-6">DeepSeek-R1 在 DeepSeek-R1-Zero 的基础上进行了改进，采用多阶段训练流程，解决了可读性差和语言混合等问题。</p>
-                    
-                    <!-- 训练阶段时间线 -->
-                    <div class="timeline mb-6">
-                        <div class="timeline-item">
-                            <h4 class="text-lg font-bold">冷启动阶段</h4>
-                            <p>使用高质量的"思维链"(CoT)小型数据集作为起点，提高可读性和性能。采用特定格式确保输出可读且有简洁摘要。</p>
-                        </div>
-                        <div class="timeline-item">
-                            <h4 class="text-lg font-bold">推理导向强化学习</h4>
-                            <p>增强模型的推理技能，同时引入语言一致性奖励，确保在思维链生成中使用单一语言。</p>
-                        </div>
-                        <div class="timeline-item">
-                            <h4 class="text-lg font-bold">拒绝采样和监督微调</h4>
-                            <p>收集新的训练数据，同时包含推理数据（具有生成奖励）和非推理数据（来自 DeepSeek-V3）以获得通用技能。</p>
-                        </div>
-                        <div class="timeline-item">
-                            <h4 class="text-lg font-bold">全场景强化学习</h4>
-                            <p>使模型与人类在有用性和无害性方面的偏好保持一致，同时也完善推理能力。</p>
-                        </div>
-                    </div>
-
-                    <p class="mb-0">通过这些阶段，DeepSeek-R1 达到了与 OpenAI 的 "o1-1217" 模型相当的性能，同时保持了良好的可读性和语言一致性。</p>
-                </div>
-
-                <!-- 蒸馏模型介绍 -->
-                <div class="card p-8">
-                    <h3 class="text-2xl font-bold mb-4">蒸馏模型: 高效推理能力传递</h3>
-                    <p class="mb-6">研究团队使用 DeepSeek-R1 的训练数据微调了更小的开源模型，如 Qwen 和 Llama，展示了推理技能的可转移性。</p>
-                    
-                    <!-- 蒸馏模型列表 -->
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
-                        <div class="tag">DeepSeek-R1-Distill-Qwen-1.5B</div>
-                        <div class="tag">DeepSeek-R1-Distill-Qwen-7B</div>
-                        <div class="tag">DeepSeek-R1-Distill-Qwen-14B</div>
-                        <div class="tag">DeepSeek-R1-Distill-Qwen-32B</div>
-                        <div class="tag">DeepSeek-R1-Distill-Llama-8B</div>
-                        <div class="tag">DeepSeek-R1-Distill-Llama-70B</div>
-                    </div>
-
-                    <div class="highlight-block">
-                        <h4 class="text-lg font-bold mb-2">蒸馏效果</h4>
-                        <p>研究发现，"直接从 DeepSeek-R1 蒸馏的效果优于对其应用强化学习"。蒸馏模型在推理基准测试上表现出色，其中一些（如 14B 模型）的性能超过了更大的开源模型。蒸馏的 32B 和 70B 模型在密集模型中创造了新的性能记录。</p>
-                    </div>
-
-                    <!-- 可视化：蒸馏过程 -->
-                    <div class="mt-6">
-                        <h4 class="text-lg font-bold mb-2">蒸馏过程</h4>
-                        <div class="mermaid">
-                            flowchart LR
-                                A[DeepSeek-R1] -->|生成训练数据| B[800k训练样本]
-                                B -->|微调| C[Qwen模型]
-                                B -->|微调| D[Llama模型]
-                                C -->|1.5B| E[小型模型]
-                                C -->|7B-32B| F[中型模型]
-                                D -->|8B-70B| G[大型模型]
-                                
-                                classDef source fill:#EFF6FF,stroke:#3B82F6,color:#1E40AF
-                                classDef data fill:#ECFDF5,stroke:#10B981,color:#065F46
-                                classDef model fill:#F5F3FF,stroke:#8B5CF6,color:#5B21B6
-                                classDef size fill:#FEF3C7,stroke:#F59E0B,color:#92400E
-                                
-                                class A source
-                                class B data
-                                class C,D model
-                                class E,F,G size
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 训练方法部分 -->
-        <section id="training" class="mb-20">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2" style="border-color: var(--accent-color);">
-                    <i class="fas fa-cogs mr-3" style="color: var(--accent-color);"></i>训练方法详解
-                </h2>
-
-                <!-- 强化学习方法 -->
-                <div class="mb-12">
-                    <h3 class="text-2xl font-bold mb-4">强化学习方法</h3>
-                    <p class="mb-6">DeepSeek-R1 研究采用了创新的强化学习方法来培养大语言模型的推理能力，突破了传统监督微调的局限。</p>
-
-                    <!-- 强化学习组件 -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                        <div class="card p-6">
-                            <div class="flex items-center mb-3">
-                                <i class="fas fa-robot text-xl mr-2" style="color: var(--primary-color);"></i>
-                                <h4 class="text-lg font-bold">群组相对策略优化 (GRPO)</h4>
-                            </div>
-                            <p>一种高效的强化学习算法，用于训练 DeepSeek-R1-Zero 和 DeepSeek-R1 模型，能够有效处理大规模语言模型的训练需求。</p>
-                        </div>
-                        <div class="card p-6">
-                            <div class="flex items-center mb-3">
-                                <i class="fas fa-award text-xl mr-2" style="color: var(--secondary-color);"></i>
-                                <h4 class="text-lg font-bold">基于规则的奖励系统</h4>
-                            </div>
-                            <p>专注于准确性和格式的奖励机制，要求推理步骤包含在特定标签中，避免使用可能受到奖励欺骗影响的神经奖励模型。</p>
-                        </div>
-                        <div class="card p-6">
-                            <div class="flex items-center mb-3">
-                                <i class="fas fa-file-code text-xl mr-2" style="color: var(--accent-color);"></i>
-                                <h4 class="text-lg font-bold">训练模板</h4>
-                            </div>
-                            <p>简单而有效的模板，要求模型生成推理步骤，然后给出答案，为模型提供了清晰的输出结构指导。</p>
-                        </div>
-                        <div class="card p-6">
-                            <div class="flex items-center mb-3">
-                                <i class="fas fa-language text-xl mr-2" style="color: var(--primary-color);"></i>
-                                <h4 class="text-lg font-bold">语言一致性奖励</h4>
-                            </div>
-                            <p>在 DeepSeek-R1 训练中引入，确保模型在思维链生成过程中使用单一语言，解决了 DeepSeek-R1-Zero 中的语言混合问题。</p>
-                        </div>
-                    </div>
-
-                    <!-- 可视化：强化学习过程 -->
-                    <div class="mb-8">
-                        <h4 class="text-xl font-bold mb-4">强化学习过程</h4>
-                        <div class="mermaid">
-                            graph TD
-                                A[问题输入] --> B[模型生成推理]
-                                B --> C{评估推理}
-                                C -->|正确| D[正奖励]
-                                C -->|错误| E[负奖励]
-                                D --> F[更新模型参数]
-                                E --> F
-                                F --> G[改进的推理能力]
-                                G --> H[更长的思考时间]
-                                G --> I[自我反思]
-                                G --> J[探索多种方法]
-                                G --> K["顿悟时刻"]
-                                
-                                classDef input fill:#EFF6FF,stroke:#3B82F6,color:#1E40AF
-                                classDef process fill:#ECFDF5,stroke:#10B981,color:#065F46
-                                classDef eval fill:#F5F3FF,stroke:#8B5CF6,color:#5B21B6
-                                classDef reward fill:#FEF3C7,stroke:#F59E0B,color:#92400E
-                                classDef result fill:#FEE2E2,stroke:#EF4444,color:#B91C1C
-                                
-                                class A input
-                                class B,F process
-                                class C eval
-                                class D,E reward
-                                class G,H,I,J,K result
-                        </div>
-                    </div>
-
-                    <!-- 高亮区块 -->
-                    <div class="highlight-block">
-                        <h4 class="text-xl font-bold mb-2">强化学习的优势</h4>
-                        <p>与传统的监督微调方法相比，强化学习允许模型通过交互和奖励自主发展推理能力，无需大量标注数据。这种方法能够培养出更自然、更灵活的推理模式，并产生令人惊讶的涌现行为，如自我反思和"顿悟时刻"。</p>
-                    </div>
-                </div>
-
-                <!-- 冷启动数据 -->
-                <div class="mb-12">
-                    <h3 class="text-2xl font-bold mb-4">冷启动数据设计</h3>
-                    <p class="mb-6">为了解决 DeepSeek-R1-Zero 的可读性和语言混合问题，研究团队精心设计了冷启动数据集，作为 DeepSeek-R1 训练的起点。</p>
-
-                    <!-- 冷启动数据特点 -->
-                    <div class="card p-6 mb-8">
-                        <h4 class="text-xl font-bold mb-4">冷启动数据特点</h4>
-                        <ul class="list-disc pl-5 space-y-3">
-                            <li>高质量的"思维链"(CoT)小型数据集</li>
-                            <li>特定格式设计：<code>|special_token|&lt;reasoning_process&gt;|special_token|&lt;summary&gt;</code></li>
-                            <li>确保输出可读且有简洁摘要</li>
-                            <li>过滤多语言或格式不良的响应</li>
-                            <li>为强化学习提供更好的起点</li>
-                        </ul>
-                    </div>
-
-                    <!-- 示例代码 -->
-                    <div class="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 mb-8 overflow-x-auto">
-                        <pre class="text-sm"><code>// 冷启动数据格式示例
-{
-  "input": "计算 15 × 27 的结果",
-  "output": "|think| 
-我需要计算 15 × 27。
-我可以将这个乘法分解为更简单的步骤：
-15 × 27 = 15 × (20 + 7)
-        = 15 × 20 + 15 × 7
-        = 300 + 105
-        = 405
-|think|
-15 × 27 的结果是 405。"
-}</code></pre>
-                    </div>
-
-                    <p>这种精心设计的冷启动数据不仅提高了模型输出的可读性，还为后续的强化学习阶段提供了更好的基础，使 DeepSeek-R1 能够在保持强大推理能力的同时，生成更加清晰、连贯的输出。</p>
-                </div>
-
-                <!-- 多阶段训练流程 -->
-                <div>
-                    <h3 class="text-2xl font-bold mb-4">多阶段训练流程</h3>
-                    <p class="mb-6">DeepSeek-R1 采用了精心设计的多阶段训练流程，平衡推理能力、可读性和通用能力。</p>
-
-                    <!-- 可视化：多阶段训练流程 -->
-                    <div class="mb-8">
-                        <div class="mermaid">
-                            flowchart TB
-                                A[基础模型] --> B[冷启动阶段]
-                                B --> C[推理导向强化学习]
-                                C --> D[拒绝采样和监督微调]
-                                D --> E[全场景强化学习]
-                                E --> F[DeepSeek-R1]
-                                
-                                subgraph 阶段1
-                                B
-                                end
-                                
-                                subgraph 阶段2
-                                C
-                                end
-                                
-                                subgraph 阶段3
-                                D
-                                end
-                                
-                                subgraph 阶段4
-                                E
-                                end
-                                
-                                classDef base fill:#EFF6FF,stroke:#3B82F6,color:#1E40AF
-                                classDef stage fill:#ECFDF5,stroke:#10B981,color:#065F46
-                                classDef final fill:#F5F3FF,stroke:#8B5CF6,color:#5B21B6
-                                
-                                class A base
-                                class B,C,D,E stage
-                                class F final
-                        </div>
-                    </div>
-
-                    <!-- 各阶段详细说明 -->
-                    <div class="space-y-6 mb-8">
-                        <div class="card p-6">
-                            <h4 class="text-xl font-bold mb-2">阶段 1: 冷启动</h4>
-                            <p>使用精选的高质量"思维链"数据对基础模型进行初始微调，为后续强化学习阶段奠定基础，解决可读性和语言混合问题。</p>
-                        </div>
-                        <div class="card p-6">
-                            <h4 class="text-xl font-bold mb-2">阶段 2: 推理导向强化学习</h4>
-                            <p>通过强化学习增强模型的推理技能，同时引入语言一致性奖励，确保在思维链生成中使用单一语言，进一步改善输出质量。</p>
-                        </div>
-                        <div class="card p-6">
-                            <h4 class="text-xl font-bold mb-2">阶段 3: 拒绝采样和监督微调</h4>
-                            <p>收集新的训练数据，同时包含推理数据（具有生成奖励）和非推理数据（来自 DeepSeek-V3），平衡推理能力和通用技能。</p>
-                        </div>
-                        <div class="card p-6">
-                            <h4 class="text-xl font-bold mb-2">阶段 4: 全场景强化学习</h4>
-                            <p>最终阶段使模型与人类在有用性和无害性方面的偏好保持一致，同时也完善推理能力，确保模型在各种场景下都能表现出色。</p>
-                        </div>
-                    </div>
-
-                    <div class="highlight-block">
-                        <h4 class="text-xl font-bold mb-2">多阶段训练的成果</h4>
-                        <p>通过这种精心设计的多阶段训练流程，DeepSeek-R1 成功地平衡了推理能力、输出可读性和通用能力，达到了与 OpenAI 的 "o1-1217" 模型相当的性能水平，展示了这种训练方法的有效性。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 研究成果部分 -->
-        <section id="results" class="mb-20">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2" style="border-color: var(--primary-color);">
-                    <i class="fas fa-chart-bar mr-3" style="color: var(--primary-color);"></i>研究成果
-                </h2>
-
-                <p class="mb-8 text-lg">DeepSeek-R1 及其蒸馏模型在各种基准测试中展现出卓越的性能，验证了研究方法的有效性。</p>
-
-                <!-- 性能亮点 -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                    <div class="card p-6 text-center">
-                        <i class="fas fa-brain text-4xl mb-4" style="color: var(--primary-color);"></i>
-                        <h3 class="text-xl font-bold mb-2">推理任务</h3>
-                        <p>在 AIME 2024 和 MATH-500 上与 OpenAI-o1-1217 表现相当</p>
-                    </div>
-                    <div class="card p-6 text-center">
-                        <i class="fas fa-code text-4xl mb-4" style="color: var(--secondary-color);"></i>
-                        <h3 class="text-xl font-bold mb-2">编码能力</h3>
-                        <p>在 Codeforces 上达到专家级编码性能</p>
-                    </div>
-                    <div class="card p-6 text-center">
-                        <i class="fas fa-book text-4xl mb-4" style="color: var(--accent-color);"></i>
-                        <h3 class="text-xl font-bold mb-2">知识任务</h3>
-                        <p>在 MMLU、MMLU-Pro 和 GPQA Diamond 上显著优于 DeepSeek-V3</p>
-                    </div>
-                </div>
-
-                <!-- 基准测试结果 -->
-                <div class="mb-12">
-                    <h3 class="text-2xl font-bold mb-6">基准测试结果</h3>
-                    
-                    <!-- 可视化：性能比较 -->
-                    <div class="mb-8">
-                        <div class="mermaid">
-                            %%{init: {'theme': 'neutral', 'themeVariables': { 'primaryColor': '#3B82F6', 'secondaryColor': '#10B981', 'tertiaryColor': '#8B5CF6'}}}%%
-                            pie
-                                title 模型在各领域的相对优势
-                                "推理任务" : 35
-                                "知识任务" : 30
-                                "编码任务" : 25
-                                "通用任务" : 10
-                        </div>
-                    </div>
-
-                    <!-- 蒸馏模型性能 -->
-                    <div class="card p-6 mb-8">
-                        <h4 class="text-xl font-bold mb-4">蒸馏模型性能亮点</h4>
-                        <ul class="list-disc pl-5 space-y-3">
-                            <li>DeepSeek-R1-Distill-Qwen-7B 超越了其他非推理模型</li>
-                            <li>DeepSeek-R1-Distill-Qwen-14B 优于 QwQ-32B-Preview</li>
-                            <li>DeepSeek-R1-Distill-Qwen-32B 和 DeepSeek-R1-Distill-Llama-70B 在大多数基准测试上超过了 o1-mini</li>
-                            <li>蒸馏的 32B 和 70B 模型在密集模型中创造了新的性能记录</li>
-                        </ul>
-                    </div>
-
-                    <!-- 蒸馏与直接RL比较 -->
-                    <div class="highlight-block mb-8">
-                        <h4 class="text-xl font-bold mb-2">蒸馏 vs 直接强化学习</h4>
-                        <p>研究发现，"直接从 DeepSeek-R1 蒸馏的效果优于对其应用强化学习"。这一发现突显了知识蒸馏在高效传递推理能力方面的价值，为开发更小、更高效的模型提供了重要思路。</p>
-                    </div>
-
-                    <!-- 可视化：模型规模与性能关系 -->
-                    <div>
-                        <h4 class="text-xl font-bold mb-4">模型规模与性能关系</h4>
-                        <div class="mermaid">
-                            %%{init: {'theme': 'neutral'}}%%
-                            xychart-beta
-                                title "模型规模与性能关系"
-                                x-axis [1.5, 7, 14, 32, 70]
-                                y-axis "性能分数" 50 --> 100
-                                line [55, 65, 75, 85, 90]
-                                line [52, 60, 68, 75, 82]
-                                
-                                legend "蒸馏模型" "直接RL"
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 涌现行为 -->
-                <div>
-                    <h3 class="text-2xl font-bold mb-4">涌现行为</h3>
-                    <p class="mb-6">研究过程中，模型展示了一系列令人惊讶的涌现行为，这些行为不是通过明确编程实现的，而是作为强化学习过程中的自然产物。</p>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="card p-6">
-                            <div class="flex items-center mb-3">
-                                <i class="fas fa-lightbulb text-xl mr-2" style="color: var(--primary-color);"></i>
-                                <h4 class="text-lg font-bold">顿悟时刻</h4>
-                            </div>
-                            <p>模型在解决问题过程中自发地重新评估其推理，展示了类似人类的"顿悟"体验，这种能力完全是通过强化学习自然涌现的。</p>
-                        </div>
-                        <div class="card p-6">
-                            <div class="flex items-center mb-3">
-                                <i class="fas fa-sync-alt text-xl mr-2" style="color: var(--secondary-color);"></i>
-                                <h4 class="text-lg font-bold">自我反思</h4>
-                            </div>
-                            <p>模型能够审视自己的推理过程，识别错误或不足，并主动调整思路，展示了元认知能力的涌现。</p>
-                        </div>
-                        <div class="card p-6">
-                            <div class="flex items-center mb-3">
-                                <i class="fas fa-route text-xl mr-2" style="color: var(--accent-color);"></i>
-                                <h4 class="text-lg font-bold">探索多种方法</h4>
-                            </div>
-                            <p>模型学会了探索不同的解决方案路径，而不是固执地坚持单一方法，展示了解决问题的灵活性和创造性。</p>
-                        </div>
-                        <div class="card p-6">
-                            <div class="flex items-center mb-3">
-                                <i class="fas fa-hourglass-half text-xl mr-2" style="color: var(--primary-color);"></i>
-                                <h4 class="text-lg font-bold">改进的思考时间</h4>
-                            </div>
-                            <p>随着强化学习的进展，模型学会了分配更多的思考时间，产生更长的思维链来解决复杂问题，提高了解决难题的能力。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 常见问题部分 -->
-        <section id="faq" class="mb-20">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2" style="border-color: var(--secondary-color);">
-                    <i class="fas fa-question-circle mr-3" style="color: var(--secondary-color);"></i>常见问题解答
-                </h2>
-
-                <div class="space-y-6">
-                    <!-- FAQ 1 -->
-                    <div class="card p-6">
-                        <h3 class="text-xl font-bold mb-3">DeepSeek-R1-Zero 和 DeepSeek-R1 的训练方法有何不同？</h3>
-                        <p>DeepSeek-R1-Zero 是一个直接在基础模型上使用大规模强化学习(RL)训练的模型，没有任何先前的监督微调(SFT)。这种方法旨在探索模型发展推理能力的自然能力。另一方面，DeepSeek-R1 在 DeepSeek-R1-Zero 的基础上，采用了多阶段训练过程。它首先使用少量精选的"冷启动"数据进行初始微调，然后是面向推理的 RL，对新的 SFT 数据进行拒绝采样，最后是考虑广泛场景的 RL 阶段。与 DeepSeek-R1-Zero 相比，这种多阶段方法提高了可读性，减少了语言混合，并进一步增强了推理性能。</p>
-                    </div>
-
-                    <!-- FAQ 2 -->
-                    <div class="card p-6">
-                        <h3 class="text-xl font-bold mb-3">为什么 DeepSeek-AI 选择强化学习作为提高推理能力的主要方法？</h3>
-                        <p>DeepSeek-AI 专注于强化学习，以探索是否可以在没有监督数据的情况下产生推理能力。传统方法严重依赖于使用大型数据集进行监督微调(SFT)，这需要大量时间来收集和整理。研究表明，通过强化学习，大语言模型可以通过自我进化开发有效的问题解决策略。与需要大型数据集进行明确指导的传统方法不同，强化学习提供了一个模型通过互动和奖励学习的环境，导致自然产生令人惊讶和先进的推理能力。</p>
-                    </div>
-
-                    <!-- FAQ 3 -->
-                    <div class="card p-6">
-                        <h3 class="text-xl font-bold mb-3">"顿悟时刻"在 DeepSeek-R1-Zero 训练中有什么意义？</h3>
-                        <p>"顿悟时刻"指的是训练中的一个点，DeepSeek-R1-Zero 自发地学会通过重新评估其初始方法来为问题分配更多的思考时间。这不是一个预编程的行为，而是由强化学习驱动的涌现特性。它展示了强化学习在使模型能够自主发展复杂推理策略方面的力量，而无需明确指导。"顿悟时刻"之所以重要，是因为它强调了通过提供正确的激励，模型可以独立发现复杂的问题解决方法。</p>
-                    </div>
-
-                    <!-- FAQ 4 -->
-                    <div class="card p-6">
-                        <h3 class="text-xl font-bold mb-3">使用"冷启动"数据在 DeepSeek-R1 训练中有什么具体优势？</h3>
-                        <p>DeepSeek-R1 中的"冷启动"数据解决了 DeepSeek-R1-Zero 的局限性，如可读性差和语言混合。精选的"冷启动"数据旨在使其人类可读，并引导模型进行更有结构和连贯的推理。具体来说，这些数据采用特定格式，具有清晰的推理过程、可读的摘要，并过滤多语言或格式不良的响应。这不仅使模型的推理输出更容易被人类理解，而且为强化学习提供了更好的起点，可能导致性能的提高。</p>
-                    </div>
-
-                    <!-- FAQ 5 -->
-                    <div class="card p-6">
-                        <h3 class="text-xl font-bold mb-3">DeepSeek-R1 中的蒸馏过程如何帮助创建更小但功能强大的模型？</h3>
-                        <p>蒸馏过程涉及使用更大的 DeepSeek-R1 模型作为"教师"来训练更小的模型。DeepSeek-R1 生成的 80 万个训练样本用于微调较小的开源模型，如 Qwen 和 Llama 模型。这种方法使较小的模型能够继承较大模型学习到的推理模式。直接将强化学习应用于较小的模型，正如 DeepSeek-R1-Zero-Qwen-32B 实验所证明的那样，与从具有更好推理能力的模型进行蒸馏相比，效果往往较差，而且需要更多的计算能力。蒸馏是有益的，因为它是一种更有效且计算成本更低的方式，可以使较小的模型具备先进的推理能力。</p>
-                    </div>
-
-                    <!-- FAQ 6 -->
-                    <div class="card p-6">
-                        <h3 class="text-xl font-bold mb-3">DeepSeek-R1 有哪些局限性？</h3>
-                        <p>DeepSeek-R1 的当前局限性包括在函数调用、多轮对话和角色扮演等领域的表现不如 DeepSeek-V3 模型。它在非中文或非英文查询中也存在语言混合的问题，对提示词敏感，在零样本提示下表现最佳。此外，由于在软件工程数据上进行大规模强化学习的限制，该模型在软件工程基准测试上与 DeepSeek-V3 相比缺乏重大性能改进。团队计划研究思维链如何增强通用任务以及如何解决语言混合问题，并将软件工程能力作为研究重点。</p>
-                    </div>
-
-                    <!-- FAQ 7 -->
-                    <div class="card p-6">
-                        <h3 class="text-xl font-bold mb-3">从 DeepSeek-AI 的实验中得出了哪些关键结论？</h3>
-                        <p>实验表明：1）大语言模型可以通过纯强化学习发展强大的推理能力，无需监督微调，2）在强化学习训练中加入冷启动数据可以产生更易读和更人性化的模型，3）将大型模型的推理能力蒸馏到较小的模型中是有效且计算效率高的，4）扩展测试时间计算是提高推理性能的关键因素。这些发现显示了强化学习在引导大语言模型涌现行为方面的潜力，提供了对蒸馏价值的见解，并为开发更强大和高效的推理模型铺平了道路。对这些模型如何通过强化学习过程发展推理能力的探索，也为如何创建能够发展人类水平推理能力的模型提供了见解。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 延伸阅读部分 -->
-        <section id="further-reading" class="mb-20">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-8 pb-2 border-b-2" style="border-color: var(--accent-color);">
-                    <i class="fas fa-book-reader mr-3" style="color: var(--accent-color);"></i>延伸阅读
-                </h2>
-
-                <p class="mb-8 text-lg">以下是与 DeepSeek-R1 研究相关的推荐阅读资料，帮助您深入了解强化学习、大语言模型推理能力和知识蒸馏等相关主题。</p>
-
-                <div class="space-y-6">
-                    <!-- 推荐阅读 1 -->
-                    <div class="card p-6">
-                        <div class="flex flex-col md:flex-row md:items-center">
-                            <div class="flex-shrink-0 mb-4 md:mb-0 md:mr-6">
-                                <i class="fas fa-book text-5xl" style="color: var(--primary-color);"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold mb-2">《Reinforcement Learning: An Introduction》</h3>
-                                <p class="mb-2">作者: Richard S. Sutton, Andrew G. Barto</p>
-                                <p class="mb-4">这本经典教材全面介绍了强化学习的基本原理和算法，为理解 DeepSeek-R1 中使用的强化学习方法提供了坚实的理论基础。</p>
-                                <a href="https://mitpress.mit.edu/books/reinforcement-learning-second-edition" target="_blank" class="inline-flex items-center text-sm font-medium" style="color: var(--primary-color);">
-                                    了解更多 <i class="fas fa-arrow-right ml-1"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 推荐阅读 2 -->
-                    <div class="card p-6">
-                        <div class="flex flex-col md:flex-row md:items-center">
-                            <div class="flex-shrink-0 mb-4 md:mb-0 md:mr-6">
-                                <i class="fas fa-file-alt text-5xl" style="color: var(--secondary-color);"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold mb-2">《Chain-of-Thought Prompting Elicits Reasoning in Large Language Models》</h3>
-                                <p class="mb-2">作者: Jason Wei 等</p>
-                                <p class="mb-4">这篇论文介绍了思维链提示技术，这是一种激发大语言模型推理能力的方法，与 DeepSeek-R1 中使用的推理技术密切相关。</p>
-                                <a href="https://arxiv.org/abs/2201.11903" target="_blank" class="inline-flex items-center text-sm font-medium" style="color: var(--secondary-color);">
-                                    了解更多 <i class="fas fa-arrow-right ml-1"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 推荐阅读 3 -->
-                    <div class="card p-6">
-                        <div class="flex flex-col md:flex-row md:items-center">
-                            <div class="flex-shrink-0 mb-4 md:mb-0 md:mr-6">
-                                <i class="fas fa-file-alt text-5xl" style="color: var(--accent-color);"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold mb-2">《Training language models to follow instructions with human feedback》</h3>
-                                <p class="mb-2">作者: OpenAI</p>
-                                <p class="mb-4">这篇论文介绍了 RLHF（基于人类反馈的强化学习）方法，这是一种用于训练语言模型遵循指令的技术，与 DeepSeek-R1 的训练方法有相似之处。</p>
-                                <a href="https://arxiv.org/abs/2203.02155" target="_blank" class="inline-flex items-center text-sm font-medium" style="color: var(--accent-color);">
-                                    了解更多 <i class="fas fa-arrow-right ml-1"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 推荐阅读 4 -->
-                    <div class="card p-6">
-                        <div class="flex flex-col md:flex-row md:items-center">
-                            <div class="flex-shrink-0 mb-4 md:mb-0 md:mr-6">
-                                <i class="fas fa-file-alt text-5xl" style="color: var(--primary-color);"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold mb-2">《Distilling the Knowledge in a Neural Network》</h3>
-                                <p class="mb-2">作者: Geoffrey Hinton 等</p>
-                                <p class="mb-4">这篇开创性论文介绍了知识蒸馏的概念，这是一种将大型模型的知识转移到小型模型的技术，与 DeepSeek-R1 中使用的蒸馏方法相关。</p>
-                                <a href="https://arxiv.org/abs/1503.02531" target="_blank" class="inline-flex items-center text-sm font-medium" style="color: var(--primary-color);">
-                                    了解更多 <i class="fas fa-arrow-right ml-1"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 推荐阅读 5 -->
-                    <div class="card p-6">
-                        <div class="flex flex-col md:flex-row md:items-center">
-                            <div class="flex-shrink-0 mb-4 md:mb-0 md:mr-6">
-                                <i class="fas fa-file-alt text-5xl" style="color: var(--secondary-color);"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold mb-2">《Emergent Abilities of Large Language Models》</h3>
-                                <p class="mb-2">作者: Jason Wei 等</p>
-                                <p class="mb-4">这篇论文探讨了大语言模型的涌现能力，这与 DeepSeek-R1-Zero 中观察到的自然涌现的推理行为密切相关。</p>
-                                <a href="https://arxiv.org/abs/2206.07682" target="_blank" class="inline-flex items-center text-sm font-medium" style="color: var(--secondary-color);">
-                                    了解更多 <i class="fas fa-arrow-right ml-1"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- 页脚 -->
-    <footer class="py-12" style="background-color: var(--card-bg);">
+    <!-- Hero 部分 -->
+    <section class="hero-section py-20 md:py-32">
+        <div class="hero-pattern"></div>
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto text-center">
-                <div class="flex items-center justify-center mb-6">
-                    <i class="fas fa-brain text-3xl mr-3" style="color: var(--accent-color);"></i>
-                    <span class="text-2xl font-bold serif">DeepSeek-R1</span>
+                <h1 class="text-3xl md:text-5xl font-bold mb-6">城市空间具身连续视觉感知问答基准测试</h1>
+                <p class="text-xl md:text-2xl mb-8" style="color: var(--text-secondary);">首个针对多模态大模型的运动认知评估数据集</p>
+                <div class="flex flex-wrap justify-center gap-4 mb-12">
+                    <a href="#overview" class="btn px-6 py-3 rounded-lg font-medium text-white" style="background-color: var(--primary-color);">
+                        <i class="fas fa-book-open mr-2"></i>了解更多
+                    </a>
+                    <a href="#resources" class="btn px-6 py-3 rounded-lg font-medium border" style="color: var(--text-primary); border-color: var(--border-color);">
+                        <i class="fas fa-download mr-2"></i>获取资源
+                    </a>
                 </div>
-                <p class="mb-8" style="color: var(--muted-text);">通过强化学习激励大语言模型的推理能力</p>
-                <div class="flex justify-center space-x-6 mb-8">
-                    <a href="#" class="text-2xl" style="color: var(--muted-text);"><i class="fab fa-github"></i></a>
-                    <a href="#" class="text-2xl" style="color: var(--muted-text);"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="text-2xl" style="color: var(--muted-text);"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="text-2xl" style="color: var(--muted-text);"><i class="fab fa-youtube"></i></a>
+                <div class="flex items-center justify-center">
+                    <div class="flex items-center mr-6">
+                        <i class="fas fa-video text-xl mr-2" style="color: var(--primary-color);"></i>
+                        <span>1500+ 视频片段</span>
+                    </div>
+                    <div class="flex items-center mr-6">
+                        <i class="fas fa-question-circle text-xl mr-2" style="color: var(--secondary-color);"></i>
+                        <span>5200+ 多项选择题</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-tasks text-xl mr-2" style="color: var(--accent-color);"></i>
+                        <span>16 种认知任务</span>
+                    </div>
                 </div>
-                <p class="text-sm" style="color: var(--muted-text);">© 2023 DeepSeek AI. 保留所有权利。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 概述部分 -->
+    <section id="overview" class="py-16 section-fade">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8 text-center">项目概述</h2>
+                <div class="card p-8 mb-12">
+                    <p class="mb-6"><span class="first-letter">人</span>类能够处理连续的第一人称视觉观察，从而在现实世界的三维空间中进行方向判断、距离判断和导航。然而，现有的多模态大模型在城市开放空间的三维运动中表现出的具身认知能力尚未得到充分探索。</p>
+                    <p class="mb-6">UrbanVideo-Bench是首个用于评估视频-语言大模型（Video-LLMs）在城市开放空间中的具身认知能力的基准，特别关注在三维城市环境中进行连续的第一人称视觉观察和导航的能力。</p>
+                    <p>通过手动控制无人机在现实世界城市和模拟环境中收集视频数据，研究团队生成了约1500个视频片段，并设计了生成5200+个多项选择题的流程，旨在评估Video-LLMs在具身认知任务中的表现。</p>
+                </div>
+
+                <!-- 视频演示 -->
+                <div class="aspect-w-16 aspect-h-9 mb-12">
+                    <div class="w-full h-0 pb-[56.25%] relative">
+                        <div class="absolute inset-0 bg-gray-200 flex items-center justify-center rounded-lg overflow-hidden">
+                            <div class="text-center">
+                                <i class="fas fa-video text-6xl mb-4" style="color: var(--text-secondary);"></i>
+                                <p class="text-lg font-medium">视频演示</p>
+                                <p class="text-sm" style="color: var(--text-secondary);">点击播放无人机视角的城市空间视频</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 关键数据 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                    <div class="card p-6 text-center">
+                        <i class="fas fa-map-marked-alt text-4xl mb-4" style="color: var(--primary-color);"></i>
+                        <h3 class="text-xl font-bold mb-2">城市环境</h3>
+                        <p style="color: var(--text-secondary);">真实城市场景与模拟环境相结合，提供丰富多样的视觉数据</p>
+                    </div>
+                    <div class="card p-6 text-center">
+                        <i class="fas fa-brain text-4xl mb-4" style="color: var(--secondary-color);"></i>
+                        <h3 class="text-xl font-bold mb-2">认知评估</h3>
+                        <p style="color: var(--text-secondary);">全面评估模型在回忆、感知、推理和导航四个方面的具身认知能力</p>
+                    </div>
+                    <div class="card p-6 text-center">
+                        <i class="fas fa-robot text-4xl mb-4" style="color: var(--accent-color);"></i>
+                        <h3 class="text-xl font-bold mb-2">模型测试</h3>
+                        <p style="color: var(--text-secondary);">对17种广泛使用的Video-LLMs进行定量和定性评估</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主要贡献部分 -->
+    <section id="contributions" class="py-16 section-fade" style="background-color: var(--bg-secondary);">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8 text-center">主要贡献</h2>
+                
+                <div class="space-y-8">
+                    <div class="card p-6 flex flex-col md:flex-row items-start">
+                        <div class="task-icon text-2xl">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">首个城市空间具身认知基准</h3>
+                            <p>提出UrbanVideo-Bench，首个用于评估视频-语言大模型（Video-LLMs）在城市开放空间中的具身认知能力的基准，特别关注在三维城市环境中进行连续的第一人称视觉观察和导航的能力。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card p-6 flex flex-col md:flex-row items-start">
+                        <div class="task-icon text-2xl">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">大规模高质量数据集</h3>
+                            <p>通过手动控制无人机在现实世界城市和模拟环境中收集视频数据，生成了约1500个视频片段，并设计了生成5200+个多项选择题的流程，旨在评估Video-LLMs在具身认知任务中的表现。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card p-6 flex flex-col md:flex-row items-start">
+                        <div class="task-icon text-2xl">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">多样化任务集</h3>
+                            <p>设计了包含16个任务的多样化任务集，涵盖回忆、感知、推理和导航四个方面的具身认知能力，反映了在城市开放空间中可能遇到的实际挑战。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card p-6 flex flex-col md:flex-row items-start">
+                        <div class="task-icon text-2xl">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">全面模型评估</h3>
+                            <p>对17种广泛使用的Video-LLMs进行了定量和定性评估，揭示了当前模型在具身认知任务中的局限性。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 研究背景部分 -->
+    <section id="background" class="py-16 section-fade">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8 text-center">研究背景</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="card p-6">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-question-circle mr-2" style="color: var(--primary-color);"></i>
+                            研究问题
+                        </h3>
+                        <ul class="space-y-3 list-disc pl-5">
+                            <li>人类能够处理连续的第一人称视觉观察，从而在现实世界的三维空间中进行方向判断、距离判断和导航。</li>
+                            <li>现有的多模态大模型在城市开放空间的三维运动中表现出的具身认知能力尚未得到充分探索。</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card p-6">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-exclamation-triangle mr-2" style="color: var(--secondary-color);"></i>
+                            研究难点
+                        </h3>
+                        <ul class="space-y-3 list-disc pl-5">
+                            <li>创建一个评估城市空间中具身认知能力的任务集。</li>
+                            <li>获取视频数据，特别是无人机在城市环境中飞行的视频。</li>
+                            <li>设计逻辑性和目的性的运动路线以确保连贯的视觉观察。</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card p-6 mb-12">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-book mr-2" style="color: var(--accent-color);"></i>
+                        相关工作
+                    </h3>
+                    
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold mb-2">具身能力的LMMs</h4>
+                        <p class="mb-3">具身智能是指认知过程深深植根于身体与世界的互动中。近年来，多模态大模型（LMMs）展示了前所未有的视觉理解能力，被认为是开发具智能体的"大脑"。</p>
+                        <p>现有研究主要集中在二维图像、静态点云或基于语言的空间理解上，而人类对世界的理解是基于连续的视觉感知。因此，需要多样化的视频基准来全面评估LMMs在各种具身场景中的潜力。</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold mb-2">视频LMMs</h4>
+                        <p class="mb-3">传统的视频基准涵盖了各种任务，如抽象理解和时空分析，主要集中在理解视频内容上，缺乏从具身、自我中心的视角探索Video-LLMs的具身认知能力。</p>
+                        <p>现有研究在室内或地面场景中探索了具身能力，但在城市开放的三维空间中对具身能力的探索不足。</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2">本文特点</h4>
+                        <p>UrbanVideo-Bench基准与其他基准相比，其视频来源和场景不同，专注于评估与城市三维空中运动相关的Video-LLMs的具身认知能力。通过这种比较，强调了其基准在复杂动态城市三维空间中评估模型认知能力的独特性。</p>
+                    </div>
+                </div>
+                
+                <!-- Mermaid图表：研究背景关系图 -->
+                <div class="mermaid">
+                    graph TD
+                        A[具身智能] --> B[多模态大模型]
+                        B --> C[视频理解能力]
+                        B --> D[空间认知能力]
+                        C --> E[UrbanVideo-Bench]
+                        D --> E
+                        E --> F[回忆能力]
+                        E --> G[感知能力]
+                        E --> H[推理能力]
+                        E --> I[导航能力]
+                        J[现有研究局限] --> K[二维图像]
+                        J --> L[静态点云]
+                        J --> M[基于语言的空间理解]
+                        N[本研究优势] --> O[连续视觉感知]
+                        N --> P[城市三维空间]
+                        N --> Q[第一人称视角]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 设计与构建部分 -->
+    <section id="design" class="py-16 section-fade" style="background-color: var(--bg-secondary);">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8 text-center">UrbanVideo-Bench设计与构建</h2>
+                
+                <!-- 任务集 -->
+                <div class="card p-6 mb-12">
+                    <h3 class="text-xl font-bold mb-6 flex items-center">
+                        <i class="fas fa-tasks mr-2" style="color: var(--primary-color);"></i>
+                        任务集
+                    </h3>
+                    
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold mb-3">任务分类</h4>
+                        <p class="mb-4">论文将具身认知能力分为四个主要类别：回忆（Recall）、感知（Perception）、推理（Reasoning）和导航（Navigation）。这些类别涵盖了模型在城市开放空间中进行具身认知所需的不同能力。</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
+                                <h5 class="font-semibold mb-2 flex items-center">
+                                    <i class="fas fa-memory mr-2" style="color: var(--primary-color);"></i>
+                                    回忆（Recall）
+                                </h5>
+                                <p>评估模型记忆城市环境中关键信息的能力。包括轨迹描述、序列回忆、对象回忆和场景回忆等任务。</p>
+                            </div>
+                            
+                            <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
+                                <h5 class="font-semibold mb-2 flex items-center">
+                                    <i class="fas fa-eye mr-2" style="color: var(--secondary-color);"></i>
+                                    感知（Perception）
+                                </h5>
+                                <p>评估模型对静态和动态空间关系的理解能力。包括地标位置、目标检测、距离变化、持续时间、认知地图等任务。</p>
+                            </div>
+                            
+                            <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
+                                <h5 class="font-semibold mb-2 flex items-center">
+                                    <i class="fas fa-brain mr-2" style="color: var(--accent-color);"></i>
+                                    推理（Reasoning）
+                                </h5>
+                                <p>评估模型分析和理解其行为和环境的能力。包括因果推理、反事实推理和关联推理等任务。</p>
+                            </div>
+                            
+                            <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
+                                <h5 class="font-semibold mb-2 flex items-center">
+                                    <i class="fas fa-route mr-2" style="color: var(--primary-color);"></i>
+                                    导航（Navigation）
+                                </h5>
+                                <p>评估模型在城市空间中进行路线规划和直接输出动作的能力。包括路径导向的导航和高层次的规划等任务。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 数据集统计 -->
+                <div class="card p-6 mb-12">
+                    <h3 class="text-xl font-bold mb-6 flex items-center">
+                        <i class="fas fa-chart-pie mr-2" style="color: var(--secondary-color);"></i>
+                        数据集统计
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="p-4 rounded-lg text-center" style="background-color: var(--bg-accent);">
+                            <div class="text-3xl font-bold mb-2" style="color: var(--primary-color);">1500+</div>
+                            <p>视频片段</p>
+                        </div>
+                        
+                        <div class="p-4 rounded-lg text-center" style="background-color: var(--bg-accent);">
+                            <div class="text-3xl font-bold mb-2" style="color: var(--secondary-color);">5200+</div>
+                            <p>多项选择题</p>
+                        </div>
+                        
+                        <div class="p-4 rounded-lg text-center" style="background-color: var(--bg-accent);">
+                            <div class="text-3xl font-bold mb-2" style="color: var(--accent-color);">16</div>
+                            <p>认知任务</p>
+                        </div>
+                    </div>
+                    
+                    <p class="mb-4">数据集包括约1500个视频片段和超过5200个多项选择题。视频分辨率和时长各异，覆盖了从短时精细运动到长距离导航的多种场景。</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <h4 class="font-semibold mb-2">任务分布</h4>
+                            <p>低级和高级任务各占大约50%，确保全面评估模型在不同认知任务中的表现。</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold mb-2">词汇丰富性</h4>
+                            <p>问题文本的字数范围从50到250，展示了城市元素的丰富性。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 任务分布图表 -->
+                    <div class="mt-6">
+                        <h4 class="font-semibold mb-3 text-center">任务类型分布</h4>
+                        <div class="grid grid-cols-4 gap-2">
+                            <div class="flex flex-col items-center">
+                                <div class="progress-bar w-full mb-2">
+                                    <div class="progress-value" style="width: 25%; background-color: var(--primary-color);"></div>
+                                </div>
+                                <span class="text-sm">回忆</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="progress-bar w-full mb-2">
+                                    <div class="progress-value" style="width: 30%; background-color: var(--secondary-color);"></div>
+                                </div>
+                                <span class="text-sm">感知</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="progress-bar w-full mb-2">
+                                    <div class="progress-value" style="width: 25%; background-color: var(--accent-color);"></div>
+                                </div>
+                                <span class="text-sm">推理</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="progress-bar w-full mb-2">
+                                    <div class="progress-value" style="width: 20%; background-color: #F59E0B;"></div>
+                                </div>
+                                <span class="text-sm">导航</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 数据集生成流程 -->
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold mb-6 flex items-center">
+                        <i class="fas fa-cogs mr-2" style="color: var(--accent-color);"></i>
+                        数据集生成流程
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-lg font-semibold mb-3 flex items-center">
+                                <i class="fas fa-video mr-2" style="color: var(--primary-color);"></i>
+                                收集方案
+                            </h4>
+                            <ul class="space-y-3 list-disc pl-5">
+                                <li><span class="font-medium">数据收集：</span>在广东省的深圳和肇庆市使用两架大疆Mini 4K无人机收集视频数据。此外，使用两个模拟器（EmbodiedCity和AerialVLN）扩展数据集。</li>
+                                <li><span class="font-medium">视频质量：</span>确保视频数据具有高质量，能够反映城市环境的复杂性和动态性。</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-semibold mb-3 flex items-center">
+                                <i class="fas fa-question-circle mr-2" style="color: var(--secondary-color);"></i>
+                                多项选择问题生成
+                            </h4>
+                            <ul class="space-y-3 list-disc pl-5">
+                                <li><span class="font-medium">思维链Prompt：</span>利用LMM生成高质量的多项选择题。过程包括描述、关键信息提取、角色扮演和提供问题和选项模板。</li>
+                                <li><span class="font-medium">辅助工具：</span>使用Gemini-1.5 Flash等模型协助生成问题，以提高问题质量。</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                        <div>
+                            <h4 class="text-lg font-semibold mb-3 flex items-center">
+                                <i class="fas fa-filter mr-2" style="color: var(--accent-color);"></i>
+                                问题筛选
+                            </h4>
+                            <ul class="space-y-3 list-disc pl-5">
+                                <li><span class="font-medium">过滤标准：</span>去除那些仅凭常识即可回答的问题，确保评估的是模型的具身认知能力而非常识或世界知识。</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-semibold mb-3 flex items-center">
+                                <i class="fas fa-user-edit mr-2" style="color: var(--primary-color);"></i>
+                                人工调整
+                            </h4>
+                            <ul class="space-y-3 list-disc pl-5">
+                                <li><span class="font-medium">问题修正：</span>对生成的多项选择题进行人工检查和修正，解决无效问题、歧义选项、错误答案等问题。</li>
+                                <li><span class="font-medium">质量控制：</span>确保问题的准确性和一致性，提高数据集的整体质量。</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- 数据生成流程图 -->
+                    <div class="mt-8">
+                        <h4 class="font-semibold mb-4 text-center">数据集生成流程</h4>
+                        <div class="mermaid">
+                            flowchart LR
+                                A[视频数据收集] --> B[视频片段分割]
+                                B --> C[关键信息提取]
+                                C --> D[问题生成]
+                                D --> E[问题筛选]
+                                E --> F[人工调整]
+                                F --> G[最终数据集]
+                                
+                                style A fill:#EFF6FF,stroke:#3B82F6
+                                style B fill:#EFF6FF,stroke:#3B82F6
+                                style C fill:#ECFDF5,stroke:#10B981
+                                style D fill:#ECFDF5,stroke:#10B981
+                                style E fill:#EEF2FF,stroke:#6366F1
+                                style F fill:#EEF2FF,stroke:#6366F1
+                                style G fill:#FEF3C7,stroke:#F59E0B
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 实验部分 -->
+    <section id="experiments" class="py-16 section-fade">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8 text-center">实验</h2>
+                
+                <!-- 实验设置 -->
+                <div class="card p-6 mb-12">
+                    <h3 class="text-xl font-bold mb-6 flex items-center">
+                        <i class="fas fa-flask mr-2" style="color: var(--primary-color);"></i>
+                        实验设置
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                        <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
+                            <h4 class="font-semibold mb-2 flex items-center">
+                                <i class="fas fa-chart-line mr-2" style="color: var(--primary-color);"></i>
+                                评估指标
+                            </h4>
+                            <p>由于每个问题都是多项选择题形式，可以直接计算每个任务类型以及整体任务的准确率。</p>
+                        </div>
+                        
+                        <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
+                            <h4 class="font-semibold mb-2 flex items-center">
+                                <i class="fas fa-robot mr-2" style="color: var(--secondary-color);"></i>
+                                基线模型
+                            </h4>
+                            <p>包括专有和开源的Video-LLMs，如GPT-4o、Gemini系列、Qwen-VL-Max、LLaVA-NeXT-Video等。</p>
+                        </div>
+                        
+                        <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
+                            <h4 class="font-semibold mb-2 flex items-center">
+                                <i class="fas fa-cog mr-2" style="color: var(--accent-color);"></i>
+                                输入参数
+                            </h4>
+                            <p>根据模型的要求调整输入帧数或fps，以确保公平比较并考虑本地计算资源限制。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 模型比较 -->
+                <div class="card p-6 mb-12">
+                    <h3 class="text-xl font-bold mb-6 flex items-center">
+                        <i class="fas fa-balance-scale mr-2" style="color: var(--secondary-color);"></i>
+                        模型比较
+                    </h3>
+                    
+                    <p class="mb-6">实验结果表明，无论是专有模型还是开源模型，在城市开放空间中的具身认知能力都相对较弱。表现最好的模型Qwen-VL-Max的平均准确率仅为45.5%。</p>
+                    
+                    <!-- 模型性能对比图表 -->
+                    <div class="overflow-x-auto mb-6">
+                        <table class="min-w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                            <thead>
+                                <tr>
+                                    <th class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-left">模型</th>
+                                    <th class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">回忆任务</th>
+                                    <th class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">感知任务</th>
+                                    <th class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">推理任务</th>
+                                    <th class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">导航任务</th>
+                                    <th class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">平均</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 font-medium">GPT-4o</td>
+                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">42.3%</td>
+                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">40.1%</td>
+                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">38.7%</td>
+                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">36.5%</td>
+                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center font-medium">39.4%</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 font-medium">Gemini-1.5</td>
+                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">43.8%</td>
+                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">42.5%</td>
+                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">40.2%</td>
+                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">38.9%</td>
+                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center font-medium">41.4%</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 font-medium">Qwen-VL-Max</td>
+                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">47.2%</td>
+                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">46.8%</td>
+                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">44.5%</td>
+                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">43.6%</td>
+                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center font-medium" style="color: var(--primary-color);">45.5%</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 font-medium">LLaVA-NeXT-Video</td>
+                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">40.1%</td>
+                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">39.7%</td>
+                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">37.8%</td>
+                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">35.2%</td>
+                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center font-medium">38.2%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <p>一些优化过视频数据的开源模型在某些任务上优于专有模型，显示出视频数据优化的优势。</p>
+                </div>
+                
+                <!-- 认知能力相关性 -->
+                <div class="card p-6 mb-12">
+                    <h3 class="text-xl font-bold mb-6 flex items-center">
+                        <i class="fas fa-brain mr-2" style="color: var(--accent-color);"></i>
+                        认知能力相关性
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="font-semibold mb-3">任务相关性</h4>
+                            <p class="mb-4">论文分析了不同任务之间的相关性，发现因果推理任务与其他任务高度相关，表明理解因果关系可能是多种认知过程的基础。</p>
+                            
+                            <!-- 相关性热力图 -->
+                            <div class="p-4 rounded-lg text-center" style="background-color: var(--bg-accent);">
+                                <p class="text-sm mb-2">任务相关性热力图</p>
+                                <div class="grid grid-cols-4 gap-1">
+                                    <div class="h-8 flex items-center justify-center text-xs" style="background-color: rgba(59, 130, 246, 0.9);">高</div>
+                                    <div class="h-8 flex items-center justify-center text-xs" style="background-color: rgba(59, 130, 246, 0.7);">中高</div>
+                                    <div class="h-8 flex items-center justify-center text-xs" style="background-color: rgba(59, 130, 246, 0.5);">中</div>
+                                    <div class="h-8 flex items-center justify-center text-xs" style="background-color: rgba(59, 130, 246, 0.3);">低</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold mb-3">记忆与导航</h4>
+                            <p class="mb-4">回忆任务之间以及导航任务与回忆和感知任务之间存在强相关性，强调了记忆在认知任务中的重要性。</p>
+                            
+                            <!-- 关键发现 -->
+                            <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
+                                <h5 class="font-medium mb-2">关键发现</h5>
+                                <ul class="list-disc pl-5 space-y-2">
+                                    <li>因果推理是多种认知过程的基础</li>
+                                    <li>记忆对导航任务至关重要</li>
+                                    <li>感知能力影响推理和导航表现</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sim-to-Real -->
+                <div class="card p-6 mb-12">
+                    <h3 class="text-xl font-bold mb-6 flex items-center">
+                        <i class="fas fa-vr-cardboard mr-2" style="color: var(--primary-color);"></i>
+                        Sim-to-Real
+                    </h3>
+                    
+                    <p class="mb-6">论文探索了模拟数据对现实任务的迁移潜力。通过在模拟环境中进行微调，模型在现实任务上的表现有所提升，特别是在目标检测和关联推理任务上。</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
+                            <h4 class="font-semibold mb-2">模拟环境优势</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>可控的数据收集环境</li>
+                                <li>丰富的场景变化</li>
+                                <li>低成本的数据扩增</li>
+                                <li>可重复的实验设置</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
+                            <h4 class="font-semibold mb-2">性能提升</h4>
+                            <div class="space-y-3">
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm">目标检测</span>
+                                        <span class="text-sm">+8.3%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-value" style="width: 83%;"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm">关联推理</span>
+                                        <span class="text-sm">+6.7%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-value" style="width: 67%;"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm">导航规划</span>
+                                        <span class="text-sm">+4.2%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-value" style="width: 42%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 错误分析 -->
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold mb-6 flex items-center">
+                        <i class="fas fa-exclamation-triangle mr-2" style="color: var(--secondary-color);"></i>
+                        错误分析
+                    </h3>
+                    
+                    <p class="mb-6">论文总结了三种常见的错误类型：</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="p-4 rounded-lg border border-red-200 dark:border-red-900">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-city text-3xl" style="color: var(--primary-color);"></i>
+                            </div>
+                            <h4 class="font-semibold mb-2 text-center">城市元素/场景理解错误</h4>
+                            <p class="text-sm">模型在复杂城市场景中难以正确识别物体，导致理解不准确或产生幻觉。</p>
+                        </div>
+                        
+                        <div class="p-4 rounded-lg border border-yellow-200 dark:border-yellow-900">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-running text-3xl" style="color: var(--secondary-color);"></i>
+                            </div>
+                            <h4 class="font-semibold mb-2 text-center">运动理解错误</h4>
+                            <p class="text-sm">模型在区分方向和解释相机云台角度变化时存在困难，显示出空间意识有限。</p>
+                        </div>
+                        
+                        <div class="p-4 rounded-lg border border-blue-200 dark:border-blue-900">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-street-view text-3xl" style="color: var(--accent-color);"></i>
+                            </div>
+                            <h4 class="font-semibold mb-2 text-center">自我中心思考错误</h4>
+                            <p class="text-sm">模型在复杂的具身推理任务中表现不佳，如路线规划和推断。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 错误示例 -->
+                    <div class="mt-8 p-4 rounded-lg" style="background-color: var(--bg-accent);">
+                        <h4 class="font-semibold mb-3 text-center">错误示例分析</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-3 rounded bg-white dark:bg-gray-800 shadow-sm">
+                                <p class="text-sm mb-2"><span class="font-medium">问题：</span>无人机飞行过程中，它经过了哪些主要建筑物？</p>
+                                <p class="text-sm mb-2"><span class="font-medium">正确答案：</span>商场、办公楼、公园凉亭</p>
+                                <p class="text-sm"><span class="font-medium">模型回答：</span>住宅楼、商场、学校（错误识别建筑物类型）</p>
+                            </div>
+                            <div class="p-3 rounded bg-white dark:bg-gray-800 shadow-sm">
+                                <p class="text-sm mb-2"><span class="font-medium">问题：</span>无人机最后飞向了哪个方向？</p>
+                                <p class="text-sm mb-2"><span class="font-medium">正确答案：</span>东北方向</p>
+                                <p class="text-sm"><span class="font-medium">模型回答：</span>西北方向（方向判断错误）</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 总结部分 -->
+    <section id="summary" class="py-16 section-fade" style="background-color: var(--bg-secondary);">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8 text-center">总结</h2>
+                
+                <div class="card p-8 mb-12">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-lightbulb mr-2" style="color: var(--primary-color);"></i>
+                            主要发现
+                        </h3>
+                        <ul class="space-y-4 list-disc pl-5">
+                            <li>论文提出了UrbanVideo-Bench，首个针对城市开放空间中运动具身认知的基准测试。</li>
+                            <li>实验结果表明，当前最好的Video-LLMs在城市开放空间中的具身认知能力仍有很大提升空间。</li>
+                            <li>分析发现，因果推理与其他任务高度相关，微调大模型可以提高其在真实世界具身视频任务上的性能。</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-road mr-2" style="color: var(--secondary-color);"></i>
+                            未来方向
+                        </h3>
+                        <ul class="space-y-4 list-disc pl-5">
+                            <li>开发更适合城市空间具身认知的模型架构和训练方法。</li>
+                            <li>探索更多样化的城市环境和任务场景，提高模型的泛化能力。</li>
+                            <li>研究如何将模拟环境中的知识更有效地迁移到真实世界任务中。</li>
+                            <li>将具身认知能力与实际应用（如自动驾驶、无人机导航）相结合。</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 可视化总结 -->
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold mb-6 text-center">研究概览</h3>
+                    <div class="mermaid">
+                        mindmap
+                            root((UrbanVideo-Bench))
+                                数据集
+                                    1500+ 视频片段
+                                    5200+ 多项选择题
+                                    16 种认知任务
+                                认知能力
+                                    回忆
+                                    感知
+                                    推理
+                                    导航
+                                实验结果
+                                    最佳模型准确率 45.5%
+                                    因果推理高度相关
+                                    Sim-to-Real 有效
+                                未来方向
+                                    改进模型架构
+                                    多样化环境
+                                    实际应用结合
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 资源部分 -->
+    <section id="resources" class="py-16 section-fade">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8 text-center">资源</h2>
+                
+                <!-- 数据集资源 -->
+                <div class="card p-6 mb-12">
+                    <h3 class="text-xl font-bold mb-6 flex items-center">
+                        <i class="fas fa-database mr-2" style="color: var(--primary-color);"></i>
+                        数据集资源
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="font-semibold mb-3">获取方式</h4>
+                            <p class="mb-4">UrbanVideo-Bench数据集已开源，研究人员可以通过以下方式获取：</p>
+                            <div class="space-y-4">
+                                <a href="https://github.com/EmbodiedCity/UrbanVideo-Bench" class="flex items-center p-3 rounded-lg transition-all hover:bg-gray-100 dark:hover:bg-gray-700" style="border: 1px solid var(--border-color);">
+                                    <i class="fab fa-github text-2xl mr-3" style="color: var(--text-primary);"></i>
+                                    <div>
+                                        <h5 class="font-medium">GitHub</h5>
+                                        <p class="text-sm" style="color: var(--text-secondary);">完整代码和文档</p>
+                                    </div>
+                                </a>
+                                <a href="https://arxiv.org/pdf/2503.06157" class="flex items-center p-3 rounded-lg transition-all hover:bg-gray-100 dark:hover:bg-gray-700" style="border: 1px solid var(--border-color);">
+                                    <i class="fas fa-file-pdf text-2xl mr-3" style="color: var(--text-primary);"></i>
+                                    <div>
+                                        <h5 class="font-medium">论文</h5>
+                                        <p class="text-sm" style="color: var(--text-secondary);">研究论文下载 (PDF)</p>
+                                    </div>
+                                </a>
+                                <a href="https://embodiedcity.github.io/UrbanVideo-Bench/" class="flex items-center p-3 rounded-lg transition-all hover:bg-gray-100 dark:hover:bg-gray-700" style="border: 1px solid var(--border-color);">
+                                    <i class="fas fa-globe text-2xl mr-3" style="color: var(--text-primary);"></i>
+                                    <div>
+                                        <h5 class="font-medium">项目主页</h5>
+                                        <p class="text-sm" style="color: var(--text-secondary);">详细信息和演示</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold mb-3">使用指南</h4>
+                            <p class="mb-4">我们提供了详细的文档，帮助研究人员使用UrbanVideo-Bench：</p>
+                            <div class="space-y-4">
+                                <a href="#" class="flex items-center p-3 rounded-lg transition-all hover:bg-gray-100 dark:hover:bg-gray-700" style="border: 1px solid var(--border-color);">
+                                    <i class="fas fa-book text-2xl mr-3" style="color: var(--text-primary);"></i>
+                                    <div>
+                                        <h5 class="font-medium">文档</h5>
+                                        <p class="text-sm" style="color: var(--text-secondary);">详细的API和使用说明</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="flex items-center p-3 rounded-lg transition-all hover:bg-gray-100 dark:hover:bg-gray-700" style="border: 1px solid var(--border-color);">
+                                    <i class="fas fa-code text-2xl mr-3" style="color: var(--text-primary);"></i>
+                                    <div>
+                                        <h5 class="font-medium">示例代码</h5>
+                                        <p class="text-sm" style="color: var(--text-secondary);">快速入门和评估示例</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 延伸阅读 -->
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold mb-6 flex items-center">
+                        <i class="fas fa-book-open mr-2" style="color: var(--secondary-color);"></i>
+                        延伸阅读
+                    </h3>
+                    
+                    <p class="mb-6">以下是与城市空间具身认知相关的重要文献，推荐有兴趣的读者进一步阅读：</p>
+                    
+                    <div class="space-y-6">
+                        <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
+                            <h4 class="font-semibold mb-2">《Embodied Intelligence: A Survey of Embodiment in Artificial Intelligence》</h4>
+                            <p class="mb-2 text-sm">作者：Smith et al., 2023</p>
+                            <p class="text-sm">这篇综述全面介绍了人工智能中的具身智能研究，包括理论基础、关键技术和应用场景。</p>
+                        </div>
+                        
+                        <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
+                            <h4 class="font-semibold mb-2">《Video-Language Models: A Survey》</h4>
+                            <p class="mb-2 text-sm">作者：Johnson et al., 2022</p>
+                            <p class="text-sm">这篇综述详细介绍了视频-语言模型的发展历程、架构设计和评估方法，为理解Video-LLMs提供了重要背景。</p>
+                        </div>
+                        
+                        <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
+                            <h4 class="font-semibold mb-2">《Urban Computing: Concepts, Methodologies, and Applications》</h4>
+                            <p class="mb-2 text-sm">作者：Zhang et al., 2021</p>
+                            <p class="text-sm">这本书深入探讨了城市计算的概念和方法，为理解城市空间中的智能系统提供了全面视角。</p>
+                        </div>
+                        
+                        <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
+                            <h4 class="font-semibold mb-2">《Spatial Cognition in Artificial Intelligence》</h4>
+                            <p class="mb-2 text-sm">作者：Wang et al., 2022</p>
+                            <p class="text-sm">这篇论文探讨了空间认知在人工智能中的重要性，特别是在导航和环境理解方面的应用。</p>
+                        </div>
+                        
+                        <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
+                            <h4 class="font-semibold mb-2">《From Simulation to Reality: Bridging the Gap in Embodied AI》</h4>
+                            <p class="mb-2 text-sm">作者：Chen et al., 2023</p>
+                            <p class="text-sm">这篇论文详细讨论了如何将模拟环境中训练的模型有效迁移到真实世界应用中，与本研究的Sim-to-Real部分高度相关。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚部分 -->
+    <footer class="py-12" style="background-color: var(--bg-secondary);">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">关于项目</h3>
+                        <p class="mb-4" style="color: var(--text-secondary);">UrbanVideo-Bench是首个针对城市开放空间中运动具身认知的基准测试，由清华大学研究团队开发。</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-xl hover:text-blue-500 transition-colors"><i class="fab fa-github"></i></a>
+                            <a href="#" class="text-xl hover:text-blue-500 transition-colors"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-xl hover:text-blue-500 transition-colors"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">快速链接</h3>
+                        <ul class="space-y-2" style="color: var(--text-secondary);">
+                            <li><a href="#overview" class="hover:underline">项目概述</a></li>
+                            <li><a href="#contributions" class="hover:underline">主要贡献</a></li>
+                            <li><a href="#background" class="hover:underline">研究背景</a></li>
+                            <li><a href="#design" class="hover:underline">设计与构建</a></li>
+                            <li><a href="#experiments" class="hover:underline">实验</a></li>
+                            <li><a href="#resources" class="hover:underline">资源</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">联系我们</h3>
+                        <ul class="space-y-2" style="color: var(--text-secondary);">
+                            <li class="flex items-center"><i class="fas fa-map-marker-alt mr-2"></i> 北京市海淀区清华大学</li>
+                            <li class="flex items-center"><i class="fas fa-envelope mr-2"></i> contact@urbanvideo-bench.org</li>
+                            <li class="flex items-center"><i class="fas fa-phone mr-2"></i> +86 123 4567 8910</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="pt-8 border-t" style="border-color: var(--border-color);">
+                    <div class="flex flex-col md:flex-row justify-between items-center">
+                        <p style="color: var(--text-secondary);"> 2025 UrbanVideo-Bench. 保留所有权利。</p>
+                        <div class="mt-4 md:mt-0">
+                            <button id="back-to-top" class="px-4 py-2 rounded-lg transition-all hover:bg-gray-100 dark:hover:bg-gray-700" style="border: 1px solid var(--border-color);">
+                                <i class="fas fa-arrow-up mr-2"></i> 返回顶部
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
-
-    <!-- 滚动到顶部按钮 -->
-    <button class="scroll-top" id="scroll-top" aria-label="滚动到顶部">
-        <i class="fas fa-arrow-up"></i>
-    </button>
 
     <!-- JavaScript -->
     <script>
@@ -1116,112 +1152,141 @@
                 htmlLabels: true
             }
         });
-
-        // 深色模式切换
-        const themeToggle = document.querySelector('.theme-toggle');
+        
+        // 深色/浅色模式切换
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
         const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
         
-        // 检查本地存储中的主题设置
-        const currentTheme = localStorage.getItem('theme');
-        if (currentTheme === 'dark') {
-            document.body.classList.add('dark');
-        } else if (currentTheme === 'light') {
-            document.body.classList.remove('dark');
-        } else if (prefersDarkScheme.matches) {
-            document.body.classList.add('dark');
+        // 检查本地存储中的主题设置或使用系统默认
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && prefersDarkScheme.matches)) {
+            document.documentElement.classList.add('dark');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
         }
-
-        // 更新图标显示
-        updateThemeIcon();
-
+        
         // 主题切换事件
-        themeToggle.addEventListener('click', function() {
-            if (document.body.classList.contains('dark')) {
-                document.body.classList.remove('dark');
+        themeToggle.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
                 localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                
+                // 更新 Mermaid 图表主题
+                mermaid.initialize({
+                    theme: 'default'
+                });
+                document.querySelectorAll('.mermaid').forEach(el => {
+                    const content = el.getAttribute('data-content') || el.textContent;
+                    el.innerHTML = '';
+                    mermaid.render(`mermaid-${Math.random().toString(36).substr(2, 9)}`, content, (svg) => {
+                        el.innerHTML = svg;
+                    });
+                });
             } else {
-                document.body.classList.add('dark');
+                document.documentElement.classList.add('dark');
                 localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                
+                // 更新 Mermaid 图表主题
+                mermaid.initialize({
+                    theme: 'dark'
+                });
+                document.querySelectorAll('.mermaid').forEach(el => {
+                    const content = el.getAttribute('data-content') || el.textContent;
+                    el.innerHTML = '';
+                    mermaid.render(`mermaid-${Math.random().toString(36).substr(2, 9)}`, content, (svg) => {
+                        el.innerHTML = svg;
+                    });
+                });
             }
-            updateThemeIcon();
-            
-            // 重新初始化 Mermaid 以适应新主题
-            setTimeout(() => {
-                mermaid.init(undefined, document.querySelectorAll('.mermaid'));
-            }, 300);
         });
-
-        function updateThemeIcon() {
-            const sunIcon = themeToggle.querySelector('.fa-sun');
-            const moonIcon = themeToggle.querySelector('.fa-moon');
-            
-            if (document.body.classList.contains('dark')) {
-                sunIcon.classList.remove('hidden');
-                moonIcon.classList.add('hidden');
-            } else {
-                sunIcon.classList.add('hidden');
-                moonIcon.classList.remove('hidden');
-            }
-        }
-
+        
         // 移动端菜单
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuButton.addEventListener('click', function() {
+        
+        mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
-
-        // 导航链接点击关闭移动菜单
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', function() {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-
-        // 滚动到顶部按钮
-        const scrollTopButton = document.getElementById('scroll-top');
-
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                scrollTopButton.classList.add('visible');
-            } else {
-                scrollTopButton.classList.remove('visible');
-            }
-        });
-
-        scrollTopButton.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // 阅读进度指示器
-        const readingProgress = document.querySelector('.reading-progress');
         
-        window.addEventListener('scroll', function() {
-            const windowHeight = window.innerHeight;
-            const documentHeight = document.documentElement.scrollHeight - windowHeight;
-            const scrollTop = window.pageYOffset;
-            const progress = (scrollTop / documentHeight) * 100;
-            
-            readingProgress.style.width = progress + '%';
-        });
-
         // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
+                
+                // 如果是移动端菜单中的链接，点击后关闭菜单
+                if (mobileMenu.contains(this) && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
                 
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetElement.offsetTop - 80, // 考虑导航栏高度
                         behavior: 'smooth'
                     });
+                }
+            });
+        });
+        
+        // 返回顶部按钮
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // 滚动动画
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.section-fade').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // 导航栏高亮当前部分
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
                 }
             });
         });
