@@ -3,1212 +3,1206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UrbanVideo-Bench | 城市空间具身连续视觉感知问答基准测试</title>
-    <link rel="stylesheet" href="https://cdn.staticfile.org/tailwindcss/2.2.19/tailwind.min.css">
+    <title>王子游 - 个人主页</title>
+    <!-- 引入字体和CSS -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/tailwindcss/2.2.19/tailwind.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
+    <!-- Mermaid JS -->
     <script src="https://cdn.jsdelivr.net/npm/mermaid@latest/dist/mermaid.min.js"></script>
     <style>
+        /* 基础样式设置 */
         :root {
             --primary-color: #3B82F6;
+            --primary-dark: #2563EB;
             --secondary-color: #10B981;
-            --accent-color: #6366F1;
-            --text-primary: #1F2937;
-            --text-secondary: #4B5563;
-            --bg-primary: #FFFFFF;
-            --bg-secondary: #F3F4F6;
-            --bg-accent: #EFF6FF;
-            --border-color: #E5E7EB;
-            --shadow-color: rgba(0, 0, 0, 0.1);
-            --highlight-color: #FEF3C7;
+            --accent-color: #8B5CF6;
+            --dark-bg: #1F2937;
+            --dark-card: #374151;
+            --dark-text: #F9FAFB;
+            --light-bg: #F9FAFB;
+            --light-card: #FFFFFF;
+            --light-text: #1F2937;
+            --transition-speed: 0.3s;
         }
 
-        .dark {
-            --primary-color: #60A5FA;
-            --secondary-color: #34D399;
-            --accent-color: #818CF8;
-            --text-primary: #F9FAFB;
-            --text-secondary: #D1D5DB;
-            --bg-primary: #111827;
-            --bg-secondary: #1F2937;
-            --bg-accent: #1E3A8A;
-            --border-color: #374151;
-            --shadow-color: rgba(0, 0, 0, 0.5);
-            --highlight-color: #78350F;
-        }
-
+        /* 基础样式 */
         body {
-            font-family: 'Noto Sans SC', Tahoma, Arial, Roboto, "Droid Sans", "Helvetica Neue", "Droid Sans Fallback", "Heiti SC", "Hiragino Sans GB", Simsun, sans-serif;
-            color: var(--text-primary);
-            background-color: var(--bg-primary);
-            transition: all 0.3s ease;
+            font-family: 'Noto Sans SC', Tahoma, Arial, Roboto, "Droid Sans", "Helvetica Neue", "Droid Sans Fallback", "Heiti SC", "Hiragino Sans GB", Simsun, sans-self;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
         }
 
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Noto Serif SC', serif;
-            font-weight: 600;
         }
 
-        .hero-section {
-            background-image: linear-gradient(135deg, var(--bg-accent), var(--bg-primary));
-            position: relative;
-            overflow: hidden;
+        /* 深色模式 */
+        .dark {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
         }
 
-        .hero-pattern {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.05;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        .dark .card {
+            background-color: var(--dark-card);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
 
+        /* 亮色模式 */
+        .light {
+            background-color: var(--light-bg);
+            color: var(--light-text);
+        }
+
+        .light .card {
+            background-color: var(--light-card);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 卡片通用样式 */
         .card {
-            background-color: var(--bg-primary);
-            border: 1px solid var(--border-color);
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px var(--shadow-color);
-            transition: all 0.3s ease;
+            border-radius: 0.75rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 15px var(--shadow-color);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .highlight {
-            background-color: var(--highlight-color);
+        /* 首字下沉效果 */
+        .first-letter-drop:first-letter {
+            font-size: 3.5em;
+            float: left;
+            line-height: 0.8;
+            margin-right: 0.1em;
+            color: var(--primary-color);
+        }
+
+        /* 渐变背景 */
+        .gradient-bg {
+            background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+        }
+
+        /* 导航栏激活项 */
+        .nav-active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        /* 悬停效果 */
+        .hover-lift {
+            transition: transform 0.2s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-3px);
+        }
+
+        /* 奖项徽章 */
+        .award-badge {
+            display: inline-block;
             padding: 0.25rem 0.5rem;
-            border-radius: 0.25rem;
-            font-weight: 500;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(135deg, #F59E0B, #D97706);
+            border-radius: 9999px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
-        .nav-link {
+        /* 时间线样式 */
+        .timeline {
             position: relative;
-            padding: 0.5rem 1rem;
-            color: var(--text-primary);
-            font-weight: 500;
+            padding-left: 1.5rem;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 0.5rem;
+            height: 1rem;
+            width: 1rem;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--primary-color);
+        }
+
+        /* 技能进度条 */
+        .skill-container {
+            background-color: #E5E7EB;
+            border-radius: 9999px;
+            height: 0.5rem;
+            overflow: hidden;
+        }
+
+        .dark .skill-container {
+            background-color: #4B5563;
+        }
+
+        .skill-progress {
+            height: 100%;
+            border-radius: 9999px;
+            transition: width 1s ease-out;
+        }
+
+        /* 滚动显示动画 */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 主题切换按钮 */
+        .theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 50;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: none;
+            cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .nav-link:after {
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 暗黑模式文本颜色修复 */
+        .dark .text-gray-600 {
+            color: #CBD5E1 !important;
+        }
+        
+        .dark .text-gray-700 {
+            color: #E2E8F0 !important;
+        }
+        
+        .dark .text-gray-800 {
+            color: #F1F5F9 !important;
+        }
+        
+        .dark .text-gray-900 {
+            color: #F8FAFC !important;
+        }
+        
+        .dark .timeline-item:before {
+            border-color: var(--dark-bg);
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .theme-toggle {
+                bottom: 1rem;
+                right: 1rem;
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+            
+            .first-letter-drop:first-letter {
+                font-size: 2.5em;
+            }
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .timeline {
+                padding-left: 1.5rem;
+            }
+            
+            .timeline-item::before {
+                left: -1.5rem;
+            }
+            
+            .theme-toggle {
+                bottom: 1rem;
+                right: 1rem;
+                height: 2.5rem;
+                width: 2.5rem;
+            }
+        }
+
+        /* 微交互动画 */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        /* 图片悬停效果 */
+        .img-hover-zoom {
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
+
+        .img-hover-zoom img {
+            transition: transform 0.5s ease;
+        }
+
+        .img-hover-zoom:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* 导航栏样式优化 */
+        .nav-link {
+            position: relative;
+            padding-bottom: 0.25rem;
+        }
+        
+        .nav-link::after {
             content: '';
             position: absolute;
             width: 0;
             height: 2px;
             bottom: 0;
-            left: 50%;
+            left: 0;
             background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-active::after {
+            width: 100%;
+        }
+        
+        /* 页面切换过渡 */
+        .page-transition {
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* 证书展示盒样式 */
+        .certificate-box {
             transition: all 0.3s ease;
         }
-
-        .nav-link:hover:after {
-            width: 80%;
-            left: 10%;
-        }
-
-        .nav-link.active:after {
-            width: 80%;
-            left: 10%;
-        }
-
-        .first-letter {
-            float: left;
-            font-size: 3.5rem;
-            line-height: 0.8;
-            padding-right: 0.5rem;
-            padding-top: 0.25rem;
-            color: var(--primary-color);
-            font-family: 'Noto Serif SC', serif;
-            font-weight: 700;
-        }
-
-        .task-icon {
-            width: 3rem;
-            height: 3rem;
+        
+        .certificate-nav-btn {
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
-            background-color: var(--bg-accent);
-            color: var(--primary-color);
-            margin-right: 1rem;
-            flex-shrink: 0;
+            z-index: 10;
         }
-
-        .progress-bar {
-            height: 0.5rem;
-            background-color: var(--bg-secondary);
-            border-radius: 0.25rem;
-            overflow: hidden;
-        }
-
-        .progress-value {
-            height: 100%;
-            background-color: var(--primary-color);
-            border-radius: 0.25rem;
-            transition: width 0.5s ease;
-        }
-
-        .theme-toggle {
-            background: none;
-            border: none;
+        
+        .award-item {
             cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 0.25rem;
             transition: all 0.3s ease;
         }
-
-        .theme-toggle:hover {
-            background-color: var(--bg-secondary);
+        
+        .award-item:hover {
+            transform: translateY(-2px);
         }
-
-        .mermaid {
-            background-color: var(--bg-primary);
+        
+        .award-item.active {
+            border-left: 4px solid #3B82F6;
+        }
+        
+        #certificate-image {
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+        
+        #certificate-title {
+            transition: opacity 0.3s ease;
+        }
+        
+        /* Mermaid图表容器样式 */
+        .mermaid-wrapper {
+            background-color: #F7F7F7;
             padding: 1rem;
             border-radius: 0.5rem;
-            margin: 1.5rem 0;
-            overflow: auto;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-
-        @media (max-width: 768px) {
-            .task-icon {
-                width: 2.5rem;
-                height: 2.5rem;
-            }
-        }
-
-        /* 微交互效果 */
-        .btn {
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn:after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: -100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: all 0.5s ease;
-        }
-
-        .btn:hover:after {
-            left: 100%;
-        }
-
-        .section-fade {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
-        }
-
-        .section-fade.visible {
-            opacity: 1;
-            transform: translateY(0);
+        
+        .dark .mermaid-wrapper {
+            background-color: #2F2F2F;
         }
     </style>
 </head>
-<body class="min-h-screen">
+<body class="light page-transition">
     <!-- 导航栏 -->
-    <nav class="sticky top-0 z-50 bg-opacity-90 backdrop-filter backdrop-blur-lg" style="background-color: var(--bg-primary);">
+    <nav class="sticky top-0 z-50 backdrop-filter backdrop-blur-lg bg-opacity-70 dark:bg-opacity-70 bg-white dark:bg-gray-900 shadow-md">
         <div class="container mx-auto px-4 py-3 flex items-center justify-between">
-            <div class="flex items-center">
-                <img src="https://www.tsinghua.edu.cn/images/logo.png" alt="清华大学" class="h-8 mr-3">
-                <h1 class="text-xl font-bold">UrbanVideo-Bench</h1>
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl font-bold text-blue-600 dark:text-blue-400">王子游</span>
+                <span class="text-sm text-gray-600 dark:text-gray-400">| 个人主页</span>
             </div>
-            <div class="hidden md:flex items-center space-x-6">
-                <a href="#overview" class="nav-link active">概述</a>
-                <a href="#contributions" class="nav-link">主要贡献</a>
-                <a href="#background" class="nav-link">研究背景</a>
-                <a href="#design" class="nav-link">设计与构建</a>
-                <a href="#experiments" class="nav-link">实验</a>
-                <a href="#resources" class="nav-link">资源</a>
+            
+            <!-- 桌面端导航 -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="nav-link text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">关于我</a>
+                <a href="#education" class="nav-link text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">教育背景</a>
+                <a href="#research" class="nav-link text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">科研经历</a>
+                <a href="#awards" class="nav-link text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">获奖情况</a>
+                <a href="#work" class="nav-link text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">学生工作</a>
+                <a href="#volunteer" class="nav-link text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">志愿服务</a>
+                <a href="#contact" class="nav-link text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">联系我</a>
             </div>
-            <div class="flex items-center space-x-4">
-                <button id="theme-toggle" class="theme-toggle" aria-label="切换主题">
-                    <i class="fas fa-moon text-xl"></i>
-                </button>
-                <button class="md:hidden" id="mobile-menu-button">
+            
+            <!-- 移动端菜单按钮 -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-800 dark:text-gray-200 focus:outline-none">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
+        
         <!-- 移动端菜单 -->
-        <div id="mobile-menu" class="hidden md:hidden">
-            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3" style="background-color: var(--bg-primary);">
-                <a href="#overview" class="nav-link">概述</a>
-                <a href="#contributions" class="nav-link">主要贡献</a>
-                <a href="#background" class="nav-link">研究背景</a>
-                <a href="#design" class="nav-link">设计与构建</a>
-                <a href="#experiments" class="nav-link">实验</a>
-                <a href="#resources" class="nav-link">资源</a>
-            </div>
+        <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-gray-900 pb-4 px-4">
+            <a href="#about" class="block py-2 text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">关于我</a>
+            <a href="#education" class="block py-2 text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">教育背景</a>
+            <a href="#research" class="block py-2 text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">科研经历</a>
+            <a href="#awards" class="block py-2 text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">获奖情况</a>
+            <a href="#work" class="block py-2 text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">学生工作</a>
+            <a href="#volunteer" class="block py-2 text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">志愿服务</a>
+            <a href="#contact" class="block py-2 text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">联系我</a>
         </div>
     </nav>
 
-    <!-- Hero 部分 -->
-    <section class="hero-section py-20 md:py-32">
-        <div class="hero-pattern"></div>
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto text-center">
-                <h1 class="text-3xl md:text-5xl font-bold mb-6">城市空间具身连续视觉感知问答基准测试</h1>
-                <p class="text-xl md:text-2xl mb-8" style="color: var(--text-secondary);">首个针对多模态大模型的运动认知评估数据集</p>
-                <div class="flex flex-wrap justify-center gap-4 mb-12">
-                    <a href="#overview" class="btn px-6 py-3 rounded-lg font-medium text-white" style="background-color: var(--primary-color);">
-                        <i class="fas fa-book-open mr-2"></i>了解更多
-                    </a>
-                    <a href="#resources" class="btn px-6 py-3 rounded-lg font-medium border" style="color: var(--text-primary); border-color: var(--border-color);">
-                        <i class="fas fa-download mr-2"></i>获取资源
-                    </a>
+    <main class="container mx-auto px-4 py-12">
+        <!-- 关于我 -->
+        <section id="about" class="mb-20 scroll-reveal">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/3 mb-6 md:mb-0">
+                    <h2 class="text-3xl font-bold mb-4 inline-block pb-2 border-b-4 border-blue-500">关于我</h2>
                 </div>
-                <div class="flex items-center justify-center">
-                    <div class="flex items-center mr-6">
-                        <i class="fas fa-video text-xl mr-2" style="color: var(--primary-color);"></i>
-                        <span>1500+ 视频片段</span>
-                    </div>
-                    <div class="flex items-center mr-6">
-                        <i class="fas fa-question-circle text-xl mr-2" style="color: var(--secondary-color);"></i>
-                        <span>5200+ 多项选择题</span>
-                    </div>
-                    <div class="flex items-center">
-                        <i class="fas fa-tasks text-xl mr-2" style="color: var(--accent-color);"></i>
-                        <span>16 种认知任务</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 概述部分 -->
-    <section id="overview" class="py-16 section-fade">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-8 text-center">项目概述</h2>
-                <div class="card p-8 mb-12">
-                    <p class="mb-6"><span class="first-letter">人</span>类能够处理连续的第一人称视觉观察，从而在现实世界的三维空间中进行方向判断、距离判断和导航。然而，现有的多模态大模型在城市开放空间的三维运动中表现出的具身认知能力尚未得到充分探索。</p>
-                    <p class="mb-6">UrbanVideo-Bench是首个用于评估视频-语言大模型（Video-LLMs）在城市开放空间中的具身认知能力的基准，特别关注在三维城市环境中进行连续的第一人称视觉观察和导航的能力。</p>
-                    <p>通过手动控制无人机在现实世界城市和模拟环境中收集视频数据，研究团队生成了约1500个视频片段，并设计了生成5200+个多项选择题的流程，旨在评估Video-LLMs在具身认知任务中的表现。</p>
-                </div>
-
-                <!-- 视频演示 -->
-                <div class="aspect-w-16 aspect-h-9 mb-12">
-                    <div class="w-full h-0 pb-[56.25%] relative">
-                        <div class="absolute inset-0 bg-gray-200 flex items-center justify-center rounded-lg overflow-hidden">
-                            <div class="text-center">
-                                <i class="fas fa-video text-6xl mb-4" style="color: var(--text-secondary);"></i>
-                                <p class="text-lg font-medium">视频演示</p>
-                                <p class="text-sm" style="color: var(--text-secondary);">点击播放无人机视角的城市空间视频</p>
+                <div class="md:w-2/3">
+                    <div class="card p-8">
+                        <div class="flex flex-col md:flex-row items-center mb-8">
+                            <div class="w-40 h-40 rounded-full overflow-hidden mb-6 md:mb-0 md:mr-8 img-hover-zoom">
+                                <img src="resource/avatar.png" alt="王子游的照片" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h1 class="text-3xl font-bold">王子游</h1>
+                                <p class="text-xl text-gray-600 dark:text-gray-400 mb-4">东北大学秦皇岛分校 · 计算机科学与技术</p>
+                                <p class="text-gray-700 dark:text-gray-300">
+                                    <i class="fas fa-map-marker-alt text-blue-500 mr-2"></i>湖南省郴州市
+                                </p>
+                                <p class="text-gray-700 dark:text-gray-300">
+                                    <i class="fas fa-flag text-blue-500 mr-2"></i>共青团员
+                                </p>
+                                <p class="text-gray-700 dark:text-gray-300">
+                                    <i class="fas fa-envelope text-blue-500 mr-2"></i>202212133@stu.neu.edu.cn
+                                </p>
+                                <p class="text-gray-700 dark:text-gray-300">
+                                    <i class="fas fa-phone text-blue-500 mr-2"></i>13975555891
+                                </p>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- 关键数据 -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                    <div class="card p-6 text-center">
-                        <i class="fas fa-map-marked-alt text-4xl mb-4" style="color: var(--primary-color);"></i>
-                        <h3 class="text-xl font-bold mb-2">城市环境</h3>
-                        <p style="color: var(--text-secondary);">真实城市场景与模拟环境相结合，提供丰富多样的视觉数据</p>
-                    </div>
-                    <div class="card p-6 text-center">
-                        <i class="fas fa-brain text-4xl mb-4" style="color: var(--secondary-color);"></i>
-                        <h3 class="text-xl font-bold mb-2">认知评估</h3>
-                        <p style="color: var(--text-secondary);">全面评估模型在回忆、感知、推理和导航四个方面的具身认知能力</p>
-                    </div>
-                    <div class="card p-6 text-center">
-                        <i class="fas fa-robot text-4xl mb-4" style="color: var(--accent-color);"></i>
-                        <h3 class="text-xl font-bold mb-2">模型测试</h3>
-                        <p style="color: var(--text-secondary);">对17种广泛使用的Video-LLMs进行定量和定性评估</p>
+                        
+                        <p class="text-lg first-letter-drop mb-6">
+                            我是东北大学秦皇岛分校计算机与通信工程学院计算机科学与技术专业的一名本科生。我对人工智能和博弈算法有浓厚的兴趣，尤其专注于深度强化学习在博弈对抗中的应用研究。
+                        </p>
+                        
+                        <p class="text-lg mb-6">
+                            在学习过程中，我积极参与各类科研项目和竞赛活动，曾获得中国大学生计算机博弈大赛五子棋项目和苏拉卡尔塔棋项目两项国家一等奖，并在北大中文核心期刊上发表学术论文。
+                        </p>
+                        
+                        <p class="text-lg">
+                            我热爱编程和算法设计，擅长C语言和Python编程，对深度学习框架有一定的了解。我期望能够继续深入研究人工智能领域，为计算机科学的发展贡献自己的力量。
+                        </p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- 主要贡献部分 -->
-    <section id="contributions" class="py-16 section-fade" style="background-color: var(--bg-secondary);">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-8 text-center">主要贡献</h2>
-                
-                <div class="space-y-8">
-                    <div class="card p-6 flex flex-col md:flex-row items-start">
-                        <div class="task-icon text-2xl">
-                            <i class="fas fa-chart-bar"></i>
+        </section>
+        
+        <!-- 教育背景 -->
+        <section id="education" class="mb-20 scroll-reveal">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/3 mb-6 md:mb-0">
+                    <h2 class="text-3xl font-bold mb-4 inline-block pb-2 border-b-4 border-blue-500">教育背景</h2>
+                </div>
+                <div class="md:w-2/3">
+                    <div class="card p-8">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-6">
+                                <i class="fas fa-university text-3xl text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold">东北大学秦皇岛分校</h3>
+                                <p class="text-gray-600 dark:text-gray-400">计算机科学与技术 | 2022.09-2026.07</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                            <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow">
+                                <h4 class="font-bold mb-2 flex items-center text-purple-700 dark:text-purple-300">
+                                    <i class="fas fa-chart-line mr-2"></i>GPA
+                                </h4>
+                                <p class="text-lg font-semibold text-purple-700 dark:text-purple-300">4.19/5.00</p>
+                                <p class="text-sm text-purple-600 dark:text-purple-400">专业排名：<span class="font-medium">18/190</span></p>
+                            </div>
+                            <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow">
+                                <h4 class="font-bold mb-2 flex items-center text-purple-700 dark:text-purple-300">
+                                    <i class="fas fa-language mr-2"></i>英语水平
+                                </h4>
+                                <p class="text-purple-700 dark:text-purple-300">CET-4(<span class="font-medium">516</span>)、CET-6(<span class="font-medium">485</span>)</p>
+                            </div>
+                        </div>
+                        <div class="mb-8">
+                            <h4 class="font-bold mb-4 flex items-center">
+                                <i class="fas fa-book text-blue-500 mr-2"></i>主修课程
+                            </h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="flex items-center">
+                                    <div class="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                                    <span>概率论与数理统计 (100)</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                                    <span>线性代数 (98)</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                                    <span>离散数学 (96)</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                                    <span>汇编语言程序设计 (96)</span>
+                                </div>
+                            </div>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold mb-2">首个城市空间具身认知基准</h3>
-                            <p>提出UrbanVideo-Bench，首个用于评估视频-语言大模型（Video-LLMs）在城市开放空间中的具身认知能力的基准，特别关注在三维城市环境中进行连续的第一人称视觉观察和导航的能力。</p>
-                        </div>
-                    </div>
-                    
-                    <div class="card p-6 flex flex-col md:flex-row items-start">
-                        <div class="task-icon text-2xl">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">大规模高质量数据集</h3>
-                            <p>通过手动控制无人机在现实世界城市和模拟环境中收集视频数据，生成了约1500个视频片段，并设计了生成5200+个多项选择题的流程，旨在评估Video-LLMs在具身认知任务中的表现。</p>
-                        </div>
-                    </div>
-                    
-                    <div class="card p-6 flex flex-col md:flex-row items-start">
-                        <div class="task-icon text-2xl">
-                            <i class="fas fa-tasks"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">多样化任务集</h3>
-                            <p>设计了包含16个任务的多样化任务集，涵盖回忆、感知、推理和导航四个方面的具身认知能力，反映了在城市开放空间中可能遇到的实际挑战。</p>
-                        </div>
-                    </div>
-                    
-                    <div class="card p-6 flex flex-col md:flex-row items-start">
-                        <div class="task-icon text-2xl">
-                            <i class="fas fa-microscope"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold mb-2">全面模型评估</h3>
-                            <p>对17种广泛使用的Video-LLMs进行了定量和定性评估，揭示了当前模型在具身认知任务中的局限性。</p>
+                            <h4 class="font-bold mb-4 flex items-center">
+                                <i class="fas fa-laptop-code text-blue-500 mr-2"></i>相关技能
+                            </h4>
+                            <p class="mb-4">了解深度学习相关知识；掌握<strong>C语言</strong>、<strong>Python</strong>语言编程。</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 研究背景部分 -->
-    <section id="background" class="py-16 section-fade">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-8 text-center">研究背景</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                    <div class="card p-6">
-                        <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <i class="fas fa-question-circle mr-2" style="color: var(--primary-color);"></i>
-                            研究问题
-                        </h3>
-                        <ul class="space-y-3 list-disc pl-5">
-                            <li>人类能够处理连续的第一人称视觉观察，从而在现实世界的三维空间中进行方向判断、距离判断和导航。</li>
-                            <li>现有的多模态大模型在城市开放空间的三维运动中表现出的具身认知能力尚未得到充分探索。</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="card p-6">
-                        <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <i class="fas fa-exclamation-triangle mr-2" style="color: var(--secondary-color);"></i>
-                            研究难点
-                        </h3>
-                        <ul class="space-y-3 list-disc pl-5">
-                            <li>创建一个评估城市空间中具身认知能力的任务集。</li>
-                            <li>获取视频数据，特别是无人机在城市环境中飞行的视频。</li>
-                            <li>设计逻辑性和目的性的运动路线以确保连贯的视觉观察。</li>
-                        </ul>
-                    </div>
+        <!-- 科研经历 -->
+        <section id="research" class="mb-20 scroll-reveal">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/3 mb-6 md:mb-0">
+                    <h2 class="text-3xl font-bold mb-4 inline-block pb-2 border-b-4 border-blue-500">科研经历</h2>
                 </div>
-                
-                <div class="card p-6 mb-12">
-                    <h3 class="text-xl font-bold mb-4 flex items-center">
-                        <i class="fas fa-book mr-2" style="color: var(--accent-color);"></i>
-                        相关工作
-                    </h3>
-                    
-                    <div class="mb-6">
-                        <h4 class="text-lg font-semibold mb-2">具身能力的LMMs</h4>
-                        <p class="mb-3">具身智能是指认知过程深深植根于身体与世界的互动中。近年来，多模态大模型（LMMs）展示了前所未有的视觉理解能力，被认为是开发具智能体的"大脑"。</p>
-                        <p>现有研究主要集中在二维图像、静态点云或基于语言的空间理解上，而人类对世界的理解是基于连续的视觉感知。因此，需要多样化的视频基准来全面评估LMMs在各种具身场景中的潜力。</p>
-                    </div>
-                    
-                    <div class="mb-6">
-                        <h4 class="text-lg font-semibold mb-2">视频LMMs</h4>
-                        <p class="mb-3">传统的视频基准涵盖了各种任务，如抽象理解和时空分析，主要集中在理解视频内容上，缺乏从具身、自我中心的视角探索Video-LLMs的具身认知能力。</p>
-                        <p>现有研究在室内或地面场景中探索了具身能力，但在城市开放的三维空间中对具身能力的探索不足。</p>
-                    </div>
-                    
-                    <div>
-                        <h4 class="text-lg font-semibold mb-2">本文特点</h4>
-                        <p>UrbanVideo-Bench基准与其他基准相比，其视频来源和场景不同，专注于评估与城市三维空中运动相关的Video-LLMs的具身认知能力。通过这种比较，强调了其基准在复杂动态城市三维空间中评估模型认知能力的独特性。</p>
-                    </div>
-                </div>
-                
-                <!-- Mermaid图表：研究背景关系图 -->
-                <div class="mermaid">
-                    graph TD
-                        A[具身智能] --> B[多模态大模型]
-                        B --> C[视频理解能力]
-                        B --> D[空间认知能力]
-                        C --> E[UrbanVideo-Bench]
-                        D --> E
-                        E --> F[回忆能力]
-                        E --> G[感知能力]
-                        E --> H[推理能力]
-                        E --> I[导航能力]
-                        J[现有研究局限] --> K[二维图像]
-                        J --> L[静态点云]
-                        J --> M[基于语言的空间理解]
-                        N[本研究优势] --> O[连续视觉感知]
-                        N --> P[城市三维空间]
-                        N --> Q[第一人称视角]
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 设计与构建部分 -->
-    <section id="design" class="py-16 section-fade" style="background-color: var(--bg-secondary);">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-8 text-center">UrbanVideo-Bench设计与构建</h2>
-                
-                <!-- 任务集 -->
-                <div class="card p-6 mb-12">
-                    <h3 class="text-xl font-bold mb-6 flex items-center">
-                        <i class="fas fa-tasks mr-2" style="color: var(--primary-color);"></i>
-                        任务集
-                    </h3>
-                    
-                    <div class="mb-6">
-                        <h4 class="text-lg font-semibold mb-3">任务分类</h4>
-                        <p class="mb-4">论文将具身认知能力分为四个主要类别：回忆（Recall）、感知（Perception）、推理（Reasoning）和导航（Navigation）。这些类别涵盖了模型在城市开放空间中进行具身认知所需的不同能力。</p>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                            <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
-                                <h5 class="font-semibold mb-2 flex items-center">
-                                    <i class="fas fa-memory mr-2" style="color: var(--primary-color);"></i>
-                                    回忆（Recall）
-                                </h5>
-                                <p>评估模型记忆城市环境中关键信息的能力。包括轨迹描述、序列回忆、对象回忆和场景回忆等任务。</p>
-                            </div>
-                            
-                            <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
-                                <h5 class="font-semibold mb-2 flex items-center">
-                                    <i class="fas fa-eye mr-2" style="color: var(--secondary-color);"></i>
-                                    感知（Perception）
-                                </h5>
-                                <p>评估模型对静态和动态空间关系的理解能力。包括地标位置、目标检测、距离变化、持续时间、认知地图等任务。</p>
-                            </div>
-                            
-                            <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
-                                <h5 class="font-semibold mb-2 flex items-center">
-                                    <i class="fas fa-brain mr-2" style="color: var(--accent-color);"></i>
-                                    推理（Reasoning）
-                                </h5>
-                                <p>评估模型分析和理解其行为和环境的能力。包括因果推理、反事实推理和关联推理等任务。</p>
-                            </div>
-                            
-                            <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
-                                <h5 class="font-semibold mb-2 flex items-center">
-                                    <i class="fas fa-route mr-2" style="color: var(--primary-color);"></i>
-                                    导航（Navigation）
-                                </h5>
-                                <p>评估模型在城市空间中进行路线规划和直接输出动作的能力。包括路径导向的导航和高层次的规划等任务。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 数据集统计 -->
-                <div class="card p-6 mb-12">
-                    <h3 class="text-xl font-bold mb-6 flex items-center">
-                        <i class="fas fa-chart-pie mr-2" style="color: var(--secondary-color);"></i>
-                        数据集统计
-                    </h3>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                        <div class="p-4 rounded-lg text-center" style="background-color: var(--bg-accent);">
-                            <div class="text-3xl font-bold mb-2" style="color: var(--primary-color);">1500+</div>
-                            <p>视频片段</p>
-                        </div>
-                        
-                        <div class="p-4 rounded-lg text-center" style="background-color: var(--bg-accent);">
-                            <div class="text-3xl font-bold mb-2" style="color: var(--secondary-color);">5200+</div>
-                            <p>多项选择题</p>
-                        </div>
-                        
-                        <div class="p-4 rounded-lg text-center" style="background-color: var(--bg-accent);">
-                            <div class="text-3xl font-bold mb-2" style="color: var(--accent-color);">16</div>
-                            <p>认知任务</p>
-                        </div>
-                    </div>
-                    
-                    <p class="mb-4">数据集包括约1500个视频片段和超过5200个多项选择题。视频分辨率和时长各异，覆盖了从短时精细运动到长距离导航的多种场景。</p>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                        <div>
-                            <h4 class="font-semibold mb-2">任务分布</h4>
-                            <p>低级和高级任务各占大约50%，确保全面评估模型在不同认知任务中的表现。</p>
-                        </div>
-                        
-                        <div>
-                            <h4 class="font-semibold mb-2">词汇丰富性</h4>
-                            <p>问题文本的字数范围从50到250，展示了城市元素的丰富性。</p>
-                        </div>
-                    </div>
-                    
-                    <!-- 任务分布图表 -->
-                    <div class="mt-6">
-                        <h4 class="font-semibold mb-3 text-center">任务类型分布</h4>
-                        <div class="grid grid-cols-4 gap-2">
-                            <div class="flex flex-col items-center">
-                                <div class="progress-bar w-full mb-2">
-                                    <div class="progress-value" style="width: 25%; background-color: var(--primary-color);"></div>
+                <div class="md:w-2/3">
+                    <div class="timeline">
+                        <!-- 项目一：中国大学生计算机博弈大赛 -->
+                        <div class="timeline-item">
+                            <div class="card p-6 mb-4">
+                                <div class="flex justify-between items-start mb-4">
+                                    <h3 class="text-xl font-bold">中国大学生计算机博弈大赛</h3>
+                                    <span class="text-sm text-gray-600 dark:text-gray-400">2024.04-2024.09</span>
                                 </div>
-                                <span class="text-sm">回忆</span>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <div class="progress-bar w-full mb-2">
-                                    <div class="progress-value" style="width: 30%; background-color: var(--secondary-color);"></div>
+                                <div class="mb-4">
+                                    <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full text-sm font-medium mb-2">核心成员</span>
                                 </div>
-                                <span class="text-sm">感知</span>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <div class="progress-bar w-full mb-2">
-                                    <div class="progress-value" style="width: 25%; background-color: var(--accent-color);"></div>
+                                <h4 class="font-bold mb-2">项目名称：悟空五子棋、悟空苏拉卡尔塔</h4>
+                                <div class="mb-4">
+                                    <h5 class="font-bold mb-2">项目概述</h5>
+                                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                                        悟空五子棋为核心项目，成功开发了基于蒙特卡罗树搜索和深度强化学习的自博弈训练模型；
+                                        通过引入威胁空间搜索缓解了自博弈训练中奖励稀疏的问题，并采取动作空间裁剪策略，
+                                        显著提升了AI的博弈水平。悟空苏拉卡尔塔则侧重于规则优化与并行蒙特卡罗树搜索的实现。
+                                    </p>
                                 </div>
-                                <span class="text-sm">推理</span>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <div class="progress-bar w-full mb-2">
-                                    <div class="progress-value" style="width: 20%; background-color: #F59E0B;"></div>
+                                <div class="mb-4">
+                                    <h5 class="font-bold mb-2">负责内容</h5>
+                                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                                        项目算法及规则实现；UI界面设计和实现。
+                                    </p>
                                 </div>
-                                <span class="text-sm">导航</span>
+                                <div>
+                                    <h5 class="font-bold mb-2">项目成果</h5>
+                                    <p class="text-gray-700 dark:text-gray-300">
+                                        2024年中国大学生计算机博弈大赛五子棋项目<strong>全国亚军</strong>、
+                                        苏拉卡尔塔棋项目<strong>全国冠军</strong>。
+                                    </p>
+                                </div>
+                                <!-- 项目展示图片 -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                                    <div class="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow img-hover-zoom">
+                                        <img src="UI_demo/connect5_UI.png" alt="五子棋UI界面" class="w-full h-full object-cover">
+                                        <div class="p-2 bg-gray-100 dark:bg-gray-800 text-center">
+                                            <span class="text-sm font-medium">悟空五子棋界面</span>
+                                        </div>
+                                    </div>
+                                    <div class="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow img-hover-zoom">
+                                        <img src="UI_demo/Surakarta_UI.png" alt="苏拉卡尔塔UI界面" class="w-full h-full object-cover">
+                                        <div class="p-2 bg-gray-100 dark:bg-gray-800 text-center">
+                                            <span class="text-sm font-medium">悟空苏拉卡尔塔界面</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 数据集生成流程 -->
-                <div class="card p-6">
-                    <h3 class="text-xl font-bold mb-6 flex items-center">
-                        <i class="fas fa-cogs mr-2" style="color: var(--accent-color);"></i>
-                        数据集生成流程
-                    </h3>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div>
-                            <h4 class="text-lg font-semibold mb-3 flex items-center">
-                                <i class="fas fa-video mr-2" style="color: var(--primary-color);"></i>
-                                收集方案
-                            </h4>
-                            <ul class="space-y-3 list-disc pl-5">
-                                <li><span class="font-medium">数据收集：</span>在广东省的深圳和肇庆市使用两架大疆Mini 4K无人机收集视频数据。此外，使用两个模拟器（EmbodiedCity和AerialVLN）扩展数据集。</li>
-                                <li><span class="font-medium">视频质量：</span>确保视频数据具有高质量，能够反映城市环境的复杂性和动态性。</li>
-                            </ul>
                         </div>
                         
-                        <div>
-                            <h4 class="text-lg font-semibold mb-3 flex items-center">
-                                <i class="fas fa-question-circle mr-2" style="color: var(--secondary-color);"></i>
-                                多项选择问题生成
-                            </h4>
-                            <ul class="space-y-3 list-disc pl-5">
-                                <li><span class="font-medium">思维链Prompt：</span>利用LMM生成高质量的多项选择题。过程包括描述、关键信息提取、角色扮演和提供问题和选项模板。</li>
-                                <li><span class="font-medium">辅助工具：</span>使用Gemini-1.5 Flash等模型协助生成问题，以提高问题质量。</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-                        <div>
-                            <h4 class="text-lg font-semibold mb-3 flex items-center">
-                                <i class="fas fa-filter mr-2" style="color: var(--accent-color);"></i>
-                                问题筛选
-                            </h4>
-                            <ul class="space-y-3 list-disc pl-5">
-                                <li><span class="font-medium">过滤标准：</span>去除那些仅凭常识即可回答的问题，确保评估的是模型的具身认知能力而非常识或世界知识。</li>
-                            </ul>
-                        </div>
-                        
-                        <div>
-                            <h4 class="text-lg font-semibold mb-3 flex items-center">
-                                <i class="fas fa-user-edit mr-2" style="color: var(--primary-color);"></i>
-                                人工调整
-                            </h4>
-                            <ul class="space-y-3 list-disc pl-5">
-                                <li><span class="font-medium">问题修正：</span>对生成的多项选择题进行人工检查和修正，解决无效问题、歧义选项、错误答案等问题。</li>
-                                <li><span class="font-medium">质量控制：</span>确保问题的准确性和一致性，提高数据集的整体质量。</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <!-- 数据生成流程图 -->
-                    <div class="mt-8">
-                        <h4 class="font-semibold mb-4 text-center">数据集生成流程</h4>
-                        <div class="mermaid">
-                            flowchart LR
-                                A[视频数据收集] --> B[视频片段分割]
-                                B --> C[关键信息提取]
-                                C --> D[问题生成]
-                                D --> E[问题筛选]
-                                E --> F[人工调整]
-                                F --> G[最终数据集]
+                        <!-- 项目二：北大中文核心期刊论文 -->
+                        <div class="timeline-item">
+                            <div class="card p-6">
+                                <div class="flex justify-between items-start mb-4">
+                                    <h3 class="text-xl font-bold">北大中文核心期刊论文</h3>
+                                    <span class="text-sm text-gray-600 dark:text-gray-400">2024.05-2025.01</span>
+                                </div>
+                                <div class="mb-4">
+                                    <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full text-sm font-medium mb-2">第二作者（学生一作）</span>
+                                </div>
+                                <h4 class="font-bold mb-2">论文名称：<a href="paper/引入威胁空间搜索的五子棋深度强化学习方法.pdf" class="text-blue-600 dark:text-blue-400 hover:underline" target="_blank">《引入威胁空间搜索的五子棋深度强化学习方法》</a></h4>
+                                <div class="mb-4">
+                                    <h5 class="font-bold mb-2">论文概述</h5>
+                                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                                        本论文针对深度强化学习在复杂博弈问题中面临的奖励稀疏和训练成本高的问题，
+                                        提出了一种引入威胁空间搜索的五子棋深度强化学习方法。主要内容包括：
+                                    </p>
+                                    <ul class="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+                                        <li>设计了统一威胁空间搜索算法，并将其嵌入蒙特卡洛树搜索中，缓解了奖励稀疏问题</li>
+                                        <li>提出了基于领域知识的双层知识库，加速了算法搜索速度</li>
+                                        <li>将威胁动作空间作为神经网络的输入特征，增强了模型对关键局部形势的感知能力</li>
+                                        <li>利用走法过滤机制缩小了动作空间</li>
+                                    </ul>
+                                </div>
+                                <div class="mb-4">
+                                    <h5 class="font-bold mb-2">负责内容</h5>
+                                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                                        负责核心算法实现；设计并执行消融实验，负责实验结果可视化；完成实验部分和算法描述的写作。
+                                    </p>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold mb-2">项目成果</h5>
+                                    <p class="text-gray-700 dark:text-gray-300">
+                                        论文被《重庆理工大学机器博弈专栏》录用。
+                                    </p>
+                                </div>
                                 
-                                style A fill:#EFF6FF,stroke:#3B82F6
-                                style B fill:#EFF6FF,stroke:#3B82F6
-                                style C fill:#ECFDF5,stroke:#10B981
-                                style D fill:#ECFDF5,stroke:#10B981
-                                style E fill:#EEF2FF,stroke:#6366F1
-                                style F fill:#EEF2FF,stroke:#6366F1
-                                style G fill:#FEF3C7,stroke:#F59E0B
+                                <!-- 论文成果可视化 -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                                    <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow">
+                                        <h4 class="font-bold mb-2 flex items-center text-purple-700 dark:text-purple-300">
+                                            <i class="fas fa-chart-line mr-2"></i>损失函数值减少
+                                        </h4>
+                                        <p class="text-lg font-semibold text-purple-700 dark:text-purple-300">54.7%</p>
+                                    </div>
+                                    <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow">
+                                        <h4 class="font-bold mb-2 flex items-center text-purple-700 dark:text-purple-300">
+                                            <i class="fas fa-chart-bar mr-2"></i>平均分支因子降幅
+                                        </h4>
+                                        <p class="text-lg font-semibold text-purple-700 dark:text-purple-300">65.85%</p>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg hover:shadow-md transition-shadow">
+                                    <h4 class="font-bold mb-2 flex items-center text-blue-700 dark:text-blue-600">
+                                        <i class="fas fa-trophy mr-2"></i>研究成果
+                                    </h4>
+                                    <p class="text-sm text-blue-600 dark:text-blue-400">
+                                        在个人笔记本上，仅需200次MCTS模拟的小规模计算，进行100局自博弈训练即可达到中国大学生计算机博弈大赛一等奖的水平
+                                    </p>
+                                </div>
+                                <!-- 论文架构图 -->
+                                <div class="mt-6">
+                                    <h5 class="font-bold mb-4">论文架构图</h5>
+                                    <div class="mermaid-wrapper p-4 rounded-lg shadow-inner overflow-auto">
+                                        <div class="mermaid">
+                                            %%{
+                                                init: {
+                                                    'theme': 'base',
+                                                    'themeVariables': {
+                                                        'primaryColor': '#4f46e5',
+                                                        'primaryTextColor': '#ffffff',
+                                                        'primaryBorderColor': '#3730a3',
+                                                        'lineColor': '#6366f1',
+                                                        'secondaryColor': '#3b82f6',
+                                                        'tertiaryColor': document.documentElement.classList.contains('dark') ? '#1e293b' : '#f0f9ff'
+                                                    },
+                                                    'flowchart': {
+                                                        'curve': 'basis',
+                                                        'nodeSpacing': 50,
+                                                        'rankSpacing': 70
+                                                    }
+                                                }
+                                            }%%
+                                            
+                                            flowchart TD
+                                                classDef main fill:#4f46e5,stroke:#3730a3,stroke-width:2px,color:white,font-weight:bold
+                                                classDef module fill:#3b82f6,stroke:#1e40af,stroke-width:1px,color:white
+                                                classDef component fill:#60a5fa,stroke:#2563eb,stroke-width:1px,color:white
+                                                classDef benefit fill:#10b981,stroke:#047857,stroke-width:1px,color:white
+                                                classDef result fill:#f97316,stroke:#c2410c,stroke-width:2px,color:white,font-weight:bold
+                                                
+                                                A["深度强化学习框架<br><small>(Deep Reinforcement Learning)</small>"] --> B["蒙特卡洛树搜索<br><small>(Monte Carlo Tree Search)</small>"]
+                                                A --> C["神经网络<br><small>(Neural Network)</small>"]
+                                                
+                                                B --> D["威胁空间搜索<br><small>(Threat Space Search)</small>"]
+                                                D --> E["统一威胁空间算法<br><small>(Unified Threat Space Algorithm)</small>"]
+                                                D --> F["双层知识库<br><small>(Two-layer Knowledge Base)</small>"]
+                                                
+                                                C --> G["威胁动作空间特征<br><small>(Threat Action Space Features)</small>"]
+                                                C --> H["走法过滤机制<br><small>(Move Filtering Mechanism)</small>"]
+                                                
+                                                E --> I["奖励稀疏问题缓解<br><small>(Sparse Reward Mitigation)</small>"]
+                                                F --> J["搜索速度提升<br><small>(Search Speed Improvement)</small>"]
+                                                G --> K["局部形势感知增强<br><small>(Local Situation Awareness)</small>"]
+                                                H --> L["动作空间缩小<br><small>(Action Space Reduction)</small>"]
+                                                
+                                                I --> M["性能提升<br><small>(Performance Improvement)</small>"]
+                                                J --> M
+                                                K --> M
+                                                L --> M
+                                                
+                                                class A main
+                                                class B,C module
+                                                class D,E,F,G,H component
+                                                class I,J,K,L benefit
+                                                class M result
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 实验部分 -->
-    <section id="experiments" class="py-16 section-fade">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-8 text-center">实验</h2>
-                
-                <!-- 实验设置 -->
-                <div class="card p-6 mb-12">
-                    <h3 class="text-xl font-bold mb-6 flex items-center">
-                        <i class="fas fa-flask mr-2" style="color: var(--primary-color);"></i>
-                        实验设置
-                    </h3>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                        <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
-                            <h4 class="font-semibold mb-2 flex items-center">
-                                <i class="fas fa-chart-line mr-2" style="color: var(--primary-color);"></i>
-                                评估指标
-                            </h4>
-                            <p>由于每个问题都是多项选择题形式，可以直接计算每个任务类型以及整体任务的准确率。</p>
-                        </div>
-                        
-                        <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
-                            <h4 class="font-semibold mb-2 flex items-center">
-                                <i class="fas fa-robot mr-2" style="color: var(--secondary-color);"></i>
-                                基线模型
-                            </h4>
-                            <p>包括专有和开源的Video-LLMs，如GPT-4o、Gemini系列、Qwen-VL-Max、LLaVA-NeXT-Video等。</p>
-                        </div>
-                        
-                        <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
-                            <h4 class="font-semibold mb-2 flex items-center">
-                                <i class="fas fa-cog mr-2" style="color: var(--accent-color);"></i>
-                                输入参数
-                            </h4>
-                            <p>根据模型的要求调整输入帧数或fps，以确保公平比较并考虑本地计算资源限制。</p>
-                        </div>
-                    </div>
+        <!-- 获奖情况 -->
+        <section id="awards" class="mb-20 scroll-reveal">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/3 mb-6 md:mb-0">
+                    <h2 class="text-3xl font-bold mb-4 inline-block pb-2 border-b-4 border-blue-500">获奖情况</h2>
                 </div>
-                
-                <!-- 模型比较 -->
-                <div class="card p-6 mb-12">
-                    <h3 class="text-xl font-bold mb-6 flex items-center">
-                        <i class="fas fa-balance-scale mr-2" style="color: var(--secondary-color);"></i>
-                        模型比较
-                    </h3>
-                    
-                    <p class="mb-6">实验结果表明，无论是专有模型还是开源模型，在城市开放空间中的具身认知能力都相对较弱。表现最好的模型Qwen-VL-Max的平均准确率仅为45.5%。</p>
-                    
-                    <!-- 模型性能对比图表 -->
-                    <div class="overflow-x-auto mb-6">
-                        <table class="min-w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-                            <thead>
-                                <tr>
-                                    <th class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-left">模型</th>
-                                    <th class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">回忆任务</th>
-                                    <th class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">感知任务</th>
-                                    <th class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">推理任务</th>
-                                    <th class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">导航任务</th>
-                                    <th class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">平均</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 font-medium">GPT-4o</td>
-                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">42.3%</td>
-                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">40.1%</td>
-                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">38.7%</td>
-                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">36.5%</td>
-                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center font-medium">39.4%</td>
-                                </tr>
-                                <tr>
-                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 font-medium">Gemini-1.5</td>
-                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">43.8%</td>
-                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">42.5%</td>
-                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">40.2%</td>
-                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">38.9%</td>
-                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center font-medium">41.4%</td>
-                                </tr>
-                                <tr>
-                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 font-medium">Qwen-VL-Max</td>
-                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">47.2%</td>
-                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">46.8%</td>
-                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">44.5%</td>
-                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">43.6%</td>
-                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center font-medium" style="color: var(--primary-color);">45.5%</td>
-                                </tr>
-                                <tr>
-                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 font-medium">LLaVA-NeXT-Video</td>
-                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">40.1%</td>
-                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">39.7%</td>
-                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">37.8%</td>
-                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center">35.2%</td>
-                                    <td class="py-3 px-4 border-b border-gray-200 dark:border-gray-700 text-center font-medium">38.2%</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    <p>一些优化过视频数据的开源模型在某些任务上优于专有模型，显示出视频数据优化的优势。</p>
-                </div>
-                
-                <!-- 认知能力相关性 -->
-                <div class="card p-6 mb-12">
-                    <h3 class="text-xl font-bold mb-6 flex items-center">
-                        <i class="fas fa-brain mr-2" style="color: var(--accent-color);"></i>
-                        认知能力相关性
-                    </h3>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div>
-                            <h4 class="font-semibold mb-3">任务相关性</h4>
-                            <p class="mb-4">论文分析了不同任务之间的相关性，发现因果推理任务与其他任务高度相关，表明理解因果关系可能是多种认知过程的基础。</p>
+                <div class="md:w-2/3">
+                    <div class="card p-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <!-- 国家级奖项 -->
+                            <div>
+                                <h3 class="text-xl font-bold mb-4 flex items-center">
+                                    <i class="fas fa-trophy text-yellow-500 mr-2"></i>国家级奖项
+                                </h3>
+                                <div class="space-y-4">
+                                    <div class="p-4 bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-lg hover:shadow-md transition-shadow award-item" data-certificate="resource/国家奖学金荣誉证书.png" data-title="国家奖学金荣誉证书">
+                                        <div class="flex justify-between items-start">
+                                            <div>
+                                                <h4 class="font-bold text-black">国家奖学金</h4>
+                                                <p class="text-sm text-blue-600">2024年</p>
+                                            </div>
+                                            <span class="award-badge">国家级</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-4 bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-lg hover:shadow-md transition-shadow award-item" data-certificate="resource/2024年中国大学生计算机博弈大赛苏拉卡尔塔项目冠军.png" data-title="计算机博弈大赛苏拉卡尔塔项目冠军">
+                                        <div class="flex justify-between items-start">
+                                            <div>
+                                                <h4 class="font-bold text-black">中国大学生计算机博弈大赛苏拉卡尔塔棋冠军</h4>
+                                                <p class="text-sm text-blue-600">2024年</p>
+                                            </div>
+                                            <span class="award-badge">国家级</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-4 bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-lg hover:shadow-md transition-shadow award-item" data-certificate="resource/2024年中国大学生计算机博弈大赛五子棋项目亚军.png" data-title="计算机博弈大赛五子棋项目亚军">
+                                        <div class="flex justify-between items-start">
+                                            <div>
+                                                <h4 class="font-bold text-black">中国大学生计算机博弈大赛五子棋亚军</h4>
+                                                <p class="text-sm text-blue-600">2024年</p>
+                                            </div>
+                                            <span class="award-badge">国家级</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             
-                            <!-- 相关性热力图 -->
-                            <div class="p-4 rounded-lg text-center" style="background-color: var(--bg-accent);">
-                                <p class="text-sm mb-2">任务相关性热力图</p>
-                                <div class="grid grid-cols-4 gap-1">
-                                    <div class="h-8 flex items-center justify-center text-xs" style="background-color: rgba(59, 130, 246, 0.9);">高</div>
-                                    <div class="h-8 flex items-center justify-center text-xs" style="background-color: rgba(59, 130, 246, 0.7);">中高</div>
-                                    <div class="h-8 flex items-center justify-center text-xs" style="background-color: rgba(59, 130, 246, 0.5);">中</div>
-                                    <div class="h-8 flex items-center justify-center text-xs" style="background-color: rgba(59, 130, 246, 0.3);">低</div>
+                            <!-- 省级奖项 -->
+                            <div>
+                                <h3 class="text-xl font-bold mb-4 flex items-center">
+                                    <i class="fas fa-medal text-blue-500 mr-2"></i>省级奖项
+                                </h3>
+                                <div class="space-y-4">
+                                    <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg hover:shadow-md transition-shadow">
+                                        <div class="flex justify-between items-start">
+                                            <div>
+                                                <h4 class="font-bold text-black">蓝桥杯大赛软件赛二等奖</h4>
+                                                <p class="text-sm text-blue-600">2024年</p>
+                                            </div>
+                                            <span class="award-badge bg-gradient-to-r from-blue-500 to-indigo-500">省级</span>
+                                        </div>
+                                    </div>
+                                    <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg hover:shadow-md transition-shadow">
+                                        <div class="flex justify-between items-start">
+                                            <div>
+                                                <h4 class="font-bold text-black">全国大学生数学竞赛二等奖</h4>
+                                                <p class="text-sm text-blue-600">2024年</p>
+                                            </div>
+                                            <span class="award-badge bg-gradient-to-r from-blue-500 to-indigo-500">省级</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 校级奖项 -->
+                        <div class="mt-8">
+                            <h3 class="text-xl font-bold mb-4 flex items-center">
+                                <i class="fas fa-award text-purple-500 mr-2"></i>校级奖项
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h4 class="font-bold text-black">国际大学生数学建模竞赛二等奖</h4>
+                                            <p class="text-sm text-blue-600">2023年</p>
+                                        </div>
+                                        <span class="award-badge bg-gradient-to-r from-purple-500 to-pink-500">校级</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h4 class="font-bold text-black">东北大学校一等奖学金</h4>
+                                            <p class="text-sm text-blue-600">2022-2023学年</p>
+                                        </div>
+                                        <span class="award-badge bg-gradient-to-r from-purple-500 to-pink-500">校级</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h4 class="font-bold text-black">东北大学校级三好学生</h4>
+                                            <p class="text-sm text-blue-600">2022-2023学年</p>
+                                        </div>
+                                        <span class="award-badge bg-gradient-to-r from-purple-500 to-pink-500">校级</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h4 class="font-bold text-black">校级优秀学生干部</h4>
+                                            <p class="text-sm text-blue-600">2023-2024学年</p>
+                                        </div>
+                                        <span class="award-badge bg-gradient-to-r from-purple-500 to-pink-500">校级</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h4 class="font-bold text-black">东北大学优秀团员标兵</h4>
+                                            <p class="text-sm text-blue-600">2023年</p>
+                                        </div>
+                                        <span class="award-badge bg-gradient-to-r from-purple-500 to-pink-500">校级</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h4 class="font-bold text-black">东北大学优秀志愿者</h4>
+                                            <p class="text-sm text-blue-600">2024年 (171.75小时)</p>
+                                        </div>
+                                        <span class="award-badge bg-gradient-to-r from-purple-500 to-pink-500">校级</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         
-                        <div>
-                            <h4 class="font-semibold mb-3">记忆与导航</h4>
-                            <p class="mb-4">回忆任务之间以及导航任务与回忆和感知任务之间存在强相关性，强调了记忆在认知任务中的重要性。</p>
+                        <!-- 奖项图片展示 -->
+                        <div class="mt-8">
+                            <h3 class="text-xl font-bold mb-4 flex items-center">
+                                <i class="fas fa-images text-green-500 mr-2"></i>部分获奖证书
+                            </h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                                <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg hover:shadow-md transition-shadow text-center">
+                                    <img src="resource/2024年中国大学生计算机博弈大赛五子棋项目亚军.png" alt="2024年中国大学生计算机博弈大赛五子棋项目亚军" class="w-full h-auto object-cover mb-3 rounded">
+                                    <h4 class="font-bold mb-2 flex items-center justify-center text-blue-700 dark:text-blue-600">
+                                        <i class="fas fa-chess mr-2"></i>计算机博弈大赛五子棋亚军
+                                    </h4>
+                                </div>
+                                <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg hover:shadow-md transition-shadow text-center">
+                                    <img src="resource/国家奖学金荣誉证书.png" alt="国家奖学金荣誉证书" class="w-full h-auto object-cover mb-3 rounded">
+                                    <h4 class="font-bold mb-2 flex items-center justify-center text-blue-700 dark:text-blue-600">
+                                        <i class="fas fa-award mr-2"></i>国家奖学金荣誉证书
+                                    </h4>
+                                </div>
+                                <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg hover:shadow-md transition-shadow text-center">
+                                    <img src="resource/2024年中国大学生计算机博弈大赛苏拉卡尔塔项目冠军.png" alt="2024年中国大学生计算机博弈大赛苏拉卡尔塔项目冠军" class="w-full h-auto object-cover mb-3 rounded">
+                                    <h4 class="font-bold mb-2 flex items-center justify-center text-blue-700 dark:text-blue-600">
+                                        <i class="fas fa-trophy mr-2"></i>计算机博弈大赛苏拉卡尔塔棋冠军
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 证书展示盒 -->
+                        <!-- <div class="certificate-showcase mb-6">
+                            <div class="certificate-box bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                                <div class="certificate-display relative h-80 overflow-hidden">
+                                    <img id="certificate-image" src="resource/国家奖学金荣誉证书.png" alt="国家奖学金荣誉证书" class="w-full h-full object-contain transition-all duration-500">
+                                    <div class="absolute inset-0 flex items-center justify-between px-4">
+                                        <button id="prev-certificate" class="certificate-nav-btn bg-white/80 dark:bg-gray-800/80 text-gray-800 dark:text-white rounded-full p-2 opacity-70 hover:opacity-100 transition-opacity">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </button>
+                                        <button id="next-certificate" class="certificate-nav-btn bg-white/80 dark:bg-gray-800/80 text-gray-800 dark:text-white rounded-full p-2 opacity-70 hover:opacity-100 transition-opacity">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="p-4 text-center border-t border-gray-200 dark:border-gray-700">
+                                    <h4 id="certificate-title" class="font-medium">国家奖学金荣誉证书</h4>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 学生工作 -->
+        <section id="work" class="mb-20 scroll-reveal">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/3 mb-6 md:mb-0">
+                    <h2 class="text-3xl font-bold mb-4 inline-block pb-2 border-b-4 border-blue-500">学生工作</h2>
+                </div>
+                <div class="md:w-2/3">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="card p-6">
+                                <div class="flex justify-between items-start mb-4">
+                                    <h3 class="text-xl font-bold">科创委员</h3>
+                                    <span class="text-sm text-gray-600 dark:text-gray-400">2023.09-至今</span>
+                                </div>
+                                <p class="text-gray-700 dark:text-gray-300 mb-4">
+                                    东北大学秦皇岛分校计算机与通信工程学院计科2205班
+                                </p>
+                                <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow mb-8">
+                                    <h4 class="font-bold mb-2 flex items-center text-purple-700 dark:text-purple-300">
+                                        <i class="fas fa-tasks mr-2"></i>主要职责与工作目标
+                                    </h4>
+                                    <ul class="list-disc pl-5 space-y-2 text-purple-600 dark:text-purple-400">
+                                        <li>组织班级科技创新活动</li>
+                                        <li>收集和分享科技竞赛信息</li>
+                                        <li>提高同学们的创新意识和实践能力</li>
+                                        <li>鼓励积极参与各类科技竞赛</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="card p-6">
+                                <div class="flex justify-between items-start mb-4">
+                                    <h3 class="text-xl font-bold">主要负责人</h3>
+                                    <span class="text-sm text-gray-600 dark:text-gray-400">2023.10-2024.10</span>
+                                </div>
+                                <p class="text-gray-700 dark:text-gray-300 mb-4">
+                                    东北大学秦皇岛分校学创新创业者协会
+                                </p>
+                                <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow">
+                                    <h4 class="font-bold mb-2 flex items-center text-purple-700 dark:text-purple-300">
+                                        <i class="fas fa-tasks mr-2"></i>主要职责
+                                    </h4>
+                                    <ul class="list-disc pl-5 space-y-2 text-purple-600 dark:text-purple-400">
+                                        <li>策划和组织校内创新创业活动，提升校园创新创业氛围</li>
+                                        <li>组织团队参加各类创新创业比赛，提高学生实践能力</li>
+                                        <li>建立校内外创新创业资源对接平台，为学生提供更多机会</li>
+                                        <li>管理协会日常事务，协调各部门工作</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 志愿服务 -->
+        <section id="volunteer" class="mb-20 scroll-reveal">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/3 mb-6 md:mb-0">
+                    <h2 class="text-3xl font-bold mb-4 inline-block pb-2 border-b-4 border-blue-500">志愿服务</h2>
+                </div>
+                <div class="md:w-2/3">
+                    <div class="card p-8">
+                        <p class="mb-6 text-lg">
+                            作为中国大学生程序竞赛和河北省大学生程序设计竞赛的主要负责人，负责组织赛前场地布置、赛中监考管理以及赛后场地恢复等全流程工作。
+                            累计志愿服务时长达<span class="font-bold text-blue-600 dark:text-blue-400">171.75小时</span>，获得东北大学优秀志愿者称号。
+                        </p>
+                        
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="p-6 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-800 flex items-center justify-center mr-4">
+                        <i class="fas fa-laptop-code text-2xl text-purple-500"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-purple-700 dark:text-purple-300">中国大学生程序竞赛</h3>
+                        <p class="text-sm text-purple-600 dark:text-purple-400">志愿者</p>
+                    </div>
+                </div>
+                <h4 class="font-bold mb-2 flex items-center text-purple-700 dark:text-purple-300">
+                    <i class="fas fa-tasks mr-2"></i>主要职责
+                </h4>
+                <ul class="list-disc pl-5 space-y-2 text-purple-600 dark:text-purple-400">
+                    <li>赛前场地布置与设备调试</li>
+                    <li>赛中选手引导与现场监考</li>
+                    <li>赛后场地恢复与资料整理</li>
+                </ul>
+            </div>
+            
+            <div class="p-6 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-800 flex items-center justify-center mr-4">
+                        <i class="fas fa-code text-2xl text-purple-500"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-purple-700 dark:text-purple-300">河北省大学生程序设计竞赛</h3>
+                        <p class="text-sm text-purple-600 dark:text-purple-400">志愿者</p>
+                    </div>
+                </div>
+                <h4 class="font-bold mb-2 flex items-center text-purple-700 dark:text-purple-300">
+                    <i class="fas fa-tasks mr-2"></i>主要职责
+                </h4>
+                <ul class="list-disc pl-5 space-y-2 text-purple-600 dark:text-purple-400">
+                    <li>参与竞赛组织与管理</li>
+                    <li>协助解决选手技术问题</li>
+                    <li>维护竞赛秩序与公平性</li>
+                </ul>
+            </div>
+        </div>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg hover:shadow-md transition-shadow text-center">
+                                <img src="resource/中国大学生程序竞赛志愿者.png" alt="中国大学生程序竞赛志愿者" class="w-full h-auto object-cover mb-3 rounded">
+                                <h4 class="font-bold mb-2 flex items-center justify-center text-blue-700 dark:text-blue-600">
+                                    <i class="fas fa-users mr-2"></i>中国大学生程序竞赛志愿者
+                                </h4>
+                            </div>
+                            <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg hover:shadow-md transition-shadow text-center">
+                                <img src="resource/河北省大学生程序设计竞赛志愿者.jpg" alt="河北省大学生程序设计竞赛志愿者" class="w-full h-auto object-cover mb-3 rounded">
+                                <h4 class="font-bold mb-2 flex items-center justify-center text-blue-700 dark:text-blue-600">
+                                    <i class="fas fa-laptop-code mr-2"></i>河北省大学生程序设计竞赛志愿者
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 联系方式 -->
+        <section id="contact" class="mb-20 scroll-reveal">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/3 mb-6 md:mb-0">
+                    <h2 class="text-3xl font-bold mb-4 inline-block pb-2 border-b-4 border-blue-500">联系我</h2>
+                </div>
+                <div class="md:w-2/3">
+                    <div class="card p-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg hover:shadow-md transition-shadow">
+                                <h4 class="font-bold mb-2 flex items-center text-blue-700 dark:text-blue-600">
+                                    <i class="fas fa-envelope mr-2"></i>邮箱
+                                </h4>
+                                <a href="mailto:202212133@stu.neu.edu.cn" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">
+                                    202212133@stu.neu.edu.cn
+                                </a>
+                            </div>
                             
-                            <!-- 关键发现 -->
-                            <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
-                                <h5 class="font-medium mb-2">关键发现</h5>
-                                <ul class="list-disc pl-5 space-y-2">
-                                    <li>因果推理是多种认知过程的基础</li>
-                                    <li>记忆对导航任务至关重要</li>
-                                    <li>感知能力影响推理和导航表现</li>
-                                </ul>
+                            <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg hover:shadow-md transition-shadow">
+                                <h4 class="font-bold mb-2 flex items-center text-blue-700 dark:text-blue-600">
+                                    <i class="fas fa-phone mr-2"></i>电话
+                                </h4>
+                                <a href="tel:13975555891" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">
+                                    13975555891
+                                </a>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Sim-to-Real -->
-                <div class="card p-6 mb-12">
-                    <h3 class="text-xl font-bold mb-6 flex items-center">
-                        <i class="fas fa-vr-cardboard mr-2" style="color: var(--primary-color);"></i>
-                        Sim-to-Real
-                    </h3>
-                    
-                    <p class="mb-6">论文探索了模拟数据对现实任务的迁移潜力。通过在模拟环境中进行微调，模型在现实任务上的表现有所提升，特别是在目标检测和关联推理任务上。</p>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
-                            <h4 class="font-semibold mb-2">模拟环境优势</h4>
-                            <ul class="list-disc pl-5 space-y-2">
-                                <li>可控的数据收集环境</li>
-                                <li>丰富的场景变化</li>
-                                <li>低成本的数据扩增</li>
-                                <li>可重复的实验设置</li>
-                            </ul>
                         </div>
                         
-                        <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
-                            <h4 class="font-semibold mb-2">性能提升</h4>
-                            <div class="space-y-3">
-                                <div>
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-sm">目标检测</span>
-                                        <span class="text-sm">+8.3%</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-value" style="width: 83%;"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-sm">关联推理</span>
-                                        <span class="text-sm">+6.7%</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-value" style="width: 67%;"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-sm">导航规划</span>
-                                        <span class="text-sm">+4.2%</span>
-                                    </div>
-                                    <div class="progress-bar">
-                                        <div class="progress-value" style="width: 42%;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 错误分析 -->
-                <div class="card p-6">
-                    <h3 class="text-xl font-bold mb-6 flex items-center">
-                        <i class="fas fa-exclamation-triangle mr-2" style="color: var(--secondary-color);"></i>
-                        错误分析
-                    </h3>
-                    
-                    <p class="mb-6">论文总结了三种常见的错误类型：</p>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="p-4 rounded-lg border border-red-200 dark:border-red-900">
-                            <div class="text-center mb-3">
-                                <i class="fas fa-city text-3xl" style="color: var(--primary-color);"></i>
-                            </div>
-                            <h4 class="font-semibold mb-2 text-center">城市元素/场景理解错误</h4>
-                            <p class="text-sm">模型在复杂城市场景中难以正确识别物体，导致理解不准确或产生幻觉。</p>
-                        </div>
-                        
-                        <div class="p-4 rounded-lg border border-yellow-200 dark:border-yellow-900">
-                            <div class="text-center mb-3">
-                                <i class="fas fa-running text-3xl" style="color: var(--secondary-color);"></i>
-                            </div>
-                            <h4 class="font-semibold mb-2 text-center">运动理解错误</h4>
-                            <p class="text-sm">模型在区分方向和解释相机云台角度变化时存在困难，显示出空间意识有限。</p>
-                        </div>
-                        
-                        <div class="p-4 rounded-lg border border-blue-200 dark:border-blue-900">
-                            <div class="text-center mb-3">
-                                <i class="fas fa-street-view text-3xl" style="color: var(--accent-color);"></i>
-                            </div>
-                            <h4 class="font-semibold mb-2 text-center">自我中心思考错误</h4>
-                            <p class="text-sm">模型在复杂的具身推理任务中表现不佳，如路线规划和推断。</p>
-                        </div>
-                    </div>
-                    
-                    <!-- 错误示例 -->
-                    <div class="mt-8 p-4 rounded-lg" style="background-color: var(--bg-accent);">
-                        <h4 class="font-semibold mb-3 text-center">错误示例分析</h4>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="p-3 rounded bg-white dark:bg-gray-800 shadow-sm">
-                                <p class="text-sm mb-2"><span class="font-medium">问题：</span>无人机飞行过程中，它经过了哪些主要建筑物？</p>
-                                <p class="text-sm mb-2"><span class="font-medium">正确答案：</span>商场、办公楼、公园凉亭</p>
-                                <p class="text-sm"><span class="font-medium">模型回答：</span>住宅楼、商场、学校（错误识别建筑物类型）</p>
-                            </div>
-                            <div class="p-3 rounded bg-white dark:bg-gray-800 shadow-sm">
-                                <p class="text-sm mb-2"><span class="font-medium">问题：</span>无人机最后飞向了哪个方向？</p>
-                                <p class="text-sm mb-2"><span class="font-medium">正确答案：</span>东北方向</p>
-                                <p class="text-sm"><span class="font-medium">模型回答：</span>西北方向（方向判断错误）</p>
+                        <div class="mt-8 text-center">
+                            <p class="text-lg mb-4">欢迎通过以上方式与我联系，期待与您的交流！</p>
+                            <div class="inline-flex space-x-4">
+                                <a href="#" class="w-10 h-10 rounded-full bg-blue-500 hover:bg-blue-600 flex items-center justify-center text-white transition-colors pulse-animation">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-blue-500 hover:bg-blue-600 flex items-center justify-center text-white transition-colors pulse-animation">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-blue-500 hover:bg-blue-600 flex items-center justify-center text-white transition-colors pulse-animation">
+                                    <i class="fab fa-weixin"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- 总结部分 -->
-    <section id="summary" class="py-16 section-fade" style="background-color: var(--bg-secondary);">
+        </section>
+        
+    <!-- 页脚 -->
+    <footer class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 py-8">
         <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-8 text-center">总结</h2>
-                
-                <div class="card p-8 mb-12">
-                    <div class="mb-6">
-                        <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <i class="fas fa-lightbulb mr-2" style="color: var(--primary-color);"></i>
-                            主要发现
-                        </h3>
-                        <ul class="space-y-4 list-disc pl-5">
-                            <li>论文提出了UrbanVideo-Bench，首个针对城市开放空间中运动具身认知的基准测试。</li>
-                            <li>实验结果表明，当前最好的Video-LLMs在城市开放空间中的具身认知能力仍有很大提升空间。</li>
-                            <li>分析发现，因果推理与其他任务高度相关，微调大模型可以提高其在真实世界具身视频任务上的性能。</li>
-                        </ul>
+            <div class="card p-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg hover:shadow-md transition-shadow">
+                        <h4 class="font-bold mb-2 flex items-center text-blue-700 dark:text-blue-600">
+                            <i class="fas fa-user mr-2"></i>王子游
+                        </h4>
+                        <p class="text-sm text-blue-600 dark:text-blue-400">
+                            东北大学秦皇岛分校 · 计算机科学与技术
+                        </p>
                     </div>
-                    
-                    <div>
-                        <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <i class="fas fa-road mr-2" style="color: var(--secondary-color);"></i>
-                            未来方向
-                        </h3>
-                        <ul class="space-y-4 list-disc pl-5">
-                            <li>开发更适合城市空间具身认知的模型架构和训练方法。</li>
-                            <li>探索更多样化的城市环境和任务场景，提高模型的泛化能力。</li>
-                            <li>研究如何将模拟环境中的知识更有效地迁移到真实世界任务中。</li>
-                            <li>将具身认知能力与实际应用（如自动驾驶、无人机导航）相结合。</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <!-- 可视化总结 -->
-                <div class="card p-6">
-                    <h3 class="text-xl font-bold mb-6 text-center">研究概览</h3>
-                    <div class="mermaid">
-                        mindmap
-                            root((UrbanVideo-Bench))
-                                数据集
-                                    1500+ 视频片段
-                                    5200+ 多项选择题
-                                    16 种认知任务
-                                认知能力
-                                    回忆
-                                    感知
-                                    推理
-                                    导航
-                                实验结果
-                                    最佳模型准确率 45.5%
-                                    因果推理高度相关
-                                    Sim-to-Real 有效
-                                未来方向
-                                    改进模型架构
-                                    多样化环境
-                                    实际应用结合
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 资源部分 -->
-    <section id="resources" class="py-16 section-fade">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-8 text-center">资源</h2>
-                
-                <!-- 数据集资源 -->
-                <div class="card p-6 mb-12">
-                    <h3 class="text-xl font-bold mb-6 flex items-center">
-                        <i class="fas fa-database mr-2" style="color: var(--primary-color);"></i>
-                        数据集资源
-                    </h3>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div>
-                            <h4 class="font-semibold mb-3">获取方式</h4>
-                            <p class="mb-4">UrbanVideo-Bench数据集已开源，研究人员可以通过以下方式获取：</p>
-                            <div class="space-y-4">
-                                <a href="https://github.com/EmbodiedCity/UrbanVideo-Bench" class="flex items-center p-3 rounded-lg transition-all hover:bg-gray-100 dark:hover:bg-gray-700" style="border: 1px solid var(--border-color);">
-                                    <i class="fab fa-github text-2xl mr-3" style="color: var(--text-primary);"></i>
-                                    <div>
-                                        <h5 class="font-medium">GitHub</h5>
-                                        <p class="text-sm" style="color: var(--text-secondary);">完整代码和文档</p>
-                                    </div>
-                                </a>
-                                <a href="https://arxiv.org/pdf/2503.06157" class="flex items-center p-3 rounded-lg transition-all hover:bg-gray-100 dark:hover:bg-gray-700" style="border: 1px solid var(--border-color);">
-                                    <i class="fas fa-file-pdf text-2xl mr-3" style="color: var(--text-primary);"></i>
-                                    <div>
-                                        <h5 class="font-medium">论文</h5>
-                                        <p class="text-sm" style="color: var(--text-secondary);">研究论文下载 (PDF)</p>
-                                    </div>
-                                </a>
-                                <a href="https://embodiedcity.github.io/UrbanVideo-Bench/" class="flex items-center p-3 rounded-lg transition-all hover:bg-gray-100 dark:hover:bg-gray-700" style="border: 1px solid var(--border-color);">
-                                    <i class="fas fa-globe text-2xl mr-3" style="color: var(--text-primary);"></i>
-                                    <div>
-                                        <h5 class="font-medium">项目主页</h5>
-                                        <p class="text-sm" style="color: var(--text-secondary);">详细信息和演示</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <h4 class="font-semibold mb-3">使用指南</h4>
-                            <p class="mb-4">我们提供了详细的文档，帮助研究人员使用UrbanVideo-Bench：</p>
-                            <div class="space-y-4">
-                                <a href="#" class="flex items-center p-3 rounded-lg transition-all hover:bg-gray-100 dark:hover:bg-gray-700" style="border: 1px solid var(--border-color);">
-                                    <i class="fas fa-book text-2xl mr-3" style="color: var(--text-primary);"></i>
-                                    <div>
-                                        <h5 class="font-medium">文档</h5>
-                                        <p class="text-sm" style="color: var(--text-secondary);">详细的API和使用说明</p>
-                                    </div>
-                                </a>
-                                <a href="#" class="flex items-center p-3 rounded-lg transition-all hover:bg-gray-100 dark:hover:bg-gray-700" style="border: 1px solid var(--border-color);">
-                                    <i class="fas fa-code text-2xl mr-3" style="color: var(--text-primary);"></i>
-                                    <div>
-                                        <h5 class="font-medium">示例代码</h5>
-                                        <p class="text-sm" style="color: var(--text-secondary);">快速入门和评估示例</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 延伸阅读 -->
-                <div class="card p-6">
-                    <h3 class="text-xl font-bold mb-6 flex items-center">
-                        <i class="fas fa-book-open mr-2" style="color: var(--secondary-color);"></i>
-                        延伸阅读
-                    </h3>
-                    
-                    <p class="mb-6">以下是与城市空间具身认知相关的重要文献，推荐有兴趣的读者进一步阅读：</p>
-                    
-                    <div class="space-y-6">
-                        <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
-                            <h4 class="font-semibold mb-2">《Embodied Intelligence: A Survey of Embodiment in Artificial Intelligence》</h4>
-                            <p class="mb-2 text-sm">作者：Smith et al., 2023</p>
-                            <p class="text-sm">这篇综述全面介绍了人工智能中的具身智能研究，包括理论基础、关键技术和应用场景。</p>
-                        </div>
-                        
-                        <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
-                            <h4 class="font-semibold mb-2">《Video-Language Models: A Survey》</h4>
-                            <p class="mb-2 text-sm">作者：Johnson et al., 2022</p>
-                            <p class="text-sm">这篇综述详细介绍了视频-语言模型的发展历程、架构设计和评估方法，为理解Video-LLMs提供了重要背景。</p>
-                        </div>
-                        
-                        <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
-                            <h4 class="font-semibold mb-2">《Urban Computing: Concepts, Methodologies, and Applications》</h4>
-                            <p class="mb-2 text-sm">作者：Zhang et al., 2021</p>
-                            <p class="text-sm">这本书深入探讨了城市计算的概念和方法，为理解城市空间中的智能系统提供了全面视角。</p>
-                        </div>
-                        
-                        <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
-                            <h4 class="font-semibold mb-2">《Spatial Cognition in Artificial Intelligence》</h4>
-                            <p class="mb-2 text-sm">作者：Wang et al., 2022</p>
-                            <p class="text-sm">这篇论文探讨了空间认知在人工智能中的重要性，特别是在导航和环境理解方面的应用。</p>
-                        </div>
-                        
-                        <div class="p-4 rounded-lg" style="background-color: var(--bg-accent);">
-                            <h4 class="font-semibold mb-2">《From Simulation to Reality: Bridging the Gap in Embodied AI》</h4>
-                            <p class="mb-2 text-sm">作者：Chen et al., 2023</p>
-                            <p class="text-sm">这篇论文详细讨论了如何将模拟环境中训练的模型有效迁移到真实世界应用中，与本研究的Sim-to-Real部分高度相关。</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 页脚部分 -->
-    <footer class="py-12" style="background-color: var(--bg-secondary);">
-        <div class="container mx-auto px-4">
-            <div class="max-w-6xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                    <div>
-                        <h3 class="text-lg font-bold mb-4">关于项目</h3>
-                        <p class="mb-4" style="color: var(--text-secondary);">UrbanVideo-Bench是首个针对城市开放空间中运动具身认知的基准测试，由清华大学研究团队开发。</p>
-                        <div class="flex space-x-4">
-                            <a href="#" class="text-xl hover:text-blue-500 transition-colors"><i class="fab fa-github"></i></a>
-                            <a href="#" class="text-xl hover:text-blue-500 transition-colors"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="text-xl hover:text-blue-500 transition-colors"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <h3 class="text-lg font-bold mb-4">快速链接</h3>
-                        <ul class="space-y-2" style="color: var(--text-secondary);">
-                            <li><a href="#overview" class="hover:underline">项目概述</a></li>
-                            <li><a href="#contributions" class="hover:underline">主要贡献</a></li>
-                            <li><a href="#background" class="hover:underline">研究背景</a></li>
-                            <li><a href="#design" class="hover:underline">设计与构建</a></li>
-                            <li><a href="#experiments" class="hover:underline">实验</a></li>
-                            <li><a href="#resources" class="hover:underline">资源</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div>
-                        <h3 class="text-lg font-bold mb-4">联系我们</h3>
-                        <ul class="space-y-2" style="color: var(--text-secondary);">
-                            <li class="flex items-center"><i class="fas fa-map-marker-alt mr-2"></i> 北京市海淀区清华大学</li>
-                            <li class="flex items-center"><i class="fas fa-envelope mr-2"></i> contact@urbanvideo-bench.org</li>
-                            <li class="flex items-center"><i class="fas fa-phone mr-2"></i> +86 123 4567 8910</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="pt-8 border-t" style="border-color: var(--border-color);">
-                    <div class="flex flex-col md:flex-row justify-between items-center">
-                        <p style="color: var(--text-secondary);"> 2025 UrbanVideo-Bench. 保留所有权利。</p>
-                        <div class="mt-4 md:mt-0">
-                            <button id="back-to-top" class="px-4 py-2 rounded-lg transition-all hover:bg-gray-100 dark:hover:bg-gray-700" style="border: 1px solid var(--border-color);">
-                                <i class="fas fa-arrow-up mr-2"></i> 返回顶部
-                            </button>
-                        </div>
+                    <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg hover:shadow-md transition-shadow">
+                        <h4 class="font-bold mb-2 flex items-center text-blue-700 dark:text-blue-600">
+                            <i class="fas fa-copyright mr-2"></i>版权信息
+                        </h4>
+                        <p class="text-sm text-blue-600 dark:text-blue-400">
+                            &copy; 2025 王子游. 保留所有权利.
+                        </p>
+                        <p class="text-xs text-blue-500 dark:text-blue-300 mt-1">
+                            最后更新: 2025年3月18日
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- 主题切换按钮 -->
+    <button id="theme-toggle" class="theme-toggle bg-white dark:bg-gray-800 text-gray-800 dark:text-white">
+        <i class="fas fa-sun text-xl dark:hidden"></i>
+        <i class="fas fa-moon text-xl hidden dark:block"></i>
+    </button>
+
     <!-- JavaScript -->
     <script>
         // 初始化 Mermaid
-        mermaid.initialize({
+        mermaid.initialize({ 
             startOnLoad: true,
-            theme: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default',
-            flowchart: {
-                useMaxWidth: true,
-                htmlLabels: true
+            theme: 'base',
+            securityLevel: 'loose',
+            fontFamily: "'Noto Sans SC', sans-serif",
+            themeVariables: {
+                primaryColor: '#4f46e5',
+                primaryTextColor: '#ffffff',
+                primaryBorderColor: '#3730a3',
+                lineColor: '#6366f1',
+                secondaryColor: '#3b82f6',
+                tertiaryColor: document.documentElement.classList.contains('dark') ? '#1e293b' : '#f0f9ff',
+                textColor: document.documentElement.classList.contains('dark') ? '#f3f4f6' : '#374151'
             }
         });
+
+        // 存储原始的Mermaid内容
+        document.addEventListener('DOMContentLoaded', function() {
+            const mermaidElements = document.querySelectorAll('.mermaid');
+            mermaidElements.forEach(el => {
+                el.setAttribute('data-original', el.textContent.trim());
+            });
+        });
         
-        // 深色/浅色模式切换
+        // 主题切换事件
         const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = themeToggle.querySelector('i');
-        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        const html = document.documentElement;
         
-        // 检查本地存储中的主题设置或使用系统默认
-        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && prefersDarkScheme.matches)) {
-            document.documentElement.classList.add('dark');
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
+        // 检查系统偏好和本地存储
+        const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const savedTheme = localStorage.getItem('theme');
+        
+        // 设置初始主题
+        if (savedTheme === 'dark' || (!savedTheme && prefersDarkMode)) {
+            html.classList.add('dark');
+            document.body.classList.remove('light');
+            document.body.classList.add('dark');
         } else {
-            document.documentElement.classList.remove('dark');
-            themeIcon.classList.remove('fa-sun');
-            themeIcon.classList.add('fa-moon');
+            html.classList.remove('dark');
+            document.body.classList.add('light');
+            document.body.classList.remove('dark');
         }
         
         // 主题切换事件
         themeToggle.addEventListener('click', () => {
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
+            html.classList.toggle('dark');
+            document.body.classList.toggle('light');
+            document.body.classList.toggle('dark');
+            
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            
+            // 完全重新渲染Mermaid图表
+            try {
+                // 保存原始内容
+                const mermaidElements = document.querySelectorAll('.mermaid-wrapper');
                 
-                // 更新 Mermaid 图表主题
-                mermaid.initialize({
-                    theme: 'default'
+                // 重新初始化Mermaid
+                mermaid.initialize({ 
+                    startOnLoad: false,
+                    theme: 'base',
+                    securityLevel: 'loose',
+                    fontFamily: "'Noto Sans SC', sans-serif",
+                    themeVariables: {
+                        primaryColor: '#4f46e5',
+                        primaryTextColor: '#ffffff',
+                        primaryBorderColor: '#3730a3',
+                        lineColor: '#6366f1',
+                        secondaryColor: '#3b82f6',
+                        tertiaryColor: isDark ? '#1e293b' : '#f0f9ff',
+                        textColor: isDark ? '#f3f4f6' : '#374151'
+                    }
                 });
-                document.querySelectorAll('.mermaid').forEach(el => {
-                    const content = el.getAttribute('data-content') || el.textContent;
-                    el.innerHTML = '';
-                    mermaid.render(`mermaid-${Math.random().toString(36).substr(2, 9)}`, content, (svg) => {
-                        el.innerHTML = svg;
-                    });
-                });
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
                 
-                // 更新 Mermaid 图表主题
-                mermaid.initialize({
-                    theme: 'dark'
+                // 清除并重新创建图表
+                mermaidElements.forEach((wrapper) => {
+                    // 获取原始内容
+                    const originalContent = wrapper.querySelector('.mermaid').getAttribute('data-original');
+                    
+                    // 清除wrapper内容
+                    wrapper.innerHTML = '';
+                    
+                    // 创建新的mermaid元素
+                    const newMermaid = document.createElement('div');
+                    newMermaid.className = 'mermaid';
+                    newMermaid.textContent = originalContent;
+                    newMermaid.setAttribute('data-original', originalContent);
+                    
+                    // 添加到wrapper
+                    wrapper.appendChild(newMermaid);
                 });
-                document.querySelectorAll('.mermaid').forEach(el => {
-                    const content = el.getAttribute('data-content') || el.textContent;
-                    el.innerHTML = '';
-                    mermaid.render(`mermaid-${Math.random().toString(36).substr(2, 9)}`, content, (svg) => {
-                        el.innerHTML = svg;
-                    });
-                });
+                
+                // 延迟渲染以确保DOM已更新
+                setTimeout(() => {
+                    mermaid.init(undefined, '.mermaid');
+                }, 150);
+                
+            } catch (error) {
+                console.error('Mermaid重新渲染失败:', error);
             }
         });
         
-        // 移动端菜单
+        // 移动端菜单切换
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         
@@ -1218,78 +1212,183 @@
         
         // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                
-                // 如果是移动端菜单中的链接，点击后关闭菜单
-                if (mobileMenu.contains(this) && !mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                }
-                
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80, // 考虑导航栏高度
+                        top: targetElement.offsetTop - 80, // 导航栏高度的偏移
                         behavior: 'smooth'
                     });
+                    
+                    // 如果是移动端菜单，点击后关闭菜单
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
                 }
             });
         });
         
-        // 返回顶部按钮
-        const backToTopButton = document.getElementById('back-to-top');
+        // 滚动显示动画
+        const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
         
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // 滚动动画
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+        function checkVisibility() {
+            scrollRevealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight * 0.85) {
+                    element.classList.add('active');
                 }
             });
-        }, observerOptions);
+        }
         
-        document.querySelectorAll('.section-fade').forEach(section => {
-            observer.observe(section);
-        });
+        // 初始检查
+        checkVisibility();
         
-        // 导航栏高亮当前部分
+        // 滚动时检查
+        window.addEventListener('scroll', checkVisibility);
+        
+        // 技能进度条动画
+        const skillElements = document.querySelectorAll('.skill-progress');
+        
+        function animateSkills() {
+            skillElements.forEach(skill => {
+                const percentage = skill.getAttribute('data-percentage');
+                skill.style.width = '0%';
+                
+                setTimeout(() => {
+                    skill.style.width = percentage + '%';
+                }, 300);
+            });
+        }
+        
+        // 教育部分可见性检查
+        const educationSection = document.getElementById('education');
+        
+        function checkEducationVisibility() {
+            if (educationSection) {
+                const elementTop = educationSection.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight * 0.75 && !educationSection.classList.contains('animated')) {
+                    educationSection.classList.add('animated');
+                    animateSkills();
+                }
+            }
+        }
+        
+        // 初始检查教育部分
+        checkEducationVisibility();
+        
+        // 滚动时检查教育部分
+        window.addEventListener('scroll', checkEducationVisibility);
+        
+        // 导航栏激活状态
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.nav-link');
         
-        window.addEventListener('scroll', () => {
-            let current = '';
+        function updateNavigation() {
+            const scrollPosition = window.scrollY + 100;
             
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
                 
-                if (window.pageYOffset >= sectionTop - 100) {
-                    current = section.getAttribute('id');
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('text-blue-600', 'dark:text-blue-400');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('text-blue-600', 'dark:text-blue-400');
+                        }
+                    });
                 }
             });
+        }
+        
+        // 初始检查导航栏
+        updateNavigation();
+        
+        // 滚动时更新导航栏
+        window.addEventListener('scroll', updateNavigation);
+        
+        // 证书展示盒功能
+        const certificateImage = document.getElementById('certificate-image');
+        const certificateTitle = document.getElementById('certificate-title');
+        const prevCertificateBtn = document.getElementById('prev-certificate');
+        const nextCertificateBtn = document.getElementById('next-certificate');
+        const awardItems = document.querySelectorAll('.award-item');
+        
+        // 存储所有证书信息
+        const certificates = [
+            {
+                src: "resource/2024年中国大学生计算机博弈大赛五子棋项目亚军.png",
+                title: "计算机博弈大赛五子棋项目亚军"
+            },
+            {
+                src: "resource/2024年中国大学生计算机博弈大赛苏拉卡尔塔项目冠军.png",
+                title: "计算机博弈大赛苏拉卡尔塔项目冠军"
+            },
+            {
+                src: "resource/国家奖学金荣誉证书.png",
+                title: "国家奖学金荣誉证书"
+            }
+        ];
+        
+        // 当前显示的证书索引
+        let currentCertificateIndex = 2; // 默认显示国家奖学金证书
+        
+        // 更新证书显示
+        function updateCertificateDisplay() {
+            const certificate = certificates[currentCertificateIndex];
             
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
+            // 添加淡出效果
+            certificateImage.style.opacity = '0';
+            
+            setTimeout(() => {
+                certificateImage.src = certificate.src;
+                certificateImage.alt = certificate.title;
+                certificateTitle.textContent = certificate.title;
+                
+                // 添加淡入效果
+                certificateImage.style.opacity = '1';
+                
+                // 更新激活状态
+                awardItems.forEach((item, index) => {
+                    if (index === currentCertificateIndex) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+            }, 300);
+        }
+        
+        // 切换到上一个证书
+        prevCertificateBtn.addEventListener('click', () => {
+            currentCertificateIndex = (currentCertificateIndex - 1 + certificates.length) % certificates.length;
+            updateCertificateDisplay();
+        });
+        
+        // 切换到下一个证书
+        nextCertificateBtn.addEventListener('click', () => {
+            currentCertificateIndex = (currentCertificateIndex + 1) % certificates.length;
+            updateCertificateDisplay();
+        });
+        
+        // 点击奖项切换证书
+        awardItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                currentCertificateIndex = index;
+                updateCertificateDisplay();
             });
         });
+        
+        // 初始化证书显示
+        updateCertificateDisplay();
     </script>
 </body>
 </html>
