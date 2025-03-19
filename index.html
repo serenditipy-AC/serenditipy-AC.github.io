@@ -358,9 +358,165 @@
         .dark .mermaid-wrapper {
             background-color: #2F2F2F;
         }
+
+        /* 暗黑模式文本颜色优化 */
+        .dark .bg-white, 
+        .dark .bg-white\/60, 
+        .dark .bg-white\/70, 
+        .dark .bg-white\/80,
+        .dark .bg-gradient-to-r[class*="from-blue-50"],
+        .dark .bg-gradient-to-r[class*="from-indigo-50"],
+        .dark .bg-gradient-to-r[class*="from-purple-50"],
+        .dark .bg-gradient-to-r[class*="from-amber-50"],
+        .dark .bg-gradient-to-r[class*="from-yellow-50"],
+        .dark .bg-gradient-to-br[class*="from-blue-50"],
+        .dark .bg-gradient-to-br[class*="from-indigo-50"],
+        .dark .bg-gradient-to-br[class*="from-purple-50"],
+        .dark .bg-gradient-to-br[class*="from-gray-50"] {
+            color-scheme: light;
+        }
+
+        /* 确保卡片内的文本在暗黑模式下具有足够对比度 */
+        .dark .card h4.text-black,
+        .dark .award-item h4.text-black,
+        .dark .rounded-lg h4.text-black,
+        .dark .p-4 h4.text-black,
+        .dark .bg-gradient-to-r h4.text-black,
+        .dark .bg-gradient-to-br h4.text-black,
+        .dark .font-bold.text-black {
+            color: #1a202c !important;
+        }
+
+        /* 调整暗黑模式下特定元素的文本颜色 */
+        .dark .bg-white\/70 .font-medium,
+        .dark .bg-white\/60 .font-medium,
+        .dark .bg-gradient-to-r .font-medium,
+        .dark .bg-gradient-to-br .font-medium {
+            color: #1a202c;
+        }
+
+        /* 确保暗黑模式下浅色背景卡片内所有正文文本可读 */
+        .dark .bg-gradient-to-br[class*="from-blue-50"] .text-gray-700,
+        .dark .bg-gradient-to-br[class*="from-indigo-50"] .text-gray-700,
+        .dark .bg-gradient-to-br[class*="from-purple-50"] .text-gray-700,
+        .dark .bg-gradient-to-br[class*="from-gray-50"] .text-gray-700,
+        .dark .bg-gradient-to-r[class*="from-blue-50"] .text-gray-700,
+        .dark .bg-gradient-to-r[class*="from-indigo-50"] .text-gray-700,
+        .dark .bg-gradient-to-r[class*="from-purple-50"] .text-gray-700,
+        .dark .bg-gradient-to-r[class*="from-amber-50"] .text-gray-700,
+        .dark .bg-gradient-to-r[class*="from-yellow-50"] .text-gray-700,
+        .dark .bg-white\/70 .text-gray-700,
+        .dark .bg-white\/80 .text-gray-700,
+        .dark .bg-white\/60 .text-gray-700,
+        .dark .p-4 .text-gray-700,
+        .dark .p-5 .text-gray-700,
+        .dark .p-6 .text-gray-700,
+        .dark .p-8 .text-gray-700 {
+            color: #374151 !important;
+        }
+
+        /* 暗黑模式下浅色背景中的蓝色文本 */
+        .dark .bg-gradient-to-r .text-blue-600,
+        .dark .bg-gradient-to-br .text-blue-600,
+        .dark .bg-white\/70 .text-blue-600,
+        .dark .bg-white\/80 .text-blue-600,
+        .dark .p-4 .text-blue-600,
+        .dark .p-5 .text-blue-600,
+        .dark .award-item .text-blue-600,
+        .dark .card .text-blue-600 {
+            color: #1d4ed8 !important;
+        }
+
+        /* 暗黑模式下背景白色的容器内文字颜色修正 */
+        .dark .bg-white\/80 *,
+        .dark .bg-white\/70 *,
+        .dark .bg-white\/60 * {
+            color-scheme: light;
+        }
+        
+        /* 核心标题文本颜色强制修正 */
+        .dark .bg-gradient-to-r h4,
+        .dark .bg-gradient-to-br h4,
+        .dark .card h4,
+        .dark .p-4 h4,
+        .dark .p-5 h4,
+        .dark .p-6 h4,
+        .dark .p-8 h4,
+        .dark .award-item h4,
+        .dark .rounded-lg h4 {
+            color: #1a202c !important;
+        }
+
+        /* 修正导航栏在暗黑模式下的颜色 */
+        .dark .text-gray-600.dark\:text-gray-400 {
+            color: #000 !important;
+        }
+        
+        /* 导航项在暗黑模式下默认黑色 */
+        .dark .nav-link.text-gray-800.dark\:text-gray-200 {
+            color: #000 !important;
+        }
+        
+        /* 导航项在暗黑模式下悬停和激活时为蓝色 */
+        .dark .nav-link.text-gray-800.dark\:text-gray-200:hover,
+        .dark .nav-link.text-gray-800.dark\:text-gray-200.text-blue-600 {
+            color: #3B82F6 !important;
+        }
+        
+        /* 移动端菜单项在暗黑模式下的颜色修正 */
+        .dark #mobile-menu .block.py-2.text-gray-800.dark\:text-gray-200 {
+            color: #000 !important;
+        }
+        
+        .dark #mobile-menu .block.py-2.text-gray-800.dark\:text-gray-200:hover {
+            color: #3B82F6 !important;
+        }
     </style>
 </head>
 <body class="light page-transition">
+    <!-- 添加头部英雄区域 -->
+    <header class="bg-gradient-to-b from-blue-900 to-gray-900 text-white pt-12 pb-16 px-6">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row items-center md:items-start">
+                <div class="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden mb-6 md:mb-0 md:mr-8 border-4 border-white/20 shadow-xl">
+                    <img src="resource/avatar.png" alt="王子游的照片" class="w-full h-full object-cover">
+                </div>
+                <div class="text-center md:text-left md:pt-4">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-2 text-white">王子游</h1>
+                    <p class="text-xl text-blue-200 mb-6">东北大学秦皇岛分校 · 计算机科学与技术</p>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4 mb-6">
+                        <div class="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-300">
+                            <span class="w-8 h-8 rounded-full bg-blue-500/30 flex items-center justify-center mr-3">
+                                <i class="fas fa-map-marker-alt text-blue-200"></i>
+                            </span>
+                            <span class="text-blue-100">湖南省郴州市</span>
+                        </div>
+                        <div class="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-300">
+                            <span class="w-8 h-8 rounded-full bg-blue-500/30 flex items-center justify-center mr-3">
+                                <i class="fas fa-flag text-blue-200"></i>
+                            </span>
+                            <span class="text-blue-100">共青团员</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                        <a href="mailto:202212133@stu.neu.edu.cn" class="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-300">
+                            <span class="w-8 h-8 rounded-full bg-blue-500/30 flex items-center justify-center mr-3">
+                                <i class="fas fa-envelope text-blue-200"></i>
+                            </span>
+                            <span class="text-blue-100">202212133@stu.neu.edu.cn</span>
+                        </a>
+                        <a href="tel:13975555891" class="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-300">
+                            <span class="w-8 h-8 rounded-full bg-blue-500/30 flex items-center justify-center mr-3">
+                                <i class="fas fa-phone text-blue-200"></i>
+                            </span>
+                            <span class="text-blue-100">13975555891</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
     <!-- 导航栏 -->
     <nav class="sticky top-0 z-50 backdrop-filter backdrop-blur-lg bg-opacity-70 dark:bg-opacity-70 bg-white dark:bg-gray-900 shadow-md">
         <div class="container mx-auto px-4 py-3 flex items-center justify-between">
@@ -408,40 +564,43 @@
                     <h2 class="text-3xl font-bold mb-4 inline-block pb-2 border-b-4 border-blue-500">关于我</h2>
                 </div>
                 <div class="md:w-2/3">
-                    <div class="card p-8">
-                        <div class="flex flex-col md:flex-row items-center mb-8">
-                            <div class="w-40 h-40 rounded-full overflow-hidden mb-6 md:mb-0 md:mr-8 img-hover-zoom">
-                                <img src="resource/avatar.png" alt="王子游的照片" class="w-full h-full object-cover">
+                    <div class="card p-8 rounded-xl border border-blue-100 dark:border-blue-900/30 hover:shadow-xl transition-all duration-300">
+                        <div class="space-y-6">
+                            <div class="p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/10 dark:to-indigo-900/10 rounded-xl shadow-inner">
+                                <p class="text-lg first-letter-drop mb-0 leading-relaxed text-gray-700 dark:text-gray-300">
+                                    我是东北大学秦皇岛分校计算机与通信工程学院计算机科学与技术专业的一名本科生。我对人工智能和博弈算法有浓厚的兴趣，尤其专注于深度强化学习在博弈对抗中的应用研究。
+                                </p>
                             </div>
-                            <div>
-                                <h1 class="text-3xl font-bold">王子游</h1>
-                                <p class="text-xl text-gray-600 dark:text-gray-400 mb-4">东北大学秦皇岛分校 · 计算机科学与技术</p>
-                                <p class="text-gray-700 dark:text-gray-300">
-                                    <i class="fas fa-map-marker-alt text-blue-500 mr-2"></i>湖南省郴州市
-                                </p>
-                                <p class="text-gray-700 dark:text-gray-300">
-                                    <i class="fas fa-flag text-blue-500 mr-2"></i>共青团员
-                                </p>
-                                <p class="text-gray-700 dark:text-gray-300">
-                                    <i class="fas fa-envelope text-blue-500 mr-2"></i>202212133@stu.neu.edu.cn
-                                </p>
-                                <p class="text-gray-700 dark:text-gray-300">
-                                    <i class="fas fa-phone text-blue-500 mr-2"></i>13975555891
-                                </p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="p-5 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl hover:shadow-md transition-all duration-300 border border-blue-100 dark:border-blue-900/30">
+                                    <h3 class="flex items-center text-lg font-bold text-blue-700 dark:text-blue-300 mb-3">
+                                        <i class="fas fa-trophy text-amber-500 mr-2"></i>竞赛成就
+                                    </h3>
+                                    <p class="text-gray-700 dark:text-gray-300">
+                                        在学习过程中，我积极参与各类科研项目和竞赛活动，曾获得中国大学生计算机博弈大赛五子棋项目和苏拉卡尔塔棋项目两项国家一等奖，并在北大中文核心期刊上发表学术论文。
+                                    </p>
+                                </div>
+                                
+                                <div class="p-5 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-xl hover:shadow-md transition-all duration-300 border border-indigo-100 dark:border-indigo-900/30">
+                                    <h3 class="flex items-center text-lg font-bold text-indigo-700 dark:text-indigo-300 mb-3">
+                                        <i class="fas fa-laptop-code text-indigo-500 mr-2"></i>专业技能
+                                    </h3>
+                                    <p class="text-gray-700 dark:text-gray-300">
+                                        我热爱编程和算法设计，擅长C语言和Python编程，对深度学习框架有一定的了解。我期望能够继续深入研究人工智能领域，为计算机科学的发展贡献自己的力量。
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex flex-wrap gap-3 justify-center md:justify-start mt-6">
+                                <span class="px-3 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-200 rounded-full text-sm font-medium">人工智能</span>
+                                <span class="px-3 py-1 bg-indigo-100 text-indigo-800 dark:bg-indigo-900/40 dark:text-indigo-200 rounded-full text-sm font-medium">深度强化学习</span>
+                                <span class="px-3 py-1 bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-200 rounded-full text-sm font-medium">博弈算法</span>
+                                <span class="px-3 py-1 bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-200 rounded-full text-sm font-medium">C语言</span>
+                                <span class="px-3 py-1 bg-yellow-100 text-yellow-800 dark:bg-yellow-900/40 dark:text-yellow-200 rounded-full text-sm font-medium">Python</span>
+                                <span class="px-3 py-1 bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-200 rounded-full text-sm font-medium">计算机博弈</span>
                             </div>
                         </div>
-                        
-                        <p class="text-lg first-letter-drop mb-6">
-                            我是东北大学秦皇岛分校计算机与通信工程学院计算机科学与技术专业的一名本科生。我对人工智能和博弈算法有浓厚的兴趣，尤其专注于深度强化学习在博弈对抗中的应用研究。
-                        </p>
-                        
-                        <p class="text-lg mb-6">
-                            在学习过程中，我积极参与各类科研项目和竞赛活动，曾获得中国大学生计算机博弈大赛五子棋项目和苏拉卡尔塔棋项目两项国家一等奖，并在北大中文核心期刊上发表学术论文。
-                        </p>
-                        
-                        <p class="text-lg">
-                            我热爱编程和算法设计，擅长C语言和Python编程，对深度学习框架有一定的了解。我期望能够继续深入研究人工智能领域，为计算机科学的发展贡献自己的力量。
-                        </p>
                     </div>
                 </div>
             </div>
@@ -454,59 +613,109 @@
                     <h2 class="text-3xl font-bold mb-4 inline-block pb-2 border-b-4 border-blue-500">教育背景</h2>
                 </div>
                 <div class="md:w-2/3">
-                    <div class="card p-8">
-                        <div class="flex items-center mb-6">
-                            <div class="w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center mr-6">
-                                <i class="fas fa-university text-3xl text-blue-500"></i>
+                    <div class="card p-8 rounded-xl border border-blue-100 dark:border-blue-900/30 hover:shadow-xl transition-all duration-300">
+                        <div class="flex items-center mb-8">
+                            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mr-6 shadow-lg transform hover:rotate-12 transition-transform duration-300">
+                                <i class="fas fa-university text-3xl text-white"></i>
                             </div>
                             <div>
-                                <h3 class="text-2xl font-bold">东北大学秦皇岛分校</h3>
-                                <p class="text-gray-600 dark:text-gray-400">计算机科学与技术 | 2022.09-2026.07</p>
+                                <h3 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-300 dark:to-blue-500">东北大学秦皇岛分校</h3>
+                                <p class="text-gray-600 dark:text-white flex items-center mt-1">
+                                    <i class="fas fa-graduation-cap text-blue-500 dark:text-blue-300 mr-2"></i>计算机科学与技术
+                                    <span class="mx-2 dark:text-white">|</span>
+                                    <i class="fas fa-calendar-alt text-blue-500 dark:text-blue-300 mr-2"></i>2022.09-2026.07
+                                </p>
                             </div>
                         </div>
+                        
+                        <!-- 学业表现 -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                            <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow">
-                                <h4 class="font-bold mb-2 flex items-center text-purple-700 dark:text-purple-300">
-                                    <i class="fas fa-chart-line mr-2"></i>GPA
+                            <div class="p-6 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl hover:shadow-md transition-shadow border border-purple-100 dark:border-purple-900/30 group">
+                                <h4 class="font-bold mb-4 flex items-center text-purple-700 dark:text-purple-300">
+                                    <i class="fas fa-chart-line mr-2 group-hover:animate-bounce"></i>GPA
                                 </h4>
-                                <p class="text-lg font-semibold text-purple-700 dark:text-purple-300">4.19/5.00</p>
-                                <p class="text-sm text-purple-600 dark:text-purple-400">专业排名：<span class="font-medium">18/190</span></p>
+                                <div class="flex items-baseline">
+                                    <p class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400">4.19/5.00</p>
+                                </div>
+                                <div class="mt-2 flex items-center">
+                                    <div class="text-base text-purple-600 dark:text-purple-400">专业排名：</div>
+                                    <div class="ml-2 px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 text-sm font-medium rounded-full">18/190</div>
+                                </div>
+                                <div class="w-full bg-purple-100 dark:bg-purple-900/30 rounded-full h-2 mt-4">
+                                    <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full" style="width: 90.5%"></div>
+                                </div>
                             </div>
-                            <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow">
-                                <h4 class="font-bold mb-2 flex items-center text-purple-700 dark:text-purple-300">
-                                    <i class="fas fa-language mr-2"></i>英语水平
+                            
+                            <div class="p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl hover:shadow-md transition-shadow border border-blue-100 dark:border-blue-900/30 group">
+                                <h4 class="font-bold mb-4 flex items-center text-blue-700 dark:text-blue-300">
+                                    <i class="fas fa-language mr-2 group-hover:animate-bounce"></i>英语水平
                                 </h4>
-                                <p class="text-purple-700 dark:text-purple-300">CET-4(<span class="font-medium">516</span>)、CET-6(<span class="font-medium">485</span>)</p>
+                                <div class="space-y-4">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-blue-700 dark:text-blue-300">CET-4</span>
+                                        <span class="font-bold text-xl text-blue-700 dark:text-blue-300">516</span>
+                                    </div>
+                                    <div class="w-full bg-blue-100 dark:bg-blue-900/30 rounded-full h-2">
+                                        <div class="bg-gradient-to-r from-blue-500 to-indigo-500 h-2 rounded-full" style="width: 72.7%"></div>
+                                    </div>
+                                    
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-blue-700 dark:text-blue-300">CET-6</span>
+                                        <span class="font-bold text-xl text-blue-700 dark:text-blue-300">485</span>
+                                    </div>
+                                    <div class="w-full bg-blue-100 dark:bg-blue-900/30 rounded-full h-2">
+                                        <div class="bg-gradient-to-r from-blue-500 to-indigo-500 h-2 rounded-full" style="width: 68.3%"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="mb-8">
-                            <h4 class="font-bold mb-4 flex items-center">
-                                <i class="fas fa-book text-blue-500 mr-2"></i>主修课程
+                        
+                        <!-- 主修课程 -->
+                        <div class="mb-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl hover:shadow-md transition-shadow border border-blue-100 dark:border-blue-900/30">
+                            <h4 class="font-bold mb-5 flex items-center text-blue-700 dark:text-blue-300 text-xl">
+                                <i class="fas fa-book text-blue-500 mr-3"></i>主修课程
                             </h4>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div class="flex items-center">
-                                    <div class="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                                    <span>概率论与数理统计 (100)</span>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <div class="flex items-center p-4 bg-white/70 dark:bg-gray-800/40 rounded-lg hover:shadow-md transition-shadow hover:translate-x-1 duration-300">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mr-4 shadow-sm">
+                                        <i class="fas fa-calculator text-white text-lg"></i>
+                                    </div>
+                                    <div class="flex justify-between items-center flex-grow">
+                                        <span class="font-medium text-lg">概率论与数理统计</span>
+                                        <span class="bg-amber-100 text-gray-700 dark:bg-amber-900/30 dark:text-gray-300 px-3 py-1.5 rounded text-sm font-bold ml-2">100</span>
+                                    </div>
                                 </div>
-                                <div class="flex items-center">
-                                    <div class="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                                    <span>线性代数 (98)</span>
+                                
+                                <div class="flex items-center p-4 bg-white/70 dark:bg-gray-800/40 rounded-lg hover:shadow-md transition-shadow hover:translate-x-1 duration-300">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mr-4 shadow-sm">
+                                        <i class="fas fa-square-root-alt text-white text-lg"></i>
+                                    </div>
+                                    <div class="flex justify-between items-center flex-grow">
+                                        <span class="font-medium text-lg">线性代数</span>
+                                        <span class="bg-amber-100 text-gray-700 dark:bg-amber-900/30 dark:text-gray-300 px-3 py-1.5 rounded text-sm font-bold ml-2">98</span>
+                                    </div>
                                 </div>
-                                <div class="flex items-center">
-                                    <div class="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                                    <span>离散数学 (96)</span>
+                                
+                                <div class="flex items-center p-4 bg-white/70 dark:bg-gray-800/40 rounded-lg hover:shadow-md transition-shadow hover:translate-x-1 duration-300">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mr-4 shadow-sm">
+                                        <i class="fas fa-infinity text-white text-lg"></i>
+                                    </div>
+                                    <div class="flex justify-between items-center flex-grow">
+                                        <span class="font-medium text-lg">离散数学</span>
+                                        <span class="bg-amber-100 text-gray-700 dark:bg-amber-900/30 dark:text-gray-300 px-3 py-1.5 rounded text-sm font-bold ml-2">96</span>
+                                    </div>
                                 </div>
-                                <div class="flex items-center">
-                                    <div class="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                                    <span>汇编语言程序设计 (96)</span>
+                                
+                                <div class="flex items-center p-4 bg-white/70 dark:bg-gray-800/40 rounded-lg hover:shadow-md transition-shadow hover:translate-x-1 duration-300">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mr-4 shadow-sm">
+                                        <i class="fas fa-microchip text-white text-lg"></i>
+                                    </div>
+                                    <div class="flex justify-between items-center flex-grow">
+                                        <span class="font-medium text-lg">汇编语言程序设计</span>
+                                        <span class="bg-amber-100 text-gray-700 dark:bg-amber-900/30 dark:text-gray-300 px-3 py-1.5 rounded text-sm font-bold ml-2">96</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div>
-                            <h4 class="font-bold mb-4 flex items-center">
-                                <i class="fas fa-laptop-code text-blue-500 mr-2"></i>相关技能
-                            </h4>
-                            <p class="mb-4">了解深度学习相关知识；掌握<strong>C语言</strong>、<strong>Python</strong>语言编程。</p>
                         </div>
                     </div>
                 </div>
@@ -525,46 +734,96 @@
                         <div class="timeline-item">
                             <div class="card p-6 mb-4">
                                 <div class="flex justify-between items-start mb-4">
-                                    <h3 class="text-xl font-bold">中国大学生计算机博弈大赛</h3>
-                                    <span class="text-sm text-gray-600 dark:text-gray-400">2024.04-2024.09</span>
+                                    <h3 class="text-xl font-bold flex items-center">
+                                        <i class="fas fa-chess text-blue-600 dark:text-blue-400 mr-2"></i>中国大学生计算机博弈大赛
+                                    </h3>
+                                    <span class="text-sm bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-200 px-3 py-1 rounded-full">2024.04-2024.09</span>
                                 </div>
-                                <div class="mb-4">
-                                    <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full text-sm font-medium mb-2">核心成员</span>
+                                
+                                <div class="mb-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg shadow-sm">
+                                    <h4 class="font-bold mb-3 flex items-center text-indigo-700 dark:text-indigo-300">
+                                        <i class="fas fa-project-diagram mr-2"></i>项目名称：悟空五子棋 & 悟空苏拉卡尔塔
+                                    </h4>
+                                    <div class="mb-4">
+                                        <span class="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 dark:bg-indigo-900/40 dark:text-indigo-200 rounded-full text-sm font-medium">核心成员</span>
+                                    </div>
+                                    <div class="mb-4">
+                                        <h5 class="font-bold mb-2 flex items-center">
+                                            <i class="fas fa-info-circle text-blue-500 mr-2"></i>项目概述
+                                        </h5>
+                                        <p class="text-gray-700 dark:text-gray-300 mb-4 pl-6">
+                                            悟空五子棋为核心项目，成功开发了基于蒙特卡罗树搜索和深度强化学习的自博弈训练模型；
+                                            通过引入威胁空间搜索缓解了自博弈训练中奖励稀疏的问题，并采取动作空间裁剪策略，
+                                            显著提升了AI的博弈水平。悟空苏拉卡尔塔则侧重于规则优化与并行蒙特卡罗树搜索的实现。
+                                        </p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <h5 class="font-bold mb-2 flex items-center">
+                                            <i class="fas fa-tasks text-green-500 mr-2"></i>负责内容
+                                        </h5>
+                                        <p class="text-gray-700 dark:text-gray-300 mb-4 pl-6">
+                                            项目算法及规则实现；UI界面设计和实现。
+                                        </p>
+                                    </div>
                                 </div>
-                                <h4 class="font-bold mb-2">项目名称：悟空五子棋、悟空苏拉卡尔塔</h4>
-                                <div class="mb-4">
-                                    <h5 class="font-bold mb-2">项目概述</h5>
-                                    <p class="text-gray-700 dark:text-gray-300 mb-4">
-                                        悟空五子棋为核心项目，成功开发了基于蒙特卡罗树搜索和深度强化学习的自博弈训练模型；
-                                        通过引入威胁空间搜索缓解了自博弈训练中奖励稀疏的问题，并采取动作空间裁剪策略，
-                                        显著提升了AI的博弈水平。悟空苏拉卡尔塔则侧重于规则优化与并行蒙特卡罗树搜索的实现。
-                                    </p>
-                                </div>
-                                <div class="mb-4">
-                                    <h5 class="font-bold mb-2">负责内容</h5>
-                                    <p class="text-gray-700 dark:text-gray-300 mb-4">
-                                        项目算法及规则实现；UI界面设计和实现。
-                                    </p>
-                                </div>
-                                <div>
-                                    <h5 class="font-bold mb-2">项目成果</h5>
-                                    <p class="text-gray-700 dark:text-gray-300">
-                                        2024年中国大学生计算机博弈大赛五子棋项目<strong>全国亚军</strong>、
-                                        苏拉卡尔塔棋项目<strong>全国冠军</strong>。
-                                    </p>
-                                </div>
-                                <!-- 项目展示图片 -->
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                                    <div class="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow img-hover-zoom">
-                                        <img src="UI_demo/connect5_UI.png" alt="五子棋UI界面" class="w-full h-full object-cover">
-                                        <div class="p-2 bg-gray-100 dark:bg-gray-800 text-center">
-                                            <span class="text-sm font-medium">悟空五子棋界面</span>
+                                
+                                <!-- 项目UI展示 -->
+                                <div class="mb-8">
+                                    <h5 class="font-bold mb-4 flex items-center text-blue-700 dark:text-white-300">
+                                        <i class="fas fa-desktop mr-2"></i>界面展示
+                                    </h5>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div class="p-4 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-800/50 dark:to-blue-900/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                                            <div class="overflow-hidden rounded-lg mb-3 h-64 flex items-center justify-center">
+                                                <img src="UI_demo/connect5_UI.png" alt="五子棋UI界面" class="w-full h-full object-contain">
+                                            </div>
+                                            <h4 class="font-bold mb-1 text-center text-blue-700 dark:text-blue-300">
+                                                <i class="fas fa-chess-board mr-2"></i>悟空五子棋界面
+                                            </h4>
+                                        </div>
+                                        <div class="p-4 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-800/50 dark:to-blue-900/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                                            <div class="overflow-hidden rounded-lg mb-3 h-64 flex items-center justify-center">
+                                                <img src="UI_demo/Surakarta_UI.png" alt="苏拉卡尔塔UI界面" class="w-full h-full object-contain">
+                                            </div>
+                                            <h4 class="font-bold mb-1 text-center text-blue-700 dark:text-blue-300">
+                                                <i class="fas fa-chess mr-2"></i>悟空苏拉卡尔塔界面
+                                            </h4>
                                         </div>
                                     </div>
-                                    <div class="overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow img-hover-zoom">
-                                        <img src="UI_demo/Surakarta_UI.png" alt="苏拉卡尔塔UI界面" class="w-full h-full object-cover">
-                                        <div class="p-2 bg-gray-100 dark:bg-gray-800 text-center">
-                                            <span class="text-sm font-medium">悟空苏拉卡尔塔界面</span>
+                                </div>
+                                
+                                <!-- 项目成果 -->
+                                <div class="p-4 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to--800/20 rounded-lg shadow-sm">
+                                    <h5 class="font-bold mb-3 flex items-center text-amber-700 dark:text-black">
+                                        <i class="fas fa-trophy mr-2"></i>项目成果
+                                    </h5>
+                                    <p class="text-gray-700 dark:text-gray-300 pl-6">
+                                        2024年中国大学生计算机博弈大赛五子棋项目<strong class="text-amber-600 dark:text-red-400">全国亚军</strong>、
+                                        苏拉卡尔塔棋项目<strong class="text-amber-600 dark:text-amber-400">全国冠军</strong>。
+                                    </p>
+                                </div>
+                                
+                                <!-- 获奖证书展示 -->
+                                <div>
+                                    <h5 class="font-bold mb-4 flex items-center text-blue-700 dark:text-blue-300">
+                                        <i class="fas fa-award mr-2"></i>获奖证书
+                                    </h5>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="p-3 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                                            <div class="overflow-hidden rounded-lg mb-3">
+                                                <img src="resource/2024年中国大学生计算机博弈大赛五子棋项目亚军.png" alt="计算机博弈大赛五子棋亚军" class="w-full h-auto object-cover">
+                                            </div>
+                                            <h4 class="font-bold mb-1 text-center text-blue-700 dark:text-blue-300">
+                                                <i class="fas fa-medal mr-2"></i>计算机博弈大赛五子棋亚军
+                                            </h4>
+                                        </div>
+                                        <div class="p-3 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                                            <div class="overflow-hidden rounded-lg mb-3">
+                                                <img src="resource/2024年中国大学生计算机博弈大赛苏拉卡尔塔项目冠军.png" alt="计算机博弈大赛苏拉卡尔塔棋冠军" class="w-full h-auto object-cover">
+                                            </div>
+                                            <h4 class="font-bold mb-1 text-center text-blue-700 dark:text-blue-300">
+                                                <i class="fas fa-trophy mr-2"></i>计算机博弈大赛苏拉卡尔塔棋冠军
+                                            </h4>
                                         </div>
                                     </div>
                                 </div>
@@ -575,118 +834,184 @@
                         <div class="timeline-item">
                             <div class="card p-6">
                                 <div class="flex justify-between items-start mb-4">
-                                    <h3 class="text-xl font-bold">北大中文核心期刊论文</h3>
-                                    <span class="text-sm text-gray-600 dark:text-gray-400">2024.05-2025.01</span>
+                                    <h3 class="text-xl font-bold flex items-center">
+                                        <i class="fas fa-file-alt text-blue-600 dark:text-blue-400 mr-2"></i>北大中文核心期刊论文
+                                    </h3>
+                                    <span class="text-sm bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-200 px-3 py-1 rounded-full">2024.05-2025.01</span>
                                 </div>
-                                <div class="mb-4">
-                                    <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full text-sm font-medium mb-2">第二作者（学生一作）</span>
-                                </div>
-                                <h4 class="font-bold mb-2">论文名称：<a href="paper/引入威胁空间搜索的五子棋深度强化学习方法.pdf" class="text-blue-600 dark:text-blue-400 hover:underline" target="_blank">《引入威胁空间搜索的五子棋深度强化学习方法》</a></h4>
-                                <div class="mb-4">
-                                    <h5 class="font-bold mb-2">论文概述</h5>
+                                <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg hover:shadow-md transition-shadow mb-8">
+                                    <h4 class="font-bold mb-3 flex items-center text-blue-700 dark:text-blue-300">
+                                        <i class="fas fa-file mr-2"></i>论文名称：<a href="paper/引入威胁空间搜索的五子棋深度强化学习方法.pdf" class="text-blue-600 dark:text-blue-400 hover:underline" target="_blank">《引入威胁空间搜索的五子棋深度强化学习方法》</a>
+                                    </h4>
+                                    <div class="mb-4">
+                                        <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full text-sm font-medium mb-2">第二作者（学生一作）</span>
+                                    </div>
+                                
+                                <div class="mb-4 pl-6">
+                                    <h5 class="font-bold mb-2 flex items-center text-blue-700 dark:text-blue-300">
+                                        <i class="fas fa-info-circle text-blue-500 mr-2"></i>论文概述
+                                    </h5>
                                     <p class="text-gray-700 dark:text-gray-300 mb-4">
                                         本论文针对深度强化学习在复杂博弈问题中面临的奖励稀疏和训练成本高的问题，
                                         提出了一种引入威胁空间搜索的五子棋深度强化学习方法。主要内容包括：
                                     </p>
-                                    <ul class="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+                                    <ul class="list-disc pl-10 space-y-2 text-gray-700 dark:text-gray-300">
                                         <li>设计了统一威胁空间搜索算法，并将其嵌入蒙特卡洛树搜索中，缓解了奖励稀疏问题</li>
                                         <li>提出了基于领域知识的双层知识库，加速了算法搜索速度</li>
                                         <li>将威胁动作空间作为神经网络的输入特征，增强了模型对关键局部形势的感知能力</li>
                                         <li>利用走法过滤机制缩小了动作空间</li>
                                     </ul>
                                 </div>
-                                <div class="mb-4">
-                                    <h5 class="font-bold mb-2">负责内容</h5>
+                                <div class="mb-4 pl-6">
+                                    <h5 class="font-bold mb-2 flex items-center text-blue-700 dark:text-blue-300">
+                                        <i class="fas fa-tasks text-green-500 mr-2"></i>负责内容
+                                    </h5>
                                     <p class="text-gray-700 dark:text-gray-300 mb-4">
                                         负责核心算法实现；设计并执行消融实验，负责实验结果可视化；完成实验部分和算法描述的写作。
                                     </p>
                                 </div>
-                                <div>
-                                    <h5 class="font-bold mb-2">项目成果</h5>
-                                    <p class="text-gray-700 dark:text-gray-300">
+                                <div class="p-4 bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20 rounded-lg shadow-sm">
+                                    <h5 class="font-bold mb-3 flex items-center text-amber-700 dark:text-amber-300">
+                                        <i class="fas fa-trophy mr-2"></i>项目成果
+                                    </h5>
+                                    <p class="text-gray-700 dark:text-gray-300 pl-6">
                                         论文被《重庆理工大学机器博弈专栏》录用。
                                     </p>
                                 </div>
+                            </div>
                                 
                                 <!-- 论文成果可视化 -->
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                                    <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow">
-                                        <h4 class="font-bold mb-2 flex items-center text-purple-700 dark:text-purple-300">
-                                            <i class="fas fa-chart-line mr-2"></i>损失函数值减少
-                                        </h4>
-                                        <p class="text-lg font-semibold text-purple-700 dark:text-purple-300">54.7%</p>
+                                <div class="mt-12">
+                                    <h5 class="text-xl font-bold mb-6 flex items-center">
+                                        <i class="fas fa-chart-pie mr-2 text-indigo-600 dark:text-indigo-400"></i>研究成果可视化
+                                    </h5>
+                                    
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                        <!-- 第一个图表：损失函数曲线 -->
+                                        <div class="p-5 bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20 rounded-xl hover:shadow-lg hover:translate-y-[-5px] transition-all duration-300 flex flex-col h-full border border-purple-100 dark:border-purple-900/30">
+                                            <div class="mb-4 rounded-lg overflow-hidden flex-none h-48 flex items-center justify-center bg-white/80 dark:bg-gray-800/50 shadow-inner">
+                                                <img src="resource/图4神经网络损失曲线.svg" alt="神经网络损失曲线" class="max-w-full max-h-full object-contain transform hover:scale-105 transition-transform duration-300">
+                                            </div>
+                                            <div class="flex-grow flex flex-col">
+                                                <h4 class="font-bold mb-2 flex items-center text-purple-700 dark:text-purple-300">
+                                                    <i class="fas fa-chart-line mr-2"></i>损失函数值减少
+                                                </h4>
+                                                <div class="flex items-baseline">
+                                                    <p class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-indigo-600 dark:from-purple-400 dark:to-indigo-400">54.7%</p>
+                                                    <div class="ml-2 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 text-xs font-medium px-2 py-1 rounded-full">显著降低</div>
+                                                </div>
+                                                <p class="text-sm text-blue-600 dark:text-blue-400 mt-2">优化后的神经网络损失值显著下降，模型收敛速度提高</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- 第二个图表：分支因子与对局步数 -->
+                                        <div class="p-5 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl hover:shadow-lg hover:translate-y-[-5px] transition-all duration-300 flex flex-col h-full border border-blue-100 dark:border-blue-900/30">
+                                            <div class="mb-4 rounded-lg overflow-hidden flex-none h-48 flex items-center justify-center bg-white/80 dark:bg-gray-800/50 shadow-inner">
+                                                <img src="resource/图5分支因子与对局步数分布对比.svg" alt="分支因子与对局步数分布对比" class="max-w-full max-h-full object-contain transform hover:scale-105 transition-transform duration-300">
+                                            </div>
+                                            <div class="flex-grow flex flex-col">
+                                                <h4 class="font-bold mb-2 flex items-center text-blue-700 dark:text-blue-300">
+                                                    <i class="fas fa-chart-bar mr-2"></i>平均分支因子降幅
+                                                </h4>
+                                                <div class="flex items-baseline">
+                                                    <p class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">65.85%</p>
+                                                    <div class="ml-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-xs font-medium px-2 py-1 rounded-full">极大提升</div>
+                                                </div>
+                                                <p class="text-sm text-blue-600 dark:text-blue-400 mt-2">搜索空间显著缩小，算法效率大幅提高，计算资源利用更为高效</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- 第三个图表：TrueSkill评分对比 -->
+                                        <div class="p-5 bg-gradient-to-br from-indigo-50 to-cyan-50 dark:from-indigo-900/20 dark:to-cyan-900/20 rounded-xl hover:shadow-lg hover:translate-y-[-5px] transition-all duration-300 flex flex-col h-full border border-indigo-100 dark:border-indigo-900/30">
+                                            <div class="mb-4 rounded-lg overflow-hidden flex-none h-48 flex items-center justify-center bg-white/80 dark:bg-gray-800/50 shadow-inner">
+                                                <img src="resource/图6TrueSkill评分对比.svg" alt="TrueSkill评分对比" class="max-w-full max-h-full object-contain transform hover:scale-105 transition-transform duration-300">
+                                            </div>
+                                            <div class="flex-grow flex flex-col">
+                                                <h4 class="font-bold mb-2 flex items-center text-indigo-700 dark:text-indigo-300">
+                                                    <i class="fas fa-trophy mr-2"></i>TrueSkill评分提升
+                                                </h4>
+                                                <div class="flex items-baseline">
+                                                    <p class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-cyan-600 dark:from-indigo-400 dark:to-cyan-400">37.2%</p>
+                                                    <div class="ml-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-300 text-xs font-medium px-2 py-1 rounded-full">竞争优势</div>
+                                                </div>
+                                                <p class="text-sm text-blue-600 dark:text-blue-400 mt-2">训练效率大幅提高，模型性能显著超越传统方法，达到竞赛水平</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow">
-                                        <h4 class="font-bold mb-2 flex items-center text-purple-700 dark:text-purple-300">
-                                            <i class="fas fa-chart-bar mr-2"></i>平均分支因子降幅
-                                        </h4>
-                                        <p class="text-lg font-semibold text-purple-700 dark:text-purple-300">65.85%</p>
+                                    
+                                    <!-- 核心研究发现 - 增强版 -->
+                                    <div class="mt-8 p-6 bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-900/20 dark:to-blue-900/20 rounded-xl shadow-inner border border-indigo-100 dark:border-indigo-800/30">
+                                        <h5 class="font-bold mb-4 flex items-center text-indigo-800 dark:text-indigo-300">
+                                            <i class="fas fa-lightbulb mr-2 text-amber-500 animate-pulse"></i>核心研究发现
+                                        </h5>
+                                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                                            在个人笔记本上，仅需<span class="font-semibold text-indigo-700 dark:text-indigo-300 px-1 bg-indigo-100 dark:bg-indigo-900/30 rounded">200次MCTS模拟</span>的小规模计算，
+                                            进行<span class="font-semibold text-indigo-700 dark:text-indigo-300 px-1 bg-indigo-100 dark:bg-indigo-900/30 rounded">100局自博弈训练</span>即可达到
+                                            <span class="font-semibold text-amber-600 dark:text-amber-400 px-1 bg-amber-100 dark:bg-amber-900/30 rounded">中国大学生计算机博弈大赛一等奖</span>的水平。
+                                            相比传统方法，我们的算法在训练效率上实现了<span class="font-semibold text-indigo-700 dark:text-indigo-300 px-1 bg-indigo-100 dark:bg-indigo-900/30 rounded">数量级的提升</span>。
+                                        </p>
                                     </div>
-                                </div>
-                                <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg hover:shadow-md transition-shadow">
-                                    <h4 class="font-bold mb-2 flex items-center text-blue-700 dark:text-blue-600">
-                                        <i class="fas fa-trophy mr-2"></i>研究成果
-                                    </h4>
-                                    <p class="text-sm text-blue-600 dark:text-blue-400">
-                                        在个人笔记本上，仅需200次MCTS模拟的小规模计算，进行100局自博弈训练即可达到中国大学生计算机博弈大赛一等奖的水平
-                                    </p>
-                                </div>
-                                <!-- 论文架构图 -->
-                                <div class="mt-6">
-                                    <h5 class="font-bold mb-4">论文架构图</h5>
-                                    <div class="mermaid-wrapper p-4 rounded-lg shadow-inner overflow-auto">
-                                        <div class="mermaid">
-                                            %%{
-                                                init: {
-                                                    'theme': 'base',
-                                                    'themeVariables': {
-                                                        'primaryColor': '#4f46e5',
-                                                        'primaryTextColor': '#ffffff',
-                                                        'primaryBorderColor': '#3730a3',
-                                                        'lineColor': '#6366f1',
-                                                        'secondaryColor': '#3b82f6',
-                                                        'tertiaryColor': document.documentElement.classList.contains('dark') ? '#1e293b' : '#f0f9ff'
-                                                    },
-                                                    'flowchart': {
-                                                        'curve': 'basis',
-                                                        'nodeSpacing': 50,
-                                                        'rankSpacing': 70
+                                    
+                                    <!-- 论文架构图 -->
+                                    <div class="mt-8">
+                                        <h5 class="text-xl font-bold mb-4 flex items-center">
+                                            <i class="fas fa-project-diagram mr-2 text-indigo-600 dark:text-indigo-400"></i>论文架构图
+                                        </h5>
+                                        <div class="mermaid-wrapper p-5 rounded-lg shadow-inner bg-white/80 dark:bg-gray-800/50 overflow-auto border border-indigo-100 dark:border-indigo-900/30">
+                                            <div class="mermaid">
+                                                %%{
+                                                    init: {
+                                                        'theme': 'base',
+                                                        'themeVariables': {
+                                                            'primaryColor': '#4f46e5',
+                                                            'primaryTextColor': '#ffffff',
+                                                            'primaryBorderColor': '#3730a3',
+                                                            'lineColor': '#6366f1',
+                                                            'secondaryColor': '#3b82f6',
+                                                            'tertiaryColor': document.documentElement.classList.contains('dark') ? '#1e293b' : '#f0f9ff',
+                                                            'textColor': document.documentElement.classList.contains('dark') ? '#f3f4f6' : '#374151'
+                                                        },
+                                                        'flowchart': {
+                                                            'curve': 'basis',
+                                                            'nodeSpacing': 50,
+                                                            'rankSpacing': 70
+                                                        }
                                                     }
-                                                }
-                                            }%%
-                                            
-                                            flowchart TD
-                                                classDef main fill:#4f46e5,stroke:#3730a3,stroke-width:2px,color:white,font-weight:bold
-                                                classDef module fill:#3b82f6,stroke:#1e40af,stroke-width:1px,color:white
-                                                classDef component fill:#60a5fa,stroke:#2563eb,stroke-width:1px,color:white
-                                                classDef benefit fill:#10b981,stroke:#047857,stroke-width:1px,color:white
-                                                classDef result fill:#f97316,stroke:#c2410c,stroke-width:2px,color:white,font-weight:bold
+                                                }%%
                                                 
-                                                A["深度强化学习框架<br><small>(Deep Reinforcement Learning)</small>"] --> B["蒙特卡洛树搜索<br><small>(Monte Carlo Tree Search)</small>"]
-                                                A --> C["神经网络<br><small>(Neural Network)</small>"]
-                                                
-                                                B --> D["威胁空间搜索<br><small>(Threat Space Search)</small>"]
-                                                D --> E["统一威胁空间算法<br><small>(Unified Threat Space Algorithm)</small>"]
-                                                D --> F["双层知识库<br><small>(Two-layer Knowledge Base)</small>"]
-                                                
-                                                C --> G["威胁动作空间特征<br><small>(Threat Action Space Features)</small>"]
-                                                C --> H["走法过滤机制<br><small>(Move Filtering Mechanism)</small>"]
-                                                
-                                                E --> I["奖励稀疏问题缓解<br><small>(Sparse Reward Mitigation)</small>"]
-                                                F --> J["搜索速度提升<br><small>(Search Speed Improvement)</small>"]
-                                                G --> K["局部形势感知增强<br><small>(Local Situation Awareness)</small>"]
-                                                H --> L["动作空间缩小<br><small>(Action Space Reduction)</small>"]
-                                                
-                                                I --> M["性能提升<br><small>(Performance Improvement)</small>"]
-                                                J --> M
-                                                K --> M
-                                                L --> M
-                                                
-                                                class A main
-                                                class B,C module
-                                                class D,E,F,G,H component
-                                                class I,J,K,L benefit
-                                                class M result
+                                                flowchart TD
+                                                    classDef main fill:#4f46e5,stroke:#3730a3,stroke-width:2px,color:white,font-weight:bold
+                                                    classDef module fill:#3b82f6,stroke:#1e40af,stroke-width:1px,color:white
+                                                    classDef component fill:#60a5fa,stroke:#2563eb,stroke-width:1px,color:white
+                                                    classDef benefit fill:#10b981,stroke:#047857,stroke-width:1px,color:white
+                                                    classDef result fill:#f97316,stroke:#c2410c,stroke-width:2px,color:white,font-weight:bold
+                                                    
+                                                    A["深度强化学习框架"] --> B["蒙特卡洛树搜索"]
+                                                    A --> C["神经网络"]
+                                                    
+                                                    B --> D["威胁空间搜索"]
+                                                    D --> E["统一威胁空间算法"]
+                                                    D --> F["双层知识库"]
+                                                    
+                                                    C --> G["威胁动作空间特征"]
+                                                    C --> H["走法过滤机制"]
+                                                    
+                                                    E --> I["奖励稀疏问题缓解"]
+                                                    F --> J["搜索速度提升"]
+                                                    G --> K["局部形势感知增强"]
+                                                    H --> L["动作空间缩小"]
+                                                    
+                                                    I --> M["性能提升"]
+                                                    J --> M
+                                                    K --> M
+                                                    L --> M
+                                                    
+                                                    class A main
+                                                    class B,C module
+                                                    class D,E,F,G,H component
+                                                    class I,J,K,L benefit
+                                                    class M result
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -696,7 +1021,7 @@
                 </div>
             </div>
         </section>
-
+        
         <!-- 获奖情况 -->
         <section id="awards" class="mb-20 scroll-reveal">
             <div class="flex flex-col md:flex-row">
@@ -833,51 +1158,40 @@
                         </div>
                         
                         <!-- 奖项图片展示 -->
-                        <div class="mt-8">
-                            <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <div class="mt-12">
+                            <h3 class="text-xl font-bold mb-6 flex items-center">
                                 <i class="fas fa-images text-green-500 mr-2"></i>部分获奖证书
                             </h3>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                                <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg hover:shadow-md transition-shadow text-center">
-                                    <img src="resource/2024年中国大学生计算机博弈大赛五子棋项目亚军.png" alt="2024年中国大学生计算机博弈大赛五子棋项目亚军" class="w-full h-auto object-cover mb-3 rounded">
-                                    <h4 class="font-bold mb-2 flex items-center justify-center text-blue-700 dark:text-blue-600">
-                                        <i class="fas fa-chess mr-2"></i>计算机博弈大赛五子棋亚军
-                                    </h4>
-                                </div>
-                                <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg hover:shadow-md transition-shadow text-center">
-                                    <img src="resource/国家奖学金荣誉证书.png" alt="国家奖学金荣誉证书" class="w-full h-auto object-cover mb-3 rounded">
-                                    <h4 class="font-bold mb-2 flex items-center justify-center text-blue-700 dark:text-blue-600">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                                <div class="p-5 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl hover:shadow-lg hover:translate-y-[-5px] transition-all duration-300 text-center border border-blue-100 dark:border-blue-900/30">
+                                    <div class="mb-4 rounded-lg overflow-hidden h-64 flex items-center justify-center bg-white/80 dark:bg-gray-800/50 shadow-inner">
+                                        <img src="resource/国家奖学金荣誉证书.png" alt="国家奖学金荣誉证书" class="max-w-full max-h-full object-contain transform hover:scale-105 transition-transform duration-300">
+                                    </div>
+                                    <h4 class="font-bold mb-2 flex items-center justify-center text-blue-700 dark:text-blue-400">
                                         <i class="fas fa-award mr-2"></i>国家奖学金荣誉证书
                                     </h4>
                                 </div>
-                                <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg hover:shadow-md transition-shadow text-center">
-                                    <img src="resource/2024年中国大学生计算机博弈大赛苏拉卡尔塔项目冠军.png" alt="2024年中国大学生计算机博弈大赛苏拉卡尔塔项目冠军" class="w-full h-auto object-cover mb-3 rounded">
-                                    <h4 class="font-bold mb-2 flex items-center justify-center text-blue-700 dark:text-blue-600">
-                                        <i class="fas fa-trophy mr-2"></i>计算机博弈大赛苏拉卡尔塔棋冠军
+                                
+                                <div class="p-5 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl hover:shadow-lg hover:translate-y-[-5px] transition-all duration-300 text-center border border-blue-100 dark:border-blue-900/30">
+                                    <div class="mb-4 rounded-lg overflow-hidden h-64 flex items-center justify-center bg-white/80 dark:bg-gray-800/50 shadow-inner">
+                                        <img src="resource/2023年校级优秀团员标兵.png" alt="2023年校级优秀团员标兵" class="max-w-full max-h-full object-contain transform hover:scale-105 transition-transform duration-300">
+                                    </div>
+                                    <h4 class="font-bold mb-2 flex items-center justify-center text-blue-700 dark:text-blue-400">
+                                        <i class="fas fa-chess mr-2"></i>校级优秀团员标兵
+                                    </h4>
+                                </div>
+                                
+                                <div class="p-5 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl hover:shadow-lg hover:translate-y-[-5px] transition-all duration-300 text-center border border-blue-100 dark:border-blue-900/30">
+                                    <div class="mb-4 rounded-lg overflow-hidden h-64 flex items-center justify-center bg-white/80 dark:bg-gray-800/50 shadow-inner">
+                                        <img src="resource/2022-2023学年校级三好学生.png" alt="2022-2023学年校级三好学生" class="max-w-full max-h-full object-contain transform hover:scale-105 transition-transform duration-300">
+                                    </div>
+                                    <h4 class="font-bold mb-2 flex items-center justify-center text-blue-700 dark:text-blue-400">
+                                        <i class="fas fa-trophy mr-2"></i>校级三好学生
                                     </h4>
                                 </div>
                             </div>
+                            
                         </div>
-                        
-                        <!-- 证书展示盒 -->
-                        <!-- <div class="certificate-showcase mb-6">
-                            <div class="certificate-box bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-                                <div class="certificate-display relative h-80 overflow-hidden">
-                                    <img id="certificate-image" src="resource/国家奖学金荣誉证书.png" alt="国家奖学金荣誉证书" class="w-full h-full object-contain transition-all duration-500">
-                                    <div class="absolute inset-0 flex items-center justify-between px-4">
-                                        <button id="prev-certificate" class="certificate-nav-btn bg-white/80 dark:bg-gray-800/80 text-gray-800 dark:text-white rounded-full p-2 opacity-70 hover:opacity-100 transition-opacity">
-                                            <i class="fas fa-chevron-left"></i>
-                                        </button>
-                                        <button id="next-certificate" class="certificate-nav-btn bg-white/80 dark:bg-gray-800/80 text-gray-800 dark:text-white rounded-full p-2 opacity-70 hover:opacity-100 transition-opacity">
-                                            <i class="fas fa-chevron-right"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="p-4 text-center border-t border-gray-200 dark:border-gray-700">
-                                    <h4 id="certificate-title" class="font-medium">国家奖学金荣誉证书</h4>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -1014,7 +1328,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- 联系方式 -->
         <section id="contact" class="mb-20 scroll-reveal">
             <div class="flex flex-col md:flex-row">
@@ -1325,16 +1639,16 @@
         // 存储所有证书信息
         const certificates = [
             {
-                src: "resource/2024年中国大学生计算机博弈大赛五子棋项目亚军.png",
-                title: "计算机博弈大赛五子棋项目亚军"
+                src: "resource/国家奖学金荣誉证书.png",
+                title: "国家奖学金荣誉证书"
             },
             {
                 src: "resource/2024年中国大学生计算机博弈大赛苏拉卡尔塔项目冠军.png",
                 title: "计算机博弈大赛苏拉卡尔塔项目冠军"
             },
             {
-                src: "resource/国家奖学金荣誉证书.png",
-                title: "国家奖学金荣誉证书"
+                src: "resource/2024年中国大学生计算机博弈大赛五子棋项目亚军.png",
+                title: "计算机博弈大赛五子棋项目亚军"
             }
         ];
         
