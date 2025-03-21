@@ -471,6 +471,86 @@
         .dark #mobile-menu .block.py-2.text-gray-800.dark\:text-gray-200:hover {
             color: #3B82F6 !important;
         }
+
+        /* 全局样式 */
+        body {
+            font-family: 'Noto Sans SC', Tahoma, Arial, Roboto, "Droid Sans", "Helvetica Neue", "Droid Sans Fallback", "Heiti SC", "Hiragino Sans GB", Simsun, sans-serif;
+            color: #374151;
+            line-height: 1.6;
+            min-height: 100vh;
+            background-color: #f9fafb;
+            transition: background-color 0.3s ease;
+        }
+        
+        /* 下面添加证书展示盒相关样式 */
+        .certificate-nav-btn {
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        .certificate-display:hover .certificate-nav-btn {
+            opacity: 0.8;
+        }
+        
+        .certificate-box {
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.1), 0 8px 10px -6px rgba(99, 102, 241, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .certificate-box:hover {
+            box-shadow: 0 15px 30px -10px rgba(59, 130, 246, 0.2), 0 10px 20px -8px rgba(99, 102, 241, 0.2);
+        }
+        
+        .certificate-thumbs-container::-webkit-scrollbar {
+            width: 4px;
+        }
+        
+        .certificate-thumbs-container::-webkit-scrollbar-track {
+            background: rgba(219, 234, 254, 0.3);
+            border-radius: 10px;
+        }
+        
+        .certificate-thumbs-container::-webkit-scrollbar-thumb {
+            background: rgba(59, 130, 246, 0.5);
+            border-radius: 10px;
+        }
+        
+        .certificate-thumbnail {
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .certificate-thumbnail.active {
+            border-left-color: #3B82F6;
+        }
+        
+        .certificate-filter-btn {
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .certificate-filter-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: #3B82F6;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .certificate-filter-btn.active::after {
+            width: 80%;
+        }
+        
+        @media (max-width: 768px) {
+            .certificate-display {
+                height: 280px;
+            }
+        }
     </style>
 </head>
 <body class="light page-transition">
@@ -568,7 +648,7 @@
                         <div class="space-y-6">
                             <div class="p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/10 dark:to-indigo-900/10 rounded-xl shadow-inner">
                                 <p class="text-lg first-letter-drop mb-0 leading-relaxed text-gray-700 dark:text-gray-300">
-                                    我是东北大学秦皇岛分校计算机与通信工程学院计算机科学与技术专业的一名本科生。我对人工智能和博弈算法有浓厚的兴趣，尤其专注于深度强化学习在博弈对抗中的应用研究。
+                                    我是东北大学秦皇岛分校计算机与通信工程学院计算机科学与技术专业的一名本科生。我对人工智能和博弈算法有浓厚的兴趣，尤其专注于深度强化学习在博弈对抗中的应用研究。曾在清华大学智能物联网实验室具身智能、大模型组实习三个月，参与多项前沿研究工作。
                                 </p>
                             </div>
                             
@@ -578,7 +658,7 @@
                                         <i class="fas fa-trophy text-amber-500 mr-2"></i>竞赛成就
                                     </h3>
                                     <p class="text-gray-700 dark:text-gray-300">
-                                        在学习过程中，我积极参与各类科研项目和竞赛活动，曾获得中国大学生计算机博弈大赛五子棋项目和苏拉卡尔塔棋项目两项国家一等奖，并在北大中文核心期刊上发表学术论文。
+                                        在学习过程中，我积极参与各类科研项目和竞赛活动，曾获得2024年中国大学生计算机博弈大赛苏拉卡尔塔棋项目全国冠军和五子棋项目全国亚军。
                                     </p>
                                 </div>
                                 
@@ -592,12 +672,20 @@
                                 </div>
                             </div>
                             
+                            <div class="p-5 bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-900/20 dark:to-teal-900/20 rounded-xl hover:shadow-md transition-all duration-300 border border-green-100 dark:border-green-900/30">
+                                <h3 class="flex items-center text-lg font-bold text-green-700 dark:text-green-300 mb-3">
+                                    <i class="fas fa-flask text-green-500 mr-2"></i>科研经历
+                                </h3>
+                                <p class="text-gray-700 dark:text-gray-300">
+                                    在清华大学智能物联网实验室实习期间，参与了ACL和ICCV会议(CCF A类会议)论文研究，分别研究视频-语言模型在城市环境中的具身认知能力评估和点云对大语言模型空间推理能力的影响。在东北大学计算机博弈智能实验室，作为学生一作发表北大中文核心期刊论文，提出引入威胁空间搜索的五子棋深度强化学习方法。
+                                </p>
+                            </div>
+                            
                             <div class="flex flex-wrap gap-3 justify-center md:justify-start mt-6">
                                 <span class="px-3 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-200 rounded-full text-sm font-medium">人工智能</span>
                                 <span class="px-3 py-1 bg-indigo-100 text-indigo-800 dark:bg-indigo-900/40 dark:text-indigo-200 rounded-full text-sm font-medium">深度强化学习</span>
-                                <span class="px-3 py-1 bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-200 rounded-full text-sm font-medium">博弈算法</span>
-                                <span class="px-3 py-1 bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-200 rounded-full text-sm font-medium">C语言</span>
-                                <span class="px-3 py-1 bg-yellow-100 text-yellow-800 dark:bg-yellow-900/40 dark:text-yellow-200 rounded-full text-sm font-medium">Python</span>
+                                <span class="px-3 py-1 bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-200 rounded-full text-sm font-medium">具身智能</span>
+                                <span class="px-3 py-1 bg-yellow-100 text-yellow-800 dark:bg-yellow-900/40 dark:text-yellow-200 rounded-full text-sm font-medium">大语言模型</span>
                                 <span class="px-3 py-1 bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-200 rounded-full text-sm font-medium">计算机博弈</span>
                             </div>
                         </div>
@@ -730,107 +818,134 @@
                 </div>
                 <div class="md:w-2/3">
                     <div class="timeline">
-                        <!-- 项目一：中国大学生计算机博弈大赛 -->
+                        <!-- 项目一：ACL 2025 Conference -->
                         <div class="timeline-item">
                             <div class="card p-6 mb-4">
                                 <div class="flex justify-between items-start mb-4">
                                     <h3 class="text-xl font-bold flex items-center">
-                                        <i class="fas fa-chess text-blue-600 dark:text-blue-400 mr-2"></i>中国大学生计算机博弈大赛
+                                        <i class="fas fa-file-alt text-blue-600 dark:text-blue-400 mr-2"></i>ACL 2025 Conference(CCFA)
                                     </h3>
-                                    <span class="text-sm bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-200 px-3 py-1 rounded-full">2024.04-2024.09</span>
+                                    <span class="text-sm bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-200 px-3 py-1 rounded-full">2025.01-2025.03</span>
                                 </div>
-                                
-                                <div class="mb-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg shadow-sm">
-                                    <h4 class="font-bold mb-3 flex items-center text-indigo-700 dark:text-indigo-300">
-                                        <i class="fas fa-project-diagram mr-2"></i>项目名称：悟空五子棋 & 悟空苏拉卡尔塔
+
+                                <!-- 论文名称 -->
+                                <div class="mb-5">
+                                    <h4 class="font-bold mb-3 flex items-center text-blue-700 dark:text-blue-300">
+                                        <i class="fas fa-bookmark text-blue-600 dark:text-blue-400 mr-2"></i>论文名称：<span class="text-blue-600 dark:text-blue-400">Benchmarking Video-Language Models for Embodied Motion Cognition in Urban Open-Ended Spaces</span>
                                     </h4>
-                                    <div class="mb-4">
-                                        <span class="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 dark:bg-indigo-900/40 dark:text-indigo-200 rounded-full text-sm font-medium">核心成员</span>
-                                    </div>
-                                    <div class="mb-4">
-                                        <h5 class="font-bold mb-2 flex items-center">
-                                            <i class="fas fa-info-circle text-blue-500 mr-2"></i>项目概述
-                                        </h5>
-                                        <p class="text-gray-700 dark:text-gray-300 mb-4 pl-6">
-                                            悟空五子棋为核心项目，成功开发了基于蒙特卡罗树搜索和深度强化学习的自博弈训练模型；
-                                            通过引入威胁空间搜索缓解了自博弈训练中奖励稀疏的问题，并采取动作空间裁剪策略，
-                                            显著提升了AI的博弈水平。悟空苏拉卡尔塔则侧重于规则优化与并行蒙特卡罗树搜索的实现。
-                                        </p>
-                                    </div>
-                                    <div class="mb-4">
-                                        <h5 class="font-bold mb-2 flex items-center">
-                                            <i class="fas fa-tasks text-green-500 mr-2"></i>负责内容
-                                        </h5>
-                                        <p class="text-gray-700 dark:text-gray-300 mb-4 pl-6">
-                                            项目算法及规则实现；UI界面设计和实现。
-                                        </p>
+                                    <div class="mb-2">
+                                        <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full text-sm font-medium">第四作者</span>
                                     </div>
                                 </div>
-                                
-                                <!-- 项目UI展示 -->
-                                <div class="mb-8">
-                                    <h5 class="font-bold mb-4 flex items-center text-blue-700 dark:text-white-300">
-                                        <i class="fas fa-desktop mr-2"></i>界面展示
-                                    </h5>
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <div class="p-4 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-800/50 dark:to-blue-900/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
-                                            <div class="overflow-hidden rounded-lg mb-3 h-64 flex items-center justify-center">
-                                                <img src="UI_demo/connect5_UI.png" alt="五子棋UI界面" class="w-full h-full object-contain">
-                                            </div>
-                                            <h4 class="font-bold mb-1 text-center text-blue-700 dark:text-blue-300">
-                                                <i class="fas fa-chess-board mr-2"></i>悟空五子棋界面
-                                            </h4>
-                                        </div>
-                                        <div class="p-4 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-800/50 dark:to-blue-900/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
-                                            <div class="overflow-hidden rounded-lg mb-3 h-64 flex items-center justify-center">
-                                                <img src="UI_demo/Surakarta_UI.png" alt="苏拉卡尔塔UI界面" class="w-full h-full object-contain">
-                                            </div>
-                                            <h4 class="font-bold mb-1 text-center text-blue-700 dark:text-blue-300">
-                                                <i class="fas fa-chess mr-2"></i>悟空苏拉卡尔塔界面
-                                            </h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- 项目成果 -->
-                                <div class="p-4 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to--800/20 rounded-lg shadow-sm">
-                                    <h5 class="font-bold mb-3 flex items-center text-amber-700 dark:text-black">
-                                        <i class="fas fa-trophy mr-2"></i>项目成果
-                                    </h5>
-                                    <p class="text-gray-700 dark:text-gray-300 pl-6">
-                                        2024年中国大学生计算机博弈大赛五子棋项目<strong class="text-amber-600 dark:text-red-400">全国亚军</strong>、
-                                        苏拉卡尔塔棋项目<strong class="text-amber-600 dark:text-amber-400">全国冠军</strong>。
+
+                                <!-- 论文概述 - 蓝色背景区域 -->
+                                <div class="mb-6 p-5 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <h4 class="text-blue-600 dark:text-blue-300 font-bold mb-4 flex items-center">
+                                        <i class="fas fa-info-circle text-blue-500 mr-2"></i>论文概述
+                                    </h4>
+                                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                                        <li>论文提出UrbanVideo-Bench，首个用于评估视频-语言大模型（Video-LLMs）在城市开放空间中的具身认知能力的基准，特别关注在三维城市环境中进行连续的第一人称视觉观察和导航的能力。</li>
+                                        <li>通过手动控制无人机在现实世界城市和模拟环境中收集视频数据，生成了约1500个视频片段，并设计了生成5200+个多项选择题的流程，旨在评估Video-LLMs在具身认知任务中的表现。</li>
+                                        <li>设计了包含16个任务的多样化任务集，涵盖回忆、感知、推理和导航四个方面的具身认知能力，反映了在城市开放空间中可能遇到的实际挑战。</li>
+                                        <li>对17种广泛使用的Video-LLMs进行了定量和定性评估，揭示了当前模型在具身认知任务中的局限性。</li>
                                     </p>
                                 </div>
-                                
-                                <!-- 获奖证书展示 -->
-                                <div>
-                                    <h5 class="font-bold mb-4 flex items-center text-blue-700 dark:text-blue-300">
-                                        <i class="fas fa-award mr-2"></i>获奖证书
-                                    </h5>
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div class="p-3 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
-                                            <div class="overflow-hidden rounded-lg mb-3">
-                                                <img src="resource/2024年中国大学生计算机博弈大赛五子棋项目亚军.png" alt="计算机博弈大赛五子棋亚军" class="w-full h-auto object-cover">
-                                            </div>
-                                            <h4 class="font-bold mb-1 text-center text-blue-700 dark:text-blue-300">
-                                                <i class="fas fa-medal mr-2"></i>计算机博弈大赛五子棋亚军
-                                            </h4>
+
+                                <!-- 资源链接区域 -->
+                                <div class="mb-8 grid grid-cols-2 md:grid-cols-4 gap-3">
+                                    <a href="https://arxiv.org/pdf/2503.06157" target="_blank" class="flex items-center px-4 py-2 bg-red-50 hover:bg-red-100 dark:bg-red-900/20 dark:hover:bg-red-900/30 rounded-lg transition-colors">
+                                        <i class="fas fa-file-pdf text-red-500 mr-2"></i>
+                                        <span class="text-red-700 dark:text-red-300">论文链接</span>
+                                    </a>
+                                    <a href="https://embodiedcity.github.io/UrbanVideo-Bench/" target="_blank" class="flex items-center px-4 py-2 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/20 dark:hover:bg-blue-900/30 rounded-lg transition-colors">
+                                        <i class="fas fa-globe text-blue-500 mr-2"></i>
+                                        <span class="text-blue-700 dark:text-blue-300">项目主页</span>
+                                    </a>
+                                    <a href="https://github.com/EmbodiedCity/UrbanVideo-Bench.code" target="_blank" class="flex items-center px-4 py-2 bg-purple-50 hover:bg-purple-100 dark:bg-purple-900/20 dark:hover:bg-purple-900/30 rounded-lg transition-colors">
+                                        <i class="fab fa-github text-purple-500 mr-2"></i>
+                                        <span class="text-purple-700 dark:text-purple-300">代码链接</span>
+                                    </a>
+                                    <a href="https://huggingface.co/datasets/EmbodiedCity/UrbanVideo-Bench" target="_blank" class="flex items-center px-4 py-2 bg-green-50 hover:bg-green-100 dark:bg-green-900/20 dark:hover:bg-green-900/30 rounded-lg transition-colors">
+                                        <i class="fas fa-database text-green-500 mr-2"></i>
+                                        <span class="text-green-700 dark:text-green-300">数据集链接</span>
+                                    </a>
+                                </div>
+
+                                <!-- 图片展示区域 - 两个并列区块 -->
+                                <div class="mb-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <!-- 研究框架图区块 -->
+                                    <div class="p-5 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl hover:shadow-md transition-all duration-300 border border-blue-100 dark:border-blue-900/30">
+                                        <h5 class="text-blue-600 dark:text-blue-300 font-bold mb-3 flex items-center text-lg">
+                                            <i class="fas fa-project-diagram text-blue-500 mr-2"></i>研究框架图
+                                        </h5>
+                                        <div class="rounded-lg overflow-hidden flex-none h-64 flex items-center justify-center bg-white/80 dark:bg-gray-800/50 shadow-inner">
+                                            <img src="resource/flowchart.png" alt="UrbanVideo-Bench研究框架图" class="max-w-full max-h-full object-contain transform hover:scale-105 transition-transform duration-300">
                                         </div>
-                                        <div class="p-3 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
-                                            <div class="overflow-hidden rounded-lg mb-3">
-                                                <img src="resource/2024年中国大学生计算机博弈大赛苏拉卡尔塔项目冠军.png" alt="计算机博弈大赛苏拉卡尔塔棋冠军" class="w-full h-auto object-cover">
-                                            </div>
-                                            <h4 class="font-bold mb-1 text-center text-blue-700 dark:text-blue-300">
-                                                <i class="fas fa-trophy mr-2"></i>计算机博弈大赛苏拉卡尔塔棋冠军
-                                            </h4>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400 text-center mt-3">UrbanVideo-Bench框架流程图</p>
+                                    </div>
+                                    
+                                    <!-- 问题定义文档区块 -->
+                                    <div class="p-5 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl hover:shadow-md transition-all duration-300 border border-blue-100 dark:border-blue-900/30">
+                                        <h5 class="text-blue-600 dark:text-blue-300 font-bold mb-3 flex items-center text-lg">
+                                            <i class="fas fa-file-alt text-blue-500 mr-2"></i>问题定义文档
+                                        </h5>
+                                        <div class="rounded-lg overflow-hidden flex-none h-64 flex items-center justify-center bg-white/80 dark:bg-gray-800/50 shadow-inner">
+                                            <img src="resource/problem_def.png" alt="问题定义文档" class="max-w-full max-h-full object-contain transform hover:scale-105 transition-transform duration-300">
                                         </div>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400 text-center mt-3">包含项目问题定义和详细方法说明</p>
                                     </div>
                                 </div>
+
+                                <!-- 负责内容区域
+                                <div class="p-5 bg-purple-50 dark:bg-purple-900/30 rounded-xl">
+                                    <h5 class="font-bold mb-3 flex items-center text-gray-700 dark:text-gray-300">
+                                        <i class="fas fa-tasks text-blue-500 mr-2"></i>负责内容
+                                    </h5>
+                                    <p class="text-gray-700 dark:text-gray-300 mb-0">
+                                        benchmark的商讨制作，模型数据的收集，多个图表的绘制以及部分文章内容写作。
+                                    </p>
+                                </div> -->
                             </div>
                         </div>
                         
-                        <!-- 项目二：北大中文核心期刊论文 -->
+                        <!-- 项目二：ICCV 2025 Conference
+                        <div class="timeline-item">
+                            <div class="card p-6 mb-4">
+                                <div class="flex justify-between items-start mb-4">
+                                    <h3 class="text-xl font-bold flex items-center">
+                                        <i class="fas fa-file-alt text-blue-600 dark:text-blue-400 mr-2"></i>ICCV 2025 Conference(CCFA)
+                                    </h3>
+                                    <span class="text-sm bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-200 px-3 py-1 rounded-full">2025.02-2025.03</span>
+                                </div>
+                                <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg hover:shadow-md transition-shadow mb-8">
+                                    <h4 class="font-bold mb-3 flex items-center text-blue-700 dark:text-blue-300">
+                                        <i class="fas fa-bookmark mr-2"></i>论文名称：<a href="https://openreview.net/forum?id=DfoFnKZJJd&referrer=[the profile of Ziyou Wang](/profile?id=~Ziyou_Wang3)" class="text-blue-600 dark:text-blue-400 hover:underline" target="_blank">The Point, the Vision and the Text: Does Point Cloud Boost Spatial Reasoning of Large Language Models?</a>
+                                    </h4>
+                                    <div class="mb-4">
+                                        <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full text-sm font-medium mb-2">第七作者</span>
+                                    </div>
+                                
+                                    <div class="mb-4 pl-6">
+                                        <h5 class="font-bold mb-2 flex items-center text-blue-700 dark:text-blue-300">
+                                            <i class="fas fa-info-circle text-blue-500 mr-2"></i>论文概述
+                                        </h5>
+                                        <p class="text-gray-700 dark:text-gray-300 mb-4">
+                                            通过对比点云、图像和文本三种模态输入，发现与预期相反，基于点云的3D LLMs在空间推理任务上并未显示明显优势，其表现甚至落后于仅使用文本或图像的模型10%以上。研究揭示3D LLMs未能有效利用点云中的3D坐标信息，为多模态AI系统的空间理解能力发展提供了新的思考方向。
+                                        </p>
+                                    </div>
+                                    <div class="mb-4 pl-6">
+                                        <h5 class="font-bold mb-2 flex items-center text-blue-700 dark:text-blue-300">
+                                            <i class="fas fa-tasks text-green-500 mr-2"></i>负责内容
+                                        </h5>
+                                        <p class="text-gray-700 dark:text-gray-300 mb-4">
+                                            部分benchmark的制作和优化工作。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        
+                        <!-- 项目三：北大中文核心期刊论文 -->
                         <div class="timeline-item">
                             <div class="card p-6">
                                 <div class="flex justify-between items-start mb-4">
@@ -952,75 +1067,114 @@
                                         </p>
                                     </div>
                                     
-                                    <!-- 论文架构图 -->
-                                    <div class="mt-8">
-                                        <h5 class="text-xl font-bold mb-4 flex items-center">
-                                            <i class="fas fa-project-diagram mr-2 text-indigo-600 dark:text-indigo-400"></i>论文架构图
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 项目三：中国大学生计算机博弈大赛 -->
+                        <div class="timeline-item">
+                            <div class="card p-6 mb-4">
+                                <div class="flex justify-between items-start mb-4">
+                                    <h3 class="text-xl font-bold flex items-center">
+                                        <i class="fas fa-chess text-blue-600 dark:text-blue-400 mr-2"></i>中国大学生计算机博弈大赛
+                                    </h3>
+                                    <span class="text-sm bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-200 px-3 py-1 rounded-full">2024.04-2024.09</span>
+                                </div>
+                                
+                                <div class="mb-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg shadow-sm">
+                                    <h4 class="font-bold mb-3 flex items-center text-indigo-700 dark:text-indigo-300">
+                                        <i class="fas fa-project-diagram mr-2"></i>项目名称：悟空五子棋 & 悟空苏拉卡尔塔
+                                    </h4>
+                                    <div class="mb-4">
+                                        <span class="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 dark:bg-indigo-900/40 dark:text-indigo-200 rounded-full text-sm font-medium">核心成员</span>
+                                    </div>
+                                    <div class="mb-4">
+                                        <h5 class="font-bold mb-2 flex items-center">
+                                            <i class="fas fa-info-circle text-blue-500 mr-2"></i>项目概述
                                         </h5>
-                                        <div class="mermaid-wrapper p-5 rounded-lg shadow-inner bg-white/80 dark:bg-gray-800/50 overflow-auto border border-indigo-100 dark:border-indigo-900/30">
-                                            <div class="mermaid">
-                                                %%{
-                                                    init: {
-                                                        'theme': 'base',
-                                                        'themeVariables': {
-                                                            'primaryColor': '#4f46e5',
-                                                            'primaryTextColor': '#ffffff',
-                                                            'primaryBorderColor': '#3730a3',
-                                                            'lineColor': '#6366f1',
-                                                            'secondaryColor': '#3b82f6',
-                                                            'tertiaryColor': document.documentElement.classList.contains('dark') ? '#1e293b' : '#f0f9ff',
-                                                            'textColor': document.documentElement.classList.contains('dark') ? '#f3f4f6' : '#374151'
-                                                        },
-                                                        'flowchart': {
-                                                            'curve': 'basis',
-                                                            'nodeSpacing': 50,
-                                                            'rankSpacing': 70
-                                                        }
-                                                    }
-                                                }%%
-                                                
-                                                flowchart TD
-                                                    classDef main fill:#4f46e5,stroke:#3730a3,stroke-width:2px,color:white,font-weight:bold
-                                                    classDef module fill:#3b82f6,stroke:#1e40af,stroke-width:1px,color:white
-                                                    classDef component fill:#60a5fa,stroke:#2563eb,stroke-width:1px,color:white
-                                                    classDef benefit fill:#10b981,stroke:#047857,stroke-width:1px,color:white
-                                                    classDef result fill:#f97316,stroke:#c2410c,stroke-width:2px,color:white,font-weight:bold
-                                                    
-                                                    A["深度强化学习框架"] --> B["蒙特卡洛树搜索"]
-                                                    A --> C["神经网络"]
-                                                    
-                                                    B --> D["威胁空间搜索"]
-                                                    D --> E["统一威胁空间算法"]
-                                                    D --> F["双层知识库"]
-                                                    
-                                                    C --> G["威胁动作空间特征"]
-                                                    C --> H["走法过滤机制"]
-                                                    
-                                                    E --> I["奖励稀疏问题缓解"]
-                                                    F --> J["搜索速度提升"]
-                                                    G --> K["局部形势感知增强"]
-                                                    H --> L["动作空间缩小"]
-                                                    
-                                                    I --> M["性能提升"]
-                                                    J --> M
-                                                    K --> M
-                                                    L --> M
-                                                    
-                                                    class A main
-                                                    class B,C module
-                                                    class D,E,F,G,H component
-                                                    class I,J,K,L benefit
-                                                    class M result
+                                        <p class="text-gray-700 dark:text-gray-300 mb-4 pl-6">
+                                            悟空五子棋为核心项目，成功开发了基于蒙特卡罗树搜索和深度强化学习的自博弈训练模型；
+                                            通过引入威胁空间搜索缓解了自博弈训练中奖励稀疏的问题，并采取动作空间裁剪策略，
+                                            显著提升了AI的博弈水平。悟空苏拉卡尔塔则侧重于规则优化与并行蒙特卡罗树搜索的实现。
+                                        </p>
+                                    </div>
+                                    <div class="mb-4">
+                                        <h5 class="font-bold mb-2 flex items-center">
+                                            <i class="fas fa-tasks text-green-500 mr-2"></i>负责内容
+                                        </h5>
+                                        <p class="text-gray-700 dark:text-gray-300 mb-4 pl-6">
+                                            项目算法及规则实现；UI界面设计和实现。
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <!-- 项目UI展示 -->
+                                <div class="mb-8">
+                                    <h5 class="font-bold mb-4 flex items-center text-blue-700 dark:text-white-300">
+                                        <i class="fas fa-desktop mr-2"></i>界面展示
+                                    </h5>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div class="p-4 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-800/50 dark:to-blue-900/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                                            <div class="overflow-hidden rounded-lg mb-3 h-64 flex items-center justify-center">
+                                                <img src="UI_demo/connect5_UI.png" alt="五子棋UI界面" class="w-full h-full object-contain">
                                             </div>
+                                            <h4 class="font-bold mb-1 text-center text-blue-700 dark:text-blue-300">
+                                                <i class="fas fa-chess-board mr-2"></i>悟空五子棋界面
+                                            </h4>
+                                        </div>
+                                        <div class="p-4 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-800/50 dark:to-blue-900/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                                            <div class="overflow-hidden rounded-lg mb-3 h-64 flex items-center justify-center">
+                                                <img src="UI_demo/Surakarta_UI.png" alt="苏拉卡尔塔UI界面" class="w-full h-full object-contain">
+                                            </div>
+                                            <h4 class="font-bold mb-1 text-center text-blue-700 dark:text-blue-300">
+                                                <i class="fas fa-chess mr-2"></i>悟空苏拉卡尔塔界面
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 项目成果 -->
+                                <div class="p-4 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to--800/20 rounded-lg shadow-sm">
+                                    <h5 class="font-bold mb-3 flex items-center text-amber-700 dark:text-black">
+                                        <i class="fas fa-trophy mr-2"></i>项目成果
+                                    </h5>
+                                    <p class="text-gray-700 dark:text-gray-300 pl-6">
+                                        2024年中国大学生计算机博弈大赛五子棋项目<strong class="text-amber-600 dark:text-red-400">全国亚军</strong>、
+                                        苏拉卡尔塔棋项目<strong class="text-amber-600 dark:text-amber-400">全国冠军</strong>。
+                                    </p>
+                                </div>
+                                
+                                <!-- 获奖证书展示 -->
+                                <div>
+                                    <h5 class="font-bold mb-4 flex items-center text-blue-700 dark:text-blue-300">
+                                        <i class="fas fa-award mr-2"></i>获奖证书
+                                    </h5>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div class="p-3 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                                            <div class="overflow-hidden rounded-lg mb-3">
+                                                <img src="resource/2024年中国大学生计算机博弈大赛五子棋项目亚军.png" alt="计算机博弈大赛五子棋亚军" class="w-full h-auto object-cover">
+                                            </div>
+                                            <h4 class="font-bold mb-1 text-center text-blue-700 dark:text-blue-300">
+                                                <i class="fas fa-medal mr-2"></i>计算机博弈大赛五子棋亚军
+                                            </h4>
+                                        </div>
+                                        <div class="p-3 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                                            <div class="overflow-hidden rounded-lg mb-3">
+                                                <img src="resource/2024年中国大学生计算机博弈大赛苏拉卡尔塔项目冠军.png" alt="计算机博弈大赛苏拉卡尔塔棋冠军" class="w-full h-auto object-cover">
+                                            </div>
+                                            <h4 class="font-bold mb-1 text-center text-blue-700 dark:text-blue-300">
+                                                <i class="fas fa-trophy mr-2"></i>计算机博弈大赛苏拉卡尔塔棋冠军
+                                            </h4>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                        
+                       
+                                </div>
+                            </div>
+                        </div>
+                    </section>
         
         <!-- 获奖情况 -->
         <section id="awards" class="mb-20 scroll-reveal">
@@ -1157,7 +1311,7 @@
                             </div>
                         </div>
                         
-                        <!-- 奖项图片展示 -->
+                        <!-- 奖项图片展示
                         <div class="mt-12">
                             <h3 class="text-xl font-bold mb-6 flex items-center">
                                 <i class="fas fa-images text-green-500 mr-2"></i>部分获奖证书
@@ -1189,8 +1343,103 @@
                                         <i class="fas fa-trophy mr-2"></i>校级三好学生
                                     </h4>
                                 </div>
-                            </div>
-                            
+                            </div> -->
+                                <!-- 证书展示盒 -->
+                                <div class="certificate-showcase mt-10 mb-8">
+                                    <h3 class="text-xl font-bold mb-6 flex items-center">
+                                        <i class="fas fa-certificate text-amber-500 mr-2"></i>证书轮播展示
+                                        <span class="ml-2 text-sm font-normal text-gray-500 dark:text-gray-400">· 共展示 <span id="certificates-count" class="text-blue-600 dark:text-blue-300 font-semibold">0</span> 个证书</span>
+                                    </h3>
+                                    
+                                    <!-- 证书过滤器 -->
+                                    <div class="certificate-filters mb-5 flex flex-wrap justify-start gap-2">
+                                        <button data-filter="all" class="certificate-filter-btn active px-3 py-1 rounded-full text-sm bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-800/40 transition-all">
+                                            全部类型
+                                        </button>
+                                        <button data-filter="奖学金类" class="certificate-filter-btn px-3 py-1 rounded-full text-sm bg-pink-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 hover:bg-amber-100 dark:hover:bg-amber-800/40 transition-all">
+                                            <i class="fas fa-money-bill-wave mr-1"></i>奖学金类
+                                        </button>
+                                        <button data-filter="竞赛奖项" class="certificate-filter-btn px-3 py-1 rounded-full text-sm bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-300 hover:bg-green-100 dark:hover:bg-green-800/40 transition-all">
+                                            <i class="fas fa-trophy mr-1"></i>竞赛奖项
+                                        </button>
+                                        <button data-filter="荣誉称号" class="certificate-filter-btn px-3 py-1 rounded-full text-sm bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 hover:bg-purple-100 dark:hover:bg-purple-800/40 transition-all">
+                                            <i class="fas fa-medal mr-1"></i>荣誉称号
+                                        </button>
+                                        <button data-filter="志愿者服务" class="certificate-filter-btn px-3 py-1 rounded-full text-sm bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300 hover:bg-red-100 dark:hover:bg-red-800/40 transition-all">
+                                            <i class="fas fa-hands-helping mr-1"></i>志愿者服务
+                                        </button>
+                                        <button data-filter="任职聘书" class="certificate-filter-btn px-3 py-1 rounded-full text-sm bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-800/40 transition-all">
+                                            <i class="fas fa-file-contract mr-1"></i>任职聘书
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="certificate-box bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-xl shadow-xl overflow-hidden border border-blue-100 dark:border-blue-900/30 transform hover:scale-[1.01] transition-all duration-300">
+                                        <div class="flex flex-col md:flex-row">
+                                            <!-- 左侧：缩略图预览 -->
+                                            <div class="hidden md:block md:w-1/4 border-r border-blue-100 dark:border-blue-800/50 bg-blue-50/80 dark:bg-blue-900/40 p-4">
+                                                <h4 class="text-sm font-semibold mb-3 text-blue-700 dark:text-blue-400 flex items-center">
+                                                    <i class="fas fa-images mr-2"></i>证书导航
+                                                </h4>
+                                                <div id="certificate-thumbnails" class="space-y-3 max-h-[300px] overflow-y-auto pr-2 certificate-thumbs-container">
+                                                    <!-- 缩略图将通过JavaScript动态生成 -->
+                                                </div>
+                                                <!-- 添加缩略图分页导航 -->
+                                                <div class="flex justify-between items-center mt-3 pt-2 border-t border-blue-100 dark:border-blue-800/50">
+                                                    <div id="prev-thumbnails-page" class="text-sm px-2 py-1 rounded-md bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors cursor-pointer" onclick="prevThumbnailsPage(event);">
+                                                        <i class="fas fa-chevron-left"></i>
+                                                    </div>
+                                                    <span id="thumbnails-pagination" class="text-xs text-blue-700 dark:text-blue-300">页 <span id="current-thumbnails-page">1</span>/<span id="total-thumbnails-pages">1</span></span>
+                                                    <div id="next-thumbnails-page" class="text-sm px-2 py-1 rounded-md bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors cursor-pointer" onclick="nextThumbnailsPage(event);">
+                                                        <i class="fas fa-chevron-right"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 右侧：主展示区 -->
+                                            <div class="md:w-3/4">
+                                                <div class="certificate-display relative h-96 overflow-hidden bg-white/80 dark:bg-gray-800/50 p-4">
+                                                    <div class="flex items-center justify-center h-full relative">
+                                                        <img id="certificate-image" src="resource/国家奖学金荣誉证书.png" alt="国家奖学金荣誉证书" class="w-full h-full object-contain transition-all duration-500 drop-shadow-md">
+                                                        <div class="absolute top-0 right-0 m-2">
+                                                            <span id="certificate-index" class="bg-blue-600/90 text-white text-xs rounded-full px-2 py-1 flex items-center">
+                                                                <i class="fas fa-info-circle mr-1"></i><span id="current-index">1</span>/<span id="total-count">3</span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="absolute inset-0 flex items-center justify-between px-4">
+                                                        <button id="prev-certificate" class="certificate-nav-btn bg-blue-500/90 text-white rounded-full p-3 opacity-80 hover:opacity-100 hover:bg-blue-600 transition-all shadow-lg transform hover:scale-110">
+                                                            <i class="fas fa-chevron-left"></i>
+                                                        </button>
+                                                        <button id="next-certificate" class="certificate-nav-btn bg-blue-500/90 text-white rounded-full p-3 opacity-80 hover:opacity-100 hover:bg-blue-600 transition-all shadow-lg transform hover:scale-110">
+                                                            <i class="fas fa-chevron-right"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="absolute bottom-0 left-0 right-0 flex justify-center space-x-2 pb-3" id="certificate-dots">
+                                                        <!-- 小点将通过JavaScript动态生成 -->
+                                                    </div>
+                                                </div>
+                                                <div class="p-5 text-center border-t border-blue-200 dark:border-blue-800/50 bg-blue-50/50 dark:bg-blue-900/20">
+                                                    <h4 id="certificate-title" class="font-bold text-blue-700 dark:text-blue-400 flex items-center justify-center">
+                                                        <i class="fas fa-award mr-2 text-amber-500"></i>
+                                                        国家奖学金荣誉证书
+                                                    </h4>
+                                                    <p id="certificate-description" class="text-sm text-blue-600 dark:text-blue-300 mt-2 italic">
+                                                        国家级奖学金，表彰优秀学术表现和综合素质
+                                                    </p>
+                                                    <div class="mt-3 flex justify-center">
+                                                        <span id="certificate-date" class="bg-blue-100 dark:bg-blue-800/50 text-blue-700 dark:text-blue-300 text-xs px-3 py-1 rounded-full flex items-center">
+                                                            <i class="fas fa-calendar-alt mr-1"></i>2023年
+                                                        </span>
+                                                        <span id="certificate-type" class="ml-2 bg-amber-100 dark:bg-amber-800/50 text-amber-700 dark:text-amber-300 text-xs px-3 py-1 rounded-full flex items-center">
+                                                            <i class="fas fa-tag mr-1"></i>奖学金类
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="text-sm text-center text-gray-500 dark:text-gray-400 mt-3">
+                                        <i class="fas fa-lightbulb text-yellow-500 mr-1"></i>提示：可通过左侧缩略图或点击左右按钮浏览更多证书
+                                    </p>
                         </div>
                     </div>
                 </div>
@@ -1360,15 +1609,38 @@
                         <div class="mt-8 text-center">
                             <p class="text-lg mb-4">欢迎通过以上方式与我联系，期待与您的交流！</p>
                             <div class="inline-flex space-x-4">
-                                <a href="#" class="w-10 h-10 rounded-full bg-blue-500 hover:bg-blue-600 flex items-center justify-center text-white transition-colors pulse-animation">
+                                <!-- <a href="#" class="w-10 h-10 rounded-full bg-blue-500 hover:bg-blue-600 flex items-center justify-center text-white transition-colors pulse-animation">
                                     <i class="fab fa-github"></i>
                                 </a>
                                 <a href="#" class="w-10 h-10 rounded-full bg-blue-500 hover:bg-blue-600 flex items-center justify-center text-white transition-colors pulse-animation">
                                     <i class="fab fa-linkedin"></i>
-                                </a>
-                                <a href="#" class="w-10 h-10 rounded-full bg-blue-500 hover:bg-blue-600 flex items-center justify-center text-white transition-colors pulse-animation">
+                                </a>  -->
+                                <a href="#" onclick="showWeChatQR(event)" class="w-10 h-10 rounded-full bg-blue-500 hover:bg-blue-600 flex items-center justify-center text-white transition-colors pulse-animation">
                                     <i class="fab fa-weixin"></i>
                                 </a>
+                                <div id="wechat-qr-popup" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+                                    <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg max-w-sm w-full">
+                                        <div class="flex justify-between items-center mb-4">
+                                            <h3 class="text-lg font-bold text-gray-800 dark:text-white">微信扫码</h3>
+                                            <button onclick="hideWeChatQR()" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                        <img src="resource/WeChat.png" alt="微信二维码" class="w-full h-auto rounded-lg">
+                                    </div>
+                                </div>
+                                <script>
+                                    function showWeChatQR(event) {
+                                        event.preventDefault();
+                                        document.getElementById('wechat-qr-popup').classList.remove('hidden');
+                                        document.body.style.overflow = 'hidden';
+                                    }
+                                    
+                                    function hideWeChatQR() {
+                                        document.getElementById('wechat-qr-popup').classList.add('hidden');
+                                        document.body.style.overflow = '';
+                                    }
+                                </script>
                             </div>
                         </div>
                     </div>
@@ -1636,73 +1908,611 @@
         const nextCertificateBtn = document.getElementById('next-certificate');
         const awardItems = document.querySelectorAll('.award-item');
         
+        // 缩略图分页设置
+        const THUMBS_PER_PAGE = 5;
+        let currentThumbsPage = 0;
+        
         // 存储所有证书信息
         const certificates = [
+            // 奖学金类证书放在前面
             {
                 src: "resource/国家奖学金荣誉证书.png",
-                title: "国家奖学金荣誉证书"
+                title: "国家奖学金荣誉证书",
+                description: "国家级奖学金，表彰优秀学术表现和综合素质",
+                date: "2023年",
+                type: "奖学金类"
             },
             {
+                src: "resource/2023年度创新创业奖学金.png",
+                title: "创新创业奖学金",
+                description: "2023年度创新创业奖学金，表彰在创新创业方面表现突出的学生",
+                date: "2023年",
+                type: "奖学金类"
+            },
+            {
+                src: "resource/2022-2023学年第二学期校综合奖学金一等奖.png",
+                title: "校综合奖学金一等奖",
+                description: "2022-2023学年第二学期校综合奖学金一等奖",
+                date: "2023年",
+                type: "奖学金类"
+            },
+            // {
+            //     src: "resource/2022-2023学年第一学期校综合奖学金三等奖.jpg",
+            //     title: "校综合奖学金三等奖",
+            //     description: "2022-2023学年第一学期校综合奖学金三等奖",
+            //     date: "2022年",
+            //     type: "奖学金类"
+            // },
+            // 竞赛奖项
+            {
                 src: "resource/2024年中国大学生计算机博弈大赛苏拉卡尔塔项目冠军.png",
-                title: "计算机博弈大赛苏拉卡尔塔项目冠军"
+                title: "计算机博弈大赛苏拉卡尔塔项目冠军",
+                description: "2024年中国大学生计算机博弈大赛苏拉卡尔塔项目全国冠军",
+                date: "2024年",
+                type: "竞赛奖项"
             },
             {
                 src: "resource/2024年中国大学生计算机博弈大赛五子棋项目亚军.png",
-                title: "计算机博弈大赛五子棋项目亚军"
+                title: "计算机博弈大赛五子棋项目亚军",
+                description: "2024年中国大学生计算机博弈大赛五子棋项目全国亚军",
+                date: "2024年",
+                type: "竞赛奖项"
+            },
+            {
+                src: "resource/悟空五子棋国一.jpg",
+                title: "悟空五子棋国一",
+                description: "悟空杯人工智能大赛五子棋项目全国一等奖",
+                date: "2023年",
+                type: "竞赛奖项"
+            },
+            {
+                src: "resource/悟空苏拉卡尔塔国一.jpg",
+                title: "悟空苏拉卡尔塔国一",
+                description: "悟空杯人工智能大赛苏拉卡尔塔项目全国一等奖",
+                date: "2023年",
+                type: "竞赛奖项"
+            },
+            {
+                src: "resource/2024年第十五届蓝桥杯全国软件和信息技术专业人才大赛河北赛区程序设计大学A组二等奖.jpg",
+                title: "蓝桥杯程序设计省级二等奖",
+                description: "第十五届蓝桥杯全国软件和信息技术专业人才大赛河北赛区程序设计大学A组二等奖",
+                date: "2024年",
+                type: "竞赛奖项"
+            },
+            {
+                src: "resource/2023年第十五届全国大学生数学竞赛(非数学A类)二等奖.jpg",
+                title: "全国大学生数学竞赛二等奖",
+                description: "2023年第十五届全国大学生数学竞赛(非数学A类)二等奖",
+                date: "2023年",
+                type: "竞赛奖项"
+            },
+            // 荣誉称号
+            {
+                src: "resource/2022-2023学年校级三好学生.png",
+                title: "校级三好学生",
+                description: "2022-2023学年校级三好学生称号",
+                date: "2023年",
+                type: "荣誉称号"
+            },
+            {
+                src: "resource/2023-2024学年校级优秀学生干部.jpg",
+                title: "校级优秀学生干部",
+                description: "2023-2024学年校级优秀学生干部称号",
+                date: "2024年",
+                type: "荣誉称号"
+            },
+            {
+                src: "resource/2023年校级优秀团员标兵.png",
+                title: "校级优秀团员标兵",
+                description: "2023年校级优秀团员标兵称号",
+                date: "2023年",
+                type: "荣誉称号"
+            },
+            {
+                src: "resource/2023年创新创业优秀学生干部.jpg",
+                title: "创新创业优秀学生干部",
+                description: "2023年创新创业优秀学生干部称号",
+                date: "2023年",
+                type: "荣誉称号"
+            },
+            // 其他
+            {
+                src: "resource/计工创协竞赛中心主任聘书.png",
+                title: "计工创协竞赛中心主任聘书",
+                description: "计算机与通信工程学院创新创业协会竞赛中心主任聘书",
+                date: "2023年",
+                type: "任职聘书"
+            },
+            {
+                src: "resource/秦皇岛马拉松志愿者.png",
+                title: "秦皇岛马拉松志愿者证书",
+                description: "2023年秦皇岛马拉松赛事志愿者证书",
+                date: "2023年",
+                type: "志愿者服务"
+            },
+            {
+                src: "resource/河北省大学生程序设计竞赛志愿者.jpg",
+                title: "河北省大学生程序设计竞赛志愿者",
+                description: "2023年河北省大学生程序设计竞赛志愿者证书",
+                date: "2023年",
+                type: "志愿者服务"
+            },
+            {
+                src: "resource/中国大学生程序竞赛志愿者.png",
+                title: "中国大学生程序竞赛志愿者",
+                description: "2024年中国大学生程序设计竞赛志愿者证书",
+                date: "2024年",
+                type: "志愿者服务"
             }
         ];
         
-        // 当前显示的证书索引
-        let currentCertificateIndex = 2; // 默认显示国家奖学金证书
+        let currentCertificateIndex = 0; // 默认显示第一张证书
+        let filteredCertificates = [...certificates]; // 筛选后的证书
         
         // 更新证书显示
         function updateCertificateDisplay() {
-            const certificate = certificates[currentCertificateIndex];
+            if (filteredCertificates.length === 0) {
+                // 如果没有匹配的证书，显示提示信息
+                certificateImage.style.opacity = '0';
+                setTimeout(() => {
+                    document.querySelector('.certificate-display').innerHTML = `
+                        <div class="flex flex-col items-center justify-center h-full text-center p-8">
+                            <i class="fas fa-search text-5xl text-blue-300 dark:text-blue-700 mb-4"></i>
+                            <h4 class="text-xl font-bold text-blue-700 dark:text-blue-400 mb-2">未找到匹配的证书</h4>
+                            <p class="text-gray-600 dark:text-gray-400">请尝试其他筛选条件</p>
+                        </div>
+                    `;
+                    document.getElementById('certificate-title').innerHTML = `<i class="fas fa-info-circle mr-2 text-blue-500"></i>无匹配结果`;
+                    document.getElementById('certificate-description').textContent = '请选择其他筛选条件查看证书';
+                    document.getElementById('certificate-date').innerHTML = `<i class="fas fa-filter mr-1"></i>无结果`;
+                    document.getElementById('certificate-type').innerHTML = `<i class="fas fa-tag mr-1"></i>无匹配类型`;
+                    document.getElementById('current-index').textContent = '0';
+                    document.getElementById('total-count').textContent = '0';
+                }, 300);
+                return;
+            }
+            
+            // 确保当前索引在有效范围内
+            if (currentCertificateIndex >= filteredCertificates.length) {
+                currentCertificateIndex = 0;
+            }
+            
+            const certificate = filteredCertificates[currentCertificateIndex];
             
             // 添加淡出效果
             certificateImage.style.opacity = '0';
             
             setTimeout(() => {
+                // 恢复显示区域
+                if (document.querySelector('.certificate-display').innerHTML.includes('未找到匹配的证书')) {
+                    document.querySelector('.certificate-display').innerHTML = `
+                        <div class="flex items-center justify-center h-full relative">
+                            <img id="certificate-image" src="${certificate.src}" alt="${certificate.title}" class="w-full h-full object-contain transition-all duration-500 drop-shadow-md">
+                            <div class="absolute top-0 right-0 m-2">
+                                <span id="certificate-index" class="bg-blue-600/90 text-white text-xs rounded-full px-2 py-1 flex items-center">
+                                    <i class="fas fa-info-circle mr-1"></i><span id="current-index">${currentCertificateIndex + 1}</span>/<span id="total-count">${filteredCertificates.length}</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-between px-4">
+                            <button id="prev-certificate" class="certificate-nav-btn bg-blue-500/90 text-white rounded-full p-3 opacity-80 hover:opacity-100 hover:bg-blue-600 transition-all shadow-lg transform hover:scale-110">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button id="next-certificate" class="certificate-nav-btn bg-blue-500/90 text-white rounded-full p-3 opacity-80 hover:opacity-100 hover:bg-blue-600 transition-all shadow-lg transform hover:scale-110">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 flex justify-center space-x-2 pb-3" id="certificate-dots">
+                            <!-- 小点将通过JavaScript动态生成 -->
+                        </div>
+                    `;
+                    
+                    // 重新绑定按钮事件
+                    document.getElementById('prev-certificate').addEventListener('click', () => {
+                        currentCertificateIndex = (currentCertificateIndex - 1 + filteredCertificates.length) % filteredCertificates.length;
+                        updateCertificateDisplay();
+                    });
+                    
+                    document.getElementById('next-certificate').addEventListener('click', () => {
+                        currentCertificateIndex = (currentCertificateIndex + 1) % filteredCertificates.length;
+                        updateCertificateDisplay();
+                    });
+                    
+                    certificateImage = document.getElementById('certificate-image');
+                }
+                
+                // 更新主图片和标题
                 certificateImage.src = certificate.src;
                 certificateImage.alt = certificate.title;
-                certificateTitle.textContent = certificate.title;
+                certificateTitle.innerHTML = `<i class="fas fa-award mr-2 text-amber-500"></i>${certificate.title}`;
+                
+                // 更新额外信息
+                document.getElementById('certificate-description').textContent = certificate.description;
+                document.getElementById('certificate-date').innerHTML = `<i class="fas fa-calendar-alt mr-1"></i>${certificate.date}`;
+                document.getElementById('certificate-type').innerHTML = `<i class="fas fa-tag mr-1"></i>${certificate.type}`;
+                
+                // 更新导航指示器
+                document.getElementById('current-index').textContent = currentCertificateIndex + 1;
+                document.getElementById('total-count').textContent = filteredCertificates.length;
                 
                 // 添加淡入效果
                 certificateImage.style.opacity = '1';
                 
-                // 更新激活状态
-                awardItems.forEach((item, index) => {
-                    if (index === currentCertificateIndex) {
-                        item.classList.add('active');
-                    } else {
-                        item.classList.remove('active');
-                    }
-                });
+                // 更新小点状态
+                updateDots();
+                
+                // 更新缩略图高亮状态
+                updateThumbnailHighlight();
+                
+                // 更新缩略图分页，确保当前证书在可见区域
+                updateThumbnailsPagination();
             }, 300);
         }
         
+        // 更新导航小点
+        function updateDots() {
+            const dotsContainer = document.getElementById('certificate-dots');
+            dotsContainer.innerHTML = ''; // 清除现有小点
+            
+            filteredCertificates.forEach((_, index) => {
+                const dot = document.createElement('span');
+                dot.classList.add('h-2', 'w-2', 'rounded-full', 'opacity-70', 'cursor-pointer', 'transition-all');
+                
+                if (index === currentCertificateIndex) {
+                    dot.classList.add('bg-blue-500', 'w-4'); // 活动点颜色和宽度
+                } else {
+                    dot.classList.add('bg-blue-300');
+                }
+                
+                dot.addEventListener('click', () => {
+                    currentCertificateIndex = index;
+                    updateCertificateDisplay();
+                });
+                
+                dotsContainer.appendChild(dot);
+            });
+        }
+        
+        // 更新缩略图高亮状态
+        function updateThumbnailHighlight() {
+            const thumbnails = document.querySelectorAll('.certificate-thumbnail');
+            thumbnails.forEach((thumb, index) => {
+                // 只处理可见的缩略图（筛选后的）
+                if (index < filteredCertificates.length) {
+                    if (index === currentCertificateIndex) {
+                        thumb.classList.add('ring-2', 'ring-blue-500', 'bg-blue-50', 'dark:bg-blue-900/30');
+                        thumb.classList.remove('opacity-70');
+                        
+                        // 滚动到可见区域
+                        thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    } else {
+                        thumb.classList.remove('ring-2', 'ring-blue-500', 'bg-blue-50', 'dark:bg-blue-900/30');
+                        thumb.classList.add('opacity-70');
+                    }
+                }
+            });
+        }
+        
+        // 生成缩略图
+        function generateThumbnails() {
+            const thumbnailsContainer = document.getElementById('certificate-thumbnails');
+            if (!thumbnailsContainer) return;
+            
+            thumbnailsContainer.innerHTML = ''; // 清除现有缩略图
+            
+            // 计算当前页的缩略图
+            const startIndex = currentThumbsPage * THUMBS_PER_PAGE;
+            const endIndex = Math.min(startIndex + THUMBS_PER_PAGE, filteredCertificates.length);
+            
+            // 更新分页信息
+            updateThumbnailsPagination();
+            
+            // 只生成当前页的缩略图
+            for (let index = startIndex; index < endIndex; index++) {
+                const certificate = filteredCertificates[index];
+                const thumbnail = document.createElement('div');
+                thumbnail.classList.add(
+                    'certificate-thumbnail',
+                    'flex',
+                    'items-center',
+                    'p-2',
+                    'rounded-lg',
+                    'cursor-pointer',
+                    'hover:bg-blue-50',
+                    'dark:hover:bg-blue-900/30',
+                    'transition-all',
+                    'opacity-70'
+                );
+                
+                if (index === currentCertificateIndex) {
+                    thumbnail.classList.add('ring-2', 'ring-blue-500', 'bg-blue-50', 'dark:bg-blue-900/30');
+                    thumbnail.classList.remove('opacity-70');
+                }
+                
+                // 为不同类型的证书添加不同的边框颜色
+                let borderClass = 'border-blue-200';
+                let iconClass = 'text-blue-500';
+                
+                switch(certificate.type) {
+                    case '奖学金类':
+                        borderClass = 'border-pink-200 dark:border-pink-800/50';
+                        iconClass = 'text-pink-500';
+                        break;
+                    case '竞赛奖项':
+                        borderClass = 'border-green-200 dark:border-green-800/50';
+                        iconClass = 'text-green-500';
+                        break;
+                    case '荣誉称号':
+                        borderClass = 'border-purple-200 dark:border-purple-800/50';
+                        iconClass = 'text-purple-500';
+                        break;
+                    case '志愿者服务':
+                        borderClass = 'border-red-200 dark:border-red-800/50';
+                        iconClass = 'text-red-500';
+                        break;
+                    case '任职聘书':
+                        borderClass = 'border-indigo-200 dark:border-indigo-800/50';
+                        iconClass = 'text-indigo-500';
+                        break;
+                }
+                
+                thumbnail.innerHTML = `
+                    <div class="w-12 h-12 bg-white dark:bg-gray-700 rounded border ${borderClass} flex-shrink-0 overflow-hidden relative">
+                        <div class="absolute top-0 right-0 w-3 h-3 rounded-full ${iconClass.replace('text-', 'bg-')} transform translate-x-1 -translate-y-1"></div>
+                        <img src="${certificate.src}" alt="${certificate.title}" class="w-full h-full object-contain">
+                    </div>
+                    <div class="ml-2 flex-grow overflow-hidden">
+                        <h5 class="text-xs font-medium text-blue-700 dark:text-blue-400 truncate">${certificate.title}</h5>
+                        <p class="text-[10px] text-gray-500 dark:text-gray-400 flex items-center">
+                            <i class="fas fa-tag mr-1 ${iconClass} text-[8px]"></i>${certificate.type}
+                        </p>
+                    </div>
+                `;
+                
+                thumbnail.addEventListener('click', () => {
+                    currentCertificateIndex = index;
+                    updateCertificateDisplay();
+                });
+                
+                thumbnailsContainer.appendChild(thumbnail);
+            }
+        }
+        
+        // 更新缩略图分页信息
+        function updateThumbnailsPagination() {
+            const totalPages = Math.ceil(filteredCertificates.length / THUMBS_PER_PAGE);
+            
+            // 更新分页信息
+            const currentPageEl = document.getElementById('current-thumbnails-page');
+            const totalPagesEl = document.getElementById('total-thumbnails-pages');
+            
+            if (currentPageEl && totalPagesEl) {
+                currentPageEl.textContent = currentThumbsPage + 1;
+                totalPagesEl.textContent = totalPages;
+            }
+            
+            // 如果当前证书不在当前页面，切换到包含当前证书的页面
+            const certPage = Math.floor(currentCertificateIndex / THUMBS_PER_PAGE);
+            if (certPage !== currentThumbsPage) {
+                currentThumbsPage = certPage;
+                generateThumbnails();
+            }
+        }
+        
+        // 将缩略图翻到上一页
+        function prevThumbnailsPage(e) {
+            // 阻止默认行为和事件冒泡，防止页面展开
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            
+            const totalPages = Math.ceil(filteredCertificates.length / THUMBS_PER_PAGE);
+            currentThumbsPage = (currentThumbsPage - 1 + totalPages) % totalPages;
+            
+            // 将当前证书索引设置为新页面的第一个证书
+            currentCertificateIndex = currentThumbsPage * THUMBS_PER_PAGE;
+            
+            // 更新缩略图和证书展示
+            generateThumbnails();
+            updateCertificateDisplay();
+        }
+        
+        // 将缩略图翻到下一页
+        function nextThumbnailsPage(e) {
+            // 阻止默认行为和事件冒泡，防止页面展开
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            
+            const totalPages = Math.ceil(filteredCertificates.length / THUMBS_PER_PAGE);
+            currentThumbsPage = (currentThumbsPage + 1) % totalPages;
+            
+            // 将当前证书索引设置为新页面的第一个证书
+            currentCertificateIndex = currentThumbsPage * THUMBS_PER_PAGE;
+            
+            // 更新缩略图和证书展示
+            generateThumbnails();
+            updateCertificateDisplay();
+        }
+        
+        // 处理证书筛选
+        function filterCertificates(type) {
+            if (type === 'all') {
+                filteredCertificates = [...certificates];
+            } else {
+                filteredCertificates = certificates.filter(cert => cert.type === type);
+            }
+            
+            // 重置当前索引和缩略图页
+            currentCertificateIndex = 0;
+            currentThumbsPage = 0;
+            
+            // 更新UI
+            document.getElementById('certificates-count').textContent = filteredCertificates.length;
+            generateThumbnails();
+            updateCertificateDisplay();
+            
+            // 更新筛选按钮状态
+            document.querySelectorAll('.certificate-filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`.certificate-filter-btn[data-filter="${type}"]`).classList.add('active');
+        }
+        
+        // 绑定筛选按钮事件
+        document.querySelectorAll('.certificate-filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filterType = btn.getAttribute('data-filter');
+                filterCertificates(filterType);
+            });
+        });
+        
         // 切换到上一个证书
         prevCertificateBtn.addEventListener('click', () => {
-            currentCertificateIndex = (currentCertificateIndex - 1 + certificates.length) % certificates.length;
+            currentCertificateIndex = (currentCertificateIndex - 1 + filteredCertificates.length) % filteredCertificates.length;
             updateCertificateDisplay();
         });
         
         // 切换到下一个证书
         nextCertificateBtn.addEventListener('click', () => {
-            currentCertificateIndex = (currentCertificateIndex + 1) % certificates.length;
+            currentCertificateIndex = (currentCertificateIndex + 1) % filteredCertificates.length;
             updateCertificateDisplay();
         });
         
-        // 点击奖项切换证书
-        awardItems.forEach((item, index) => {
-            item.addEventListener('click', () => {
-                currentCertificateIndex = index;
+        // 更新证书计数
+        document.getElementById('certificates-count').textContent = certificates.length;
+        document.getElementById('total-count').textContent = certificates.length;
+        
+        // 初始化证书展示
+        generateThumbnails();
+        updateDots();
+        updateCertificateDisplay();
+        
+        // 防止缩略图导航区域的点击事件冒泡
+        const thumbnailsNav = document.querySelector('.flex.justify-between.items-center.mt-3.pt-2');
+        if (thumbnailsNav) {
+            thumbnailsNav.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+
+        // 为缩略图分页按钮添加事件处理
+        document.querySelectorAll('#prev-thumbnails-page, #next-thumbnails-page').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const action = this.getAttribute('data-action');
+                const totalPages = Math.ceil(filteredCertificates.length / THUMBS_PER_PAGE);
+                
+                if (action === 'prev') {
+                    currentThumbsPage = (currentThumbsPage - 1 + totalPages) % totalPages;
+                } else if (action === 'next') {
+                    currentThumbsPage = (currentThumbsPage + 1) % totalPages;
+                }
+                
+                // 将当前证书索引设置为新页面的第一个证书
+                currentCertificateIndex = currentThumbsPage * THUMBS_PER_PAGE;
+                
+                // 更新缩略图和证书展示
+                generateThumbnails();
                 updateCertificateDisplay();
+                
+                return false;
             });
         });
         
-        // 初始化证书显示
-        updateCertificateDisplay();
+        // 添加键盘导航
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                currentCertificateIndex = (currentCertificateIndex - 1 + filteredCertificates.length) % filteredCertificates.length;
+                updateCertificateDisplay();
+                updateThumbnailsPagination(); // 更新缩略图分页
+            } else if (e.key === 'ArrowRight') {
+                currentCertificateIndex = (currentCertificateIndex + 1) % filteredCertificates.length;
+                updateCertificateDisplay();
+                updateThumbnailsPagination(); // 更新缩略图分页
+            }
+        });
+        
+        // 随机排序证书初始展示，增加趣味性
+        setTimeout(() => {
+            const randomIndex = Math.floor(Math.random() * certificates.length);
+            currentCertificateIndex = randomIndex;
+            updateCertificateDisplay();
+        }, 500);
+    </script>
+    
+    <!-- 证书展示盒初始化脚本 -->
+    <script>
+        // 确保DOM完全加载后再执行初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 延迟一小段时间确保元素都已渲染
+            setTimeout(() => {
+                // 检查所有必要元素是否存在
+                const requiredElements = [
+                    'certificate-image',
+                    'certificate-title',
+                    'certificate-description',
+                    'certificate-date',
+                    'certificate-type',
+                    'certificate-thumbnails',
+                    'certificate-dots',
+                    'prev-certificate',
+                    'next-certificate',
+                    'certificates-count',
+                    'current-index',
+                    'total-count'
+                ];
+                
+                let allElementsExist = true;
+                let missingElements = [];
+                
+                requiredElements.forEach(elementId => {
+                    if (!document.getElementById(elementId)) {
+                        allElementsExist = false;
+                        missingElements.push(elementId);
+                    }
+                });
+                
+                if (!allElementsExist) {
+                    console.error('证书展示盒初始化失败，以下元素未找到：', missingElements);
+                    return;
+                }
+                
+                // 手动触发一次更新
+                document.getElementById('certificates-count').textContent = certificates.length;
+                document.getElementById('total-count').textContent = certificates.length;
+                
+                // 重新生成缩略图和导航点
+                generateThumbnails();
+                updateDots();
+                
+                // 更新显示
+                updateCertificateDisplay();
+                
+                console.log('证书展示盒初始化完成，共加载', certificates.length, '个证书');
+            }, 300);
+        });
+    </script>
+
+    <!-- 将缩略图区域加上防止默认事件的处理 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取缩略图导航区域 - 使用不同的变量名
+            const thumbNavArea = document.querySelector('.certificate-thumbs-container').parentNode;
+            
+            if (thumbNavArea) {
+                // 对整个区域阻止冒泡
+                thumbNavArea.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            }
+            
+            // 移除此代码块，使用页面中已有的事件处理函数
+        });
     </script>
 </body>
 </html>
