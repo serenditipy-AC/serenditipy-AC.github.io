@@ -564,7 +564,7 @@
                 <div class="text-center md:text-left md:pt-4">
                     <h1 class="text-4xl md:text-5xl font-bold mb-2 text-white">王子游</h1>
                     <p class="text-xl text-blue-200 mb-6">东北大学秦皇岛分校 · 计算机科学与技术</p>
-                    <div class="flex flex-wrap justify-center md:justify-start gap-4 mb-6">
+                    <!-- <div class="flex flex-wrap justify-center md:justify-start gap-4 mb-6">
                         <div class="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-300">
                             <span class="w-8 h-8 rounded-full bg-blue-500/30 flex items-center justify-center mr-3">
                                 <i class="fas fa-map-marker-alt text-blue-200"></i>
@@ -577,13 +577,13 @@
                             </span>
                             <span class="text-blue-100">共青团员</span>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                        <a href="mailto:202212133@stu.neu.edu.cn" class="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-300">
+                        <a href="mailto:ziyou_neu@163.com" class="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-300">
                             <span class="w-8 h-8 rounded-full bg-blue-500/30 flex items-center justify-center mr-3">
                                 <i class="fas fa-envelope text-blue-200"></i>
                             </span>
-                            <span class="text-blue-100">202212133@stu.neu.edu.cn</span>
+                            <span class="text-blue-100">ziyou_neu@163.com</span>
                         </a>
                         <a href="tel:13975555891" class="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-300">
                             <span class="w-8 h-8 rounded-full bg-blue-500/30 flex items-center justify-center mr-3">
@@ -599,6 +599,11 @@
 
     <!-- 导航栏 -->
     <nav class="sticky top-0 z-50 backdrop-filter backdrop-blur-lg bg-opacity-70 dark:bg-opacity-70 bg-white dark:bg-gray-900 shadow-md">
+        <!-- 添加进度条在导航栏内部顶部 -->
+        <div id="scroll-progress-container" class="absolute top-0 left-0 w-full h-2 z-[100]">
+            <div id="scroll-progress-bar" class="h-full bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-blue-400 dark:to-indigo-500 w-0 transition-all duration-100 shadow-lg"></div>
+        </div>
+        
         <div class="container mx-auto px-4 py-3 flex items-center justify-between">
             <div class="flex items-center space-x-2">
                 <span class="text-2xl font-bold text-blue-600 dark:text-blue-400">王子游</span>
@@ -648,7 +653,7 @@
                         <div class="space-y-6">
                             <div class="p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/10 dark:to-indigo-900/10 rounded-xl shadow-inner">
                                 <p class="text-lg first-letter-drop mb-0 leading-relaxed text-gray-700 dark:text-gray-300">
-                                    我是东北大学秦皇岛分校计算机与通信工程学院计算机科学与技术专业的一名本科生。我对人工智能和博弈算法有浓厚的兴趣，尤其专注于深度强化学习在博弈对抗中的应用研究。曾在清华大学智能物联网实验室具身智能、大模型组实习三个月，参与多项前沿研究工作。
+                                    作为<strong>东北大学秦皇岛分校</strong>计算机与通信工程学院<strong>计算机科学与技术</strong>专业的本科生，我对<strong>人工智能</strong>与<strong>博弈算法</strong>领域怀有浓厚兴趣，尤其专注研究<strong>深度强化学习</strong>在对抗博弈中的应用。曾在<strong>清华大学智能物联网实验室</strong>的<strong>具身智能与大模型研究组</strong>实习三个月，期间积极参与并推进了多项前沿科研工作。
                                 </p>
                             </div>
                             
@@ -658,7 +663,7 @@
                                         <i class="fas fa-trophy text-amber-500 mr-2"></i>竞赛成就
                                     </h3>
                                     <p class="text-gray-700 dark:text-gray-300">
-                                        在学习过程中，我积极参与各类科研项目和竞赛活动，曾获得2024年中国大学生计算机博弈大赛苏拉卡尔塔棋项目全国冠军和五子棋项目全国亚军。
+                                        在学习过程中，我积极参与各类科研项目和竞赛活动，曾获得2024年中国大学生计算机博弈大赛苏拉卡尔塔棋项目<strong class="text-amber-600 dark:text-red-400">全国冠军</strong>和五子棋项目<strong class="text-amber-600 dark:text-red-400">全国亚军</strong>。
                                     </p>
                                 </div>
                                 
@@ -667,7 +672,7 @@
                                         <i class="fas fa-laptop-code text-indigo-500 mr-2"></i>专业技能
                                     </h3>
                                     <p class="text-gray-700 dark:text-gray-300">
-                                        我热爱编程和算法设计，擅长C语言和Python编程，对深度学习框架有一定的了解。我期望能够继续深入研究人工智能领域，为计算机科学的发展贡献自己的力量。
+                                        我热爱编程和算法设计，熟悉<strong>C语言</strong>和<strong>Python</strong>开发，熟练应用<strong>PyTorch</strong>深度学习框架。曾在云端服务器上成功部署<strong>Qwen2-VL</strong>和<strong>Qwen2.5-VL</strong>等多模态大模型，并开展视频与文本的<strong>GRPO</strong>微调训练。
                                     </p>
                                 </div>
                             </div>
@@ -677,7 +682,7 @@
                                     <i class="fas fa-flask text-green-500 mr-2"></i>科研经历
                                 </h3>
                                 <p class="text-gray-700 dark:text-gray-300">
-                                    在清华大学智能物联网实验室实习期间，参与了ACL和ICCV会议(CCF A类会议)论文研究，分别研究视频-语言模型在城市环境中的具身认知能力评估和点云对大语言模型空间推理能力的影响。在东北大学计算机博弈智能实验室，作为学生一作发表北大中文核心期刊论文，提出引入威胁空间搜索的五子棋深度强化学习方法。
+                                    在<strong>清华大学智能物联网实验室</strong>实习期间，参与了<strong>ACL</strong>和<strong>ICCV</strong>会议(<strong>CCF A类会议</strong>)论文研究，分别研究<strong>视频-语言模型</strong>在城市环境中的<strong>具身认知能力评估</strong>和<strong>点云</strong>对<strong>大语言模型空间推理能力</strong>的影响。在<strong>东北大学计算机博弈智能实验室</strong>，作为<strong>第二作者（学生一作）</strong>发表<strong>北大中文核心期刊论文</strong>，提出引入<strong>威胁空间搜索</strong>的五子棋<strong>深度强化学习</strong>方法。
                                 </p>
                             </div>
                             
@@ -844,10 +849,10 @@
                                         <i class="fas fa-info-circle text-blue-500 mr-2"></i>论文概述
                                     </h4>
                                     <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                                        <li>论文提出UrbanVideo-Bench，首个用于评估视频-语言大模型（Video-LLMs）在城市开放空间中的具身认知能力的基准，特别关注在三维城市环境中进行连续的第一人称视觉观察和导航的能力。</li>
-                                        <li>通过手动控制无人机在现实世界城市和模拟环境中收集视频数据，生成了约1500个视频片段，并设计了生成5200+个多项选择题的流程，旨在评估Video-LLMs在具身认知任务中的表现。</li>
-                                        <li>设计了包含16个任务的多样化任务集，涵盖回忆、感知、推理和导航四个方面的具身认知能力，反映了在城市开放空间中可能遇到的实际挑战。</li>
-                                        <li>对17种广泛使用的Video-LLMs进行了定量和定性评估，揭示了当前模型在具身认知任务中的局限性。</li>
+                                        <li>论文提出<strong>UrbanVideo-Bench</strong>，首个用于评估<strong>视频-语言大模型</strong>（Video-LLMs）在城市开放空间中的<strong>具身认知能力</strong>的基准，特别关注在<strong>三维城市环境</strong>中进行连续的<strong>第一人称视觉观察和导航</strong>的能力。</li>
+                                        <li>通过手动控制<strong>无人机</strong>在现实世界城市和模拟环境中收集视频数据，生成了约<strong>1500个视频片段</strong>，并设计了生成<strong>5200+个多项选择题</strong>的流程，旨在评估Video-LLMs在具身认知任务中的表现。</li>
+                                        <li>设计了包含<strong>16个任务</strong>的多样化任务集，涵盖<strong>回忆、感知、推理和导航</strong>四个方面的具身认知能力，反映了在城市开放空间中可能遇到的实际挑战。</li>
+                                        <li>对<strong>17种</strong>广泛使用的Video-LLMs进行了<strong>定量和定性评估</strong>，揭示了当前模型在具身认知任务中的局限性。</li>
                                     </p>
                                 </div>
 
@@ -896,15 +901,15 @@
                                     </div>
                                 </div>
 
-                                <!-- 负责内容区域
-                                <div class="p-5 bg-purple-50 dark:bg-purple-900/30 rounded-xl">
+                                <!-- 负责内容区域 -->
+                                <div class="mb-6 p-5 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
                                     <h5 class="font-bold mb-3 flex items-center text-gray-700 dark:text-gray-300">
                                         <i class="fas fa-tasks text-blue-500 mr-2"></i>负责内容
                                     </h5>
                                     <p class="text-gray-700 dark:text-gray-300 mb-0">
-                                        benchmark的商讨制作，模型数据的收集，多个图表的绘制以及部分文章内容写作。
+                                        参与<b>基准测试集(benchmark)的设计与构建</b>，负责<b>数据集的优化与改进</b>，同时承担部分<b>图表绘制</b>与<b>论文撰写</b>等工作。
                                     </p>
-                                </div> -->
+                                </div>
                             </div>
                         </div>
                         
@@ -967,14 +972,14 @@
                                         <i class="fas fa-info-circle text-blue-500 mr-2"></i>论文概述
                                     </h5>
                                     <p class="text-gray-700 dark:text-gray-300 mb-4">
-                                        本论文针对深度强化学习在复杂博弈问题中面临的奖励稀疏和训练成本高的问题，
-                                        提出了一种引入威胁空间搜索的五子棋深度强化学习方法。主要内容包括：
+                                        本论文针对<strong>深度强化学习</strong>在复杂博弈问题中面临的<strong>奖励稀疏</strong>和<strong>训练成本高</strong>的问题，
+                                        提出了一种引入<strong>威胁空间搜索</strong>的五子棋<strong>深度强化学习方法</strong>。主要内容包括：
                                     </p>
                                     <ul class="list-disc pl-10 space-y-2 text-gray-700 dark:text-gray-300">
-                                        <li>设计了统一威胁空间搜索算法，并将其嵌入蒙特卡洛树搜索中，缓解了奖励稀疏问题</li>
-                                        <li>提出了基于领域知识的双层知识库，加速了算法搜索速度</li>
-                                        <li>将威胁动作空间作为神经网络的输入特征，增强了模型对关键局部形势的感知能力</li>
-                                        <li>利用走法过滤机制缩小了动作空间</li>
+                                        <li>设计了<strong>统一威胁空间搜索算法</strong>，并将其嵌入<strong>蒙特卡洛树搜索</strong>中，缓解了奖励稀疏问题</li>
+                                        <li>提出了基于<strong>领域知识的双层知识库</strong>，加速了算法搜索速度</li>
+                                        <li>将<strong>威胁动作空间</strong>作为神经网络的输入特征，增强了模型对<strong>关键局部形势</strong>的感知能力</li>
+                                        <li>利用<strong>走法过滤机制</strong>缩小了动作空间</li>
                                     </ul>
                                 </div>
                                 <div class="mb-4 pl-6">
@@ -982,17 +987,17 @@
                                         <i class="fas fa-tasks text-green-500 mr-2"></i>负责内容
                                     </h5>
                                     <p class="text-gray-700 dark:text-gray-300 mb-4">
-                                        负责核心算法实现；设计并执行消融实验，负责实验结果可视化；完成实验部分和算法描述的写作。
+                                        负责<strong>核心算法设计与实现</strong>；独立完成<strong>消融实验设计与执行</strong>，负责<strong>实验数据可视化与分析</strong>；主笔完成论文<strong>实验部分</strong>和<strong>算法原理</strong>的写作工作。
                                     </p>
                                 </div>
-                                <div class="p-4 bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20 rounded-lg shadow-sm">
+                                <!-- <div class="p-4 bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20 rounded-lg shadow-sm">
                                     <h5 class="font-bold mb-3 flex items-center text-amber-700 dark:text-amber-300">
                                         <i class="fas fa-trophy mr-2"></i>项目成果
                                     </h5>
                                     <p class="text-gray-700 dark:text-gray-300 pl-6">
                                         论文被《重庆理工大学机器博弈专栏》录用。
                                     </p>
-                                </div>
+                                </div> -->
                             </div>
                                 
                                 <!-- 论文成果可视化 -->
@@ -1082,7 +1087,7 @@
                                 
                                 <div class="mb-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg shadow-sm">
                                     <h4 class="font-bold mb-3 flex items-center text-indigo-700 dark:text-indigo-300">
-                                        <i class="fas fa-project-diagram mr-2"></i>项目名称：悟空五子棋 & 悟空苏拉卡尔塔
+                                        <i class="fas fa-project-diagram mr-2"></i>项目名称：悟空五子棋 & 悟空苏拉卡尔塔棋
                                     </h4>
                                     <div class="mb-4">
                                         <span class="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 dark:bg-indigo-900/40 dark:text-indigo-200 rounded-full text-sm font-medium">核心成员</span>
@@ -1092,9 +1097,9 @@
                                             <i class="fas fa-info-circle text-blue-500 mr-2"></i>项目概述
                                         </h5>
                                         <p class="text-gray-700 dark:text-gray-300 mb-4 pl-6">
-                                            悟空五子棋为核心项目，成功开发了基于蒙特卡罗树搜索和深度强化学习的自博弈训练模型；
-                                            通过引入威胁空间搜索缓解了自博弈训练中奖励稀疏的问题，并采取动作空间裁剪策略，
-                                            显著提升了AI的博弈水平。悟空苏拉卡尔塔则侧重于规则优化与并行蒙特卡罗树搜索的实现。
+                                            <strong>悟空五子棋</strong>为核心项目，成功开发了基于<strong>蒙特卡罗树搜索</strong>和<strong>深度强化学习</strong>的自博弈训练模型；
+                                            通过引入<strong>威胁空间搜索</strong>缓解了自博弈训练中奖励稀疏的问题，并采取<strong>动作空间裁剪策略</strong>，
+                                            显著提升了AI的博弈水平。<strong>悟空苏拉卡尔塔</strong>则侧重于<strong>规则优化</strong>与<strong>并行蒙特卡罗树搜索</strong>的实现。
                                         </p>
                                     </div>
                                     <div class="mb-4">
@@ -1102,7 +1107,7 @@
                                             <i class="fas fa-tasks text-green-500 mr-2"></i>负责内容
                                         </h5>
                                         <p class="text-gray-700 dark:text-gray-300 mb-4 pl-6">
-                                            项目算法及规则实现；UI界面设计和实现。
+                                            <strong>项目核心算法设计与实现</strong>，包括蒙特卡罗树搜索、威胁空间搜索等；<strong>游戏规则系统开发</strong>；<strong>交互界面设计与实现</strong>，确保良好的用户体验。
                                         </p>
                                     </div>
                                 </div>
@@ -1203,7 +1208,7 @@
                                     <div class="p-4 bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-lg hover:shadow-md transition-shadow award-item" data-certificate="resource/2024年中国大学生计算机博弈大赛苏拉卡尔塔项目冠军.png" data-title="计算机博弈大赛苏拉卡尔塔项目冠军">
                                         <div class="flex justify-between items-start">
                                             <div>
-                                                <h4 class="font-bold text-black">中国大学生计算机博弈大赛苏拉卡尔塔棋冠军</h4>
+                                                <h4 class="font-bold text-black">计算机博弈大赛苏拉卡尔塔棋冠军</h4>
                                                 <p class="text-sm text-blue-600">2024年</p>
                                             </div>
                                             <span class="award-badge">国家级</span>
@@ -1212,7 +1217,7 @@
                                     <div class="p-4 bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-lg hover:shadow-md transition-shadow award-item" data-certificate="resource/2024年中国大学生计算机博弈大赛五子棋项目亚军.png" data-title="计算机博弈大赛五子棋项目亚军">
                                         <div class="flex justify-between items-start">
                                             <div>
-                                                <h4 class="font-bold text-black">中国大学生计算机博弈大赛五子棋亚军</h4>
+                                                <h4 class="font-bold text-black">计算机博弈大赛五子棋亚军</h4>
                                                 <p class="text-sm text-blue-600">2024年</p>
                                             </div>
                                             <span class="award-badge">国家级</span>
@@ -1254,7 +1259,7 @@
                                 <i class="fas fa-award text-purple-500 mr-2"></i>校级奖项
                             </h3>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow">
+                                <!-- <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow">
                                     <div class="flex justify-between items-start">
                                         <div>
                                             <h4 class="font-bold text-black">国际大学生数学建模竞赛二等奖</h4>
@@ -1262,12 +1267,30 @@
                                         </div>
                                         <span class="award-badge bg-gradient-to-r from-purple-500 to-pink-500">校级</span>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow">
                                     <div class="flex justify-between items-start">
                                         <div>
                                             <h4 class="font-bold text-black">东北大学校一等奖学金</h4>
-                                            <p class="text-sm text-blue-600">2022-2023学年</p>
+                                            <p class="text-sm text-blue-600">2022-2023学年第二学期</p>
+                                        </div>
+                                        <span class="award-badge bg-gradient-to-r from-purple-500 to-pink-500">校级</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h4 class="font-bold text-black">东北大学校二等奖学金</h4>
+                                            <p class="text-sm text-blue-600">2023-2024学年第一学期</p>
+                                        </div>
+                                        <span class="award-badge bg-gradient-to-r from-purple-500 to-pink-500">校级</span>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow">
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <h4 class="font-bold text-black">东北大学校三等奖学金</h4>
+                                            <p class="text-sm text-blue-600">2022-2023学年第一学期</p>
                                         </div>
                                         <span class="award-badge bg-gradient-to-r from-purple-500 to-pink-500">校级</span>
                                     </div>
@@ -1365,12 +1388,12 @@
                                         <button data-filter="荣誉称号" class="certificate-filter-btn px-3 py-1 rounded-full text-sm bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 hover:bg-purple-100 dark:hover:bg-purple-800/40 transition-all">
                                             <i class="fas fa-medal mr-1"></i>荣誉称号
                                         </button>
-                                        <button data-filter="志愿者服务" class="certificate-filter-btn px-3 py-1 rounded-full text-sm bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300 hover:bg-red-100 dark:hover:bg-red-800/40 transition-all">
-                                            <i class="fas fa-hands-helping mr-1"></i>志愿者服务
-                                        </button>
+                                        <!-- <button data-filter="志愿者服务" class="certificate-filter-btn px-3 py-1 rounded-full text-sm bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300 hover:bg-red-100 dark:hover:bg-red-800/40 transition-all">
+                                            <i class="fas fa-hands-helping mr-1"></i>志愿者服务 -->
+                                        <!-- </button>
                                         <button data-filter="任职聘书" class="certificate-filter-btn px-3 py-1 rounded-full text-sm bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-800/40 transition-all">
                                             <i class="fas fa-file-contract mr-1"></i>任职聘书
-                                        </button>
+                                        </button> -->
                                     </div>
                                     
                                     <div class="certificate-box bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-xl shadow-xl overflow-hidden border border-blue-100 dark:border-blue-900/30 transform hover:scale-[1.01] transition-all duration-300">
@@ -1484,7 +1507,7 @@
                                     <span class="text-sm text-gray-600 dark:text-gray-400">2023.10-2024.10</span>
                                 </div>
                                 <p class="text-gray-700 dark:text-gray-300 mb-4">
-                                    东北大学秦皇岛分校学创新创业者协会
+                                    东北大学秦皇岛分校计算机与通信工程学院创新创业者协会
                                 </p>
                                 <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow">
                                     <h4 class="font-bold mb-2 flex items-center text-purple-700 dark:text-purple-300">
@@ -1513,8 +1536,8 @@
                 <div class="md:w-2/3">
                     <div class="card p-8">
                         <p class="mb-6 text-lg">
-                            作为中国大学生程序竞赛和河北省大学生程序设计竞赛的主要负责人，负责组织赛前场地布置、赛中监考管理以及赛后场地恢复等全流程工作。
-                            累计志愿服务时长达<span class="font-bold text-blue-600 dark:text-blue-400">171.75小时</span>，获得东北大学优秀志愿者称号。
+                            作为<span class="font-bold text-blue-600 dark:text-blue-400">中国大学生程序竞赛</span>和<span class="font-bold text-blue-600 dark:text-blue-400">河北省大学生程序设计竞赛</span>的<span class="font-bold text-blue-600 dark:text-blue-400">主要负责人</span>，负责组织<span class="font-bold text-blue-600 dark:text-blue-400">赛前场地布置</span>、<span class="font-bold text-blue-600 dark:text-blue-400">赛中监考管理</span>以及<span class="font-bold text-blue-600 dark:text-blue-400">赛后场地恢复</span>等全流程工作。
+                            累计志愿服务时长达<span class="font-bold text-blue-600 dark:text-blue-400">171.75小时</span>，获得<span class="font-bold text-blue-600 dark:text-blue-400">东北大学优秀志愿者</span>称号。
                         </p>
                         
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -1525,7 +1548,7 @@
                     </div>
                     <div>
                         <h3 class="text-lg font-bold text-purple-700 dark:text-purple-300">中国大学生程序竞赛</h3>
-                        <p class="text-sm text-purple-600 dark:text-purple-400">志愿者</p>
+                        <!-- <p class="text-sm text-purple-600 dark:text-purple-400">志愿者负责人</p> -->
                     </div>
                 </div>
                 <h4 class="font-bold mb-2 flex items-center text-purple-700 dark:text-purple-300">
@@ -1545,7 +1568,7 @@
                     </div>
                     <div>
                         <h3 class="text-lg font-bold text-purple-700 dark:text-purple-300">河北省大学生程序设计竞赛</h3>
-                        <p class="text-sm text-purple-600 dark:text-purple-400">志愿者</p>
+                        <!-- <p class="text-sm text-purple-600 dark:text-purple-400">志愿者负责人</p> -->
                     </div>
                 </div>
                 <h4 class="font-bold mb-2 flex items-center text-purple-700 dark:text-purple-300">
@@ -1591,8 +1614,8 @@
                                 <h4 class="font-bold mb-2 flex items-center text-blue-700 dark:text-blue-600">
                                     <i class="fas fa-envelope mr-2"></i>邮箱
                                 </h4>
-                                <a href="mailto:202212133@stu.neu.edu.cn" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">
-                                    202212133@stu.neu.edu.cn
+                                <a href="mailto:ziyou_neu@163.com" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">
+                                    ziyou_neu@163.com
                                 </a>
                             </div>
                             
@@ -1950,13 +1973,20 @@
                 date: "2023年",
                 type: "奖学金类"
             },
-            // {
-            //     src: "resource/2022-2023学年第一学期校综合奖学金三等奖.jpg",
-            //     title: "校综合奖学金三等奖",
-            //     description: "2022-2023学年第一学期校综合奖学金三等奖",
-            //     date: "2022年",
-            //     type: "奖学金类"
-            // },
+            {
+                src: "resource/2023-2024学年第一学期校综合奖学金二等奖.jpg",
+                title: "校综合奖学金二等奖",
+                description: "2023-2024学年第一学期校综合奖学金二等奖",
+                date: "2024年",
+                type: "奖学金类"
+            },
+            {
+                src: "resource/2022-2023学年第一学期校综合奖学金三等奖.jpg",
+                title: "校综合奖学金三等奖",
+                description: "2022-2023学年第一学期校综合奖学金三等奖",
+                date: "2022年",
+                type: "奖学金类"
+            },
             // 竞赛奖项
             {
                 src: "resource/2024年中国大学生计算机博弈大赛苏拉卡尔塔项目冠军.png",
@@ -2030,34 +2060,34 @@
                 type: "荣誉称号"
             },
             // 其他
-            {
-                src: "resource/计工创协竞赛中心主任聘书.png",
-                title: "计工创协竞赛中心主任聘书",
-                description: "计算机与通信工程学院创新创业协会竞赛中心主任聘书",
-                date: "2023年",
-                type: "任职聘书"
-            },
-            {
-                src: "resource/秦皇岛马拉松志愿者.png",
-                title: "秦皇岛马拉松志愿者证书",
-                description: "2023年秦皇岛马拉松赛事志愿者证书",
-                date: "2023年",
-                type: "志愿者服务"
-            },
-            {
-                src: "resource/河北省大学生程序设计竞赛志愿者.jpg",
-                title: "河北省大学生程序设计竞赛志愿者",
-                description: "2023年河北省大学生程序设计竞赛志愿者证书",
-                date: "2023年",
-                type: "志愿者服务"
-            },
-            {
-                src: "resource/中国大学生程序竞赛志愿者.png",
-                title: "中国大学生程序竞赛志愿者",
-                description: "2024年中国大学生程序设计竞赛志愿者证书",
-                date: "2024年",
-                type: "志愿者服务"
-            }
+            // {
+            //     src: "resource/计工创协竞赛中心主任聘书.png",
+            //     title: "计工创协竞赛中心主任聘书",
+            //     description: "计算机与通信工程学院创新创业协会竞赛中心主任聘书",
+            //     date: "2023年",
+            //     type: "任职聘书"
+            // },
+            // {
+            //     src: "resource/秦皇岛马拉松志愿者.png",
+            //     title: "秦皇岛马拉松志愿者证书",
+            //     description: "2023年秦皇岛马拉松赛事志愿者证书",
+            //     date: "2023年",
+            //     type: "志愿者服务"
+            // },
+            // {
+            //     src: "resource/河北省大学生程序设计竞赛志愿者.jpg",
+            //     title: "河北省大学生程序设计竞赛志愿者",
+            //     description: "2023年河北省大学生程序设计竞赛志愿者证书",
+            //     date: "2023年",
+            //     type: "志愿者服务"
+            // },
+            // {
+            //     src: "resource/中国大学生程序竞赛志愿者.png",
+            //     title: "中国大学生程序竞赛志愿者",
+            //     description: "2024年中国大学生程序设计竞赛志愿者证书",
+            //     date: "2024年",
+            //     type: "志愿者服务"
+            // }
         ];
         
         let currentCertificateIndex = 0; // 默认显示第一张证书
@@ -2527,6 +2557,27 @@
             
             // 移除此代码块，使用页面中已有的事件处理函数
         });
+    </script>
+
+    <!-- 在页面底部添加JavaScript代码，在theme-toggle按钮脚本之前 -->
+    <script>
+        // 滚动进度条功能
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight;
+            const winHeight = window.innerHeight;
+            const scrollPercent = scrollTop / (docHeight - winHeight);
+            const progressBar = document.getElementById('scroll-progress-bar');
+            
+            if (progressBar) {
+                progressBar.style.width = scrollPercent * 100 + '%';
+            }
+        });
+    </script>
+
+    <!-- 主题切换功能 -->
+    <script>
+        // ... existing code ...
     </script>
 </body>
 </html>
