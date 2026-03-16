@@ -7,7 +7,12 @@
     <title>王子游 - 个人主页</title>
     <!-- 引入字体和CSS -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.staticfile.org/tailwindcss/2.2.19/tailwind.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
     <!-- Mermaid JS -->
@@ -26,12 +31,6 @@
             --light-card: #FFFFFF;
             --light-text: #1F2937;
             --transition-speed: 0.3s;
-        }
-
-        /* 基础样式 */
-        body {
-            font-family: 'Noto Sans SC', Tahoma, Arial, Roboto, "Droid Sans", "Helvetica Neue", "Droid Sans Fallback", "Heiti SC", "Hiragino Sans GB", Simsun, sans-self;
-            transition: background-color var(--transition-speed), color var(--transition-speed);
         }
 
         h1,
@@ -499,7 +498,7 @@
             line-height: 1.6;
             min-height: 100vh;
             background-color: #f9fafb;
-            transition: background-color 0.3s ease;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
         }
 
         /* 下面添加证书展示盒相关样式 */
@@ -571,16 +570,6 @@
                 height: 280px;
             }
         }
-
-        /* Amber color utilities - Tailwind 2.x CDN compatibility */
-        .text-amber-400 { color: #fbbf24; }
-        .text-amber-500 { color: #f59e0b; }
-        .text-amber-600 { color: #d97706; }
-        .text-amber-700 { color: #b45309; }
-        .text-amber-800 { color: #92400e; }
-        .bg-amber-50 { background-color: #fffbeb; }
-        .bg-amber-100 { background-color: #fef3c7; }
-        .border-amber-100 { border-color: #fef3c7; }
 
         /* Academic project outcome accent */
         .project-outcome {
@@ -818,7 +807,7 @@
                                     <div class="text-base text-purple-600 dark:text-purple-400">专业排名：</div>
                                     <div
                                         class="ml-2 px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 text-sm font-medium rounded-full">
-                                        18/190</div>
+                                        19/192</div>
                                 </div>
                                 <div class="w-full bg-purple-100 dark:bg-purple-900/30 rounded-full h-2 mt-4">
                                     <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full"
