@@ -15,10 +15,10 @@
     <style>
         /* 基础样式设置 */
         :root {
-            --primary-color: #3B82F6;
-            --primary-dark: #2563EB;
-            --secondary-color: #10B981;
-            --accent-color: #8B5CF6;
+            --primary-color: #1e40af;
+            --primary-dark: #1e3a8a;
+            --secondary-color: #059669;
+            --accent-color: #4f46e5;
             --dark-bg: #1F2937;
             --dark-card: #374151;
             --dark-text: #F9FAFB;
@@ -87,7 +87,7 @@
 
         /* 渐变背景 */
         .gradient-bg {
-            background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+            background: linear-gradient(135deg, #1e40af 0%, #4f46e5 100%);
         }
 
         /* 导航栏激活项 */
@@ -112,7 +112,7 @@
             font-size: 0.75rem;
             font-weight: 600;
             color: white;
-            background: linear-gradient(135deg, #F59E0B, #D97706);
+            background: linear-gradient(135deg, #1e40af, #3730a3);
             border-radius: 9999px;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
@@ -571,6 +571,28 @@
                 height: 280px;
             }
         }
+
+        /* Amber color utilities - Tailwind 2.x CDN compatibility */
+        .text-amber-400 { color: #fbbf24; }
+        .text-amber-500 { color: #f59e0b; }
+        .text-amber-600 { color: #d97706; }
+        .text-amber-700 { color: #b45309; }
+        .text-amber-800 { color: #92400e; }
+        .bg-amber-50 { background-color: #fffbeb; }
+        .bg-amber-100 { background-color: #fef3c7; }
+        .border-amber-100 { border-color: #fef3c7; }
+
+        /* Academic project outcome accent */
+        .project-outcome {
+            border-left: 4px solid #1e40af;
+            background-color: #f8fafc;
+            border-radius: 0 0.75rem 0.75rem 0;
+            padding: 1.25rem;
+        }
+        .dark .project-outcome {
+            background-color: #1e293b;
+            border-left-color: #3b82f6;
+        }
     </style>
 </head>
 
@@ -601,19 +623,19 @@
                         </div>
                     </div> -->
                     <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                        <a href="mailto:ziyou_neu@163.com"
+                        <!-- <a href="mailto:ziyou_neu@163.com"
                             class="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-300">
                             <span class="w-8 h-8 rounded-full bg-blue-500/30 flex items-center justify-center mr-3">
                                 <i class="fas fa-envelope text-blue-200"></i>
                             </span>
                             <span class="text-blue-100">ziyou_neu@163.com</span>
-                        </a>
-                        <a href="tel:13975555891"
+                        </a> -->
+                        <a href="mailto:202212133@stu.neuq.edu.cn"
                             class="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-300">
                             <span class="w-8 h-8 rounded-full bg-blue-500/30 flex items-center justify-center mr-3">
-                                <i class="fas fa-phone text-blue-200"></i>
+                                <i class="fas fa-envelope text-blue-200"></i>
                             </span>
-                            <span class="text-blue-100">13975555891</span>
+                            <span class="text-blue-100">202212133@stu.neuq.edu.cn</span>
                         </a>
                     </div>
                 </div>
@@ -651,8 +673,6 @@
                     class="nav-link text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">学生工作</a>
                 <a href="#volunteer"
                     class="nav-link text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">志愿服务</a>
-                <a href="#contact"
-                    class="nav-link text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">联系我</a>
             </div>
 
             <!-- 移动端菜单按钮 -->
@@ -677,8 +697,6 @@
                 class="block py-2 text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">学生工作</a>
             <a href="#volunteer"
                 class="block py-2 text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">志愿服务</a>
-            <a href="#contact"
-                class="block py-2 text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">联系我</a>
         </div>
     </nav>
 
@@ -687,7 +705,7 @@
         <section id="about" class="mb-20 scroll-reveal">
             <div class="flex flex-col md:flex-row">
                 <div class="md:w-1/3 mb-6 md:mb-0">
-                    <h2 class="text-3xl font-bold mb-4 inline-block pb-2 border-b-4 border-blue-500">关于我</h2>
+                    <h2 class="text-3xl font-bold mb-4 inline-block pb-2 border-b-4 border-blue-800">关于我</h2>
                 </div>
                 <div class="md:w-2/3">
                     <div
@@ -697,7 +715,7 @@
                                 class="p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/10 dark:to-indigo-900/10 rounded-xl shadow-inner">
                                 <p
                                     class="text-lg first-letter-drop mb-0 leading-relaxed text-gray-700 dark:text-gray-300">
-                                    作为<strong>东北大学</strong>计算机与通信工程学院<strong>计算机科学与技术</strong>专业的本科生，我对<strong>人工智能</strong>与<strong>博弈算法</strong>领域怀有浓厚兴趣，尤其专注研究<strong>深度强化学习</strong>在对抗博弈中的应用。曾在<strong>清华大学智能物联网实验室</strong>的<strong>具身智能与大模型研究组</strong>实习三个月，期间积极参与并推进了多项前沿科研工作。
+                                    作为<strong>东北大学</strong>计算机与通信工程学院<strong>计算机科学与技术</strong>专业的本科生，我对<strong>人工智能</strong>与<strong>博弈算法</strong>领域怀有浓厚兴趣，尤其专注研究<strong>深度强化学习</strong>在具身空间推理与对抗博弈中的应用。曾在<strong>清华大学智能物联网实验室</strong>的<strong>具身智能与大模型研究组</strong>实习六个月，期间积极参与并推进了多项前沿科研工作。
                                 </p>
                             </div>
 
@@ -710,8 +728,8 @@
                                     </h3>
                                     <p class="text-gray-700 dark:text-gray-300">
                                         在学习过程中，我积极参与各类科研项目和竞赛活动，曾获得2024年中国大学生计算机博弈大赛苏拉卡尔塔棋项目<strong
-                                            class="text-amber-600 dark:text-red-400">全国冠军</strong>和五子棋项目<strong
-                                            class="text-amber-600 dark:text-red-400">全国亚军</strong>。
+                                            class="text-blue-700 dark:text-blue-300">全国冠军</strong>和五子棋项目<strong
+                                            class="text-blue-700 dark:text-blue-300">全国亚军</strong>。
                                     </p>
                                 </div>
 
@@ -733,8 +751,7 @@
                                     <i class="fas fa-flask text-green-500 mr-2"></i>科研经历
                                 </h3>
                                 <p class="text-gray-700 dark:text-gray-300">
-                                    在<strong>清华大学智能物联网实验室</strong>实习期间，参与了<strong>ACL</strong>和<strong>ICCV</strong>会议(<strong>CCF
-                                        A类会议</strong>)论文研究，分别研究<strong>视频-语言模型</strong>在城市环境中的<strong>具身认知能力评估</strong>和<strong>点云</strong>对<strong>大语言模型空间推理能力</strong>的影响。在<strong>东北大学计算机博弈智能实验室</strong>，作为<strong>第二作者（学生一作）</strong>发表<strong>北大中文核心期刊论文</strong>，提出引入<strong>威胁空间搜索</strong>的五子棋<strong>深度强化学习</strong>方法。
+                                        累计发表学术论文<strong>6篇</strong>：其中<strong>CCF-A类会议论文4篇</strong>，SCI期刊论文1篇，中文核心期刊论文1篇。在<strong>清华大学智能物联网实验室</strong>实习期间，以<strong>共同第一作者</strong>发表<strong>ACM MM</strong>论文，提出<strong>Embodied-R</strong>具身空间推理框架；参与<strong>AirScape</strong>空中世界模型研究（<strong>ACM MM Oral</strong>）；参与<strong>ACL</strong>会议论文研究。在<strong>东北大学计算机博弈智能实验室</strong>，作为<strong>学生一作</strong>发表<strong>北大中文核心期刊论文</strong>。
                                 </p>
                             </div>
 
@@ -749,6 +766,8 @@
                                     class="px-3 py-1 bg-yellow-100 text-yellow-800 dark:bg-yellow-900/40 dark:text-yellow-200 rounded-full text-sm font-medium">大语言模型</span>
                                 <span
                                     class="px-3 py-1 bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-200 rounded-full text-sm font-medium">计算机博弈</span>
+                                <span
+                                    class="px-3 py-1 bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-200 rounded-full text-sm font-medium">世界模型</span>
                             </div>
                         </div>
                     </div>
@@ -760,7 +779,7 @@
         <section id="education" class="mb-20 scroll-reveal">
             <div class="flex flex-col md:flex-row">
                 <div class="md:w-1/3 mb-6 md:mb-0">
-                    <h2 class="text-3xl font-bold mb-4 inline-block pb-2 border-b-4 border-blue-500">教育背景</h2>
+                    <h2 class="text-3xl font-bold mb-4 inline-block pb-2 border-b-4 border-blue-800">教育背景</h2>
                 </div>
                 <div class="md:w-2/3">
                     <div
@@ -788,7 +807,7 @@
                             <div
                                 class="p-6 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl hover:shadow-md transition-shadow border border-purple-100 dark:border-purple-900/30 group">
                                 <h4 class="font-bold mb-4 flex items-center text-purple-700 dark:text-purple-300">
-                                    <i class="fas fa-chart-line mr-2 group-hover:animate-bounce"></i>GPA
+                                    <i class="fas fa-chart-line text-purple-500 mr-2 group-hover:animate-bounce"></i>GPA
                                 </h4>
                                 <div class="flex items-baseline">
                                     <p
@@ -810,7 +829,7 @@
                             <div
                                 class="p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl hover:shadow-md transition-shadow border border-blue-100 dark:border-blue-900/30 group">
                                 <h4 class="font-bold mb-4 flex items-center text-blue-700 dark:text-blue-300">
-                                    <i class="fas fa-language mr-2 group-hover:animate-bounce"></i>英语水平
+                                    <i class="fas fa-language text-blue-500 mr-2 group-hover:animate-bounce"></i>英语水平
                                 </h4>
                                 <div class="space-y-4">
                                     <div class="flex justify-between items-center">
@@ -903,11 +922,254 @@
         <section id="research" class="mb-20 scroll-reveal">
             <div class="flex flex-col md:flex-row">
                 <div class="md:w-1/3 mb-6 md:mb-0">
-                    <h2 class="text-3xl font-bold mb-4 inline-block pb-2 border-b-4 border-blue-500">科研经历</h2>
+                    <h2 class="text-3xl font-bold mb-4 inline-block pb-2 border-b-4 border-blue-800">科研经历</h2>
                 </div>
                 <div class="md:w-2/3">
                     <div class="timeline">
-                        <!-- 项目一：ACL 2025 Conference -->
+                        <!-- 项目：Embodied-R (ACM MM 2025) -->
+                        <div class="timeline-item">
+                            <div class="card p-6 mb-4">
+                                <div class="flex justify-between items-start mb-4">
+                                    <h3 class="text-xl font-bold flex items-center">
+                                        <i class="fas fa-file-alt text-blue-600 dark:text-blue-400 mr-2"></i>ACM MM 2025
+                                        (CCF-A)
+                                    </h3>
+                                    <span
+                                        class="text-sm bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-200 px-3 py-1 rounded-full">2025.02-2025.05</span>
+                                </div>
+
+                                <!-- 论文名称 -->
+                                <div class="mb-5">
+                                    <h4 class="font-bold mb-3 flex items-center text-blue-700 dark:text-blue-300">
+                                        <i class="fas fa-bookmark text-blue-600 dark:text-blue-400 mr-2"></i>论文名称：<span
+                                            class="text-blue-600 dark:text-blue-400">Embodied-R: Collaborative Framework
+                                            for Activating Embodied Spatial Reasoning in Foundation Models via
+                                            Reinforcement Learning</span>
+                                    </h4>
+                                    <div class="mb-2 flex flex-wrap gap-2">
+                                        <span
+                                            class="inline-block px-3 py-1 bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200 rounded-full text-sm font-medium">共同第一作者</span>
+                                        <span
+                                            class="inline-block px-3 py-1 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 rounded-full text-sm font-medium">Accepted</span>
+                                    </div>
+                                </div>
+
+                                <!-- 论文概述 -->
+                                <div class="mb-6 p-5 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <h4 class="text-blue-600 dark:text-blue-300 font-bold mb-4 flex items-center">
+                                        <i class="fas fa-info-circle text-blue-500 mr-2"></i>论文概述
+                                    </h4>
+                                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                                    <li>提出<strong>Embodied-R</strong>协同框架，将<strong>感知与推理解耦</strong>，利用大规模<strong>视觉-语言模型(VLM)</strong>处理感知，训练小规模<strong>语言模型(LM)</strong>进行推理，实现"慢思考"能力。
+                                    </li>
+                                    <li>首次将<strong>强化学习(RL)</strong>引入具身空间推理领域，创新性地引入<strong>逻辑一致性奖励机制</strong>，提升推理过程与答案的一致性。
+                                    </li>
+                                    <li>仅需<strong>5k具身视频样本</strong>训练，3B参数的小模型即可在具身空间推理任务上达到与<strong>OpenAI-o1</strong>、<strong>Gemini-2.5-Pro</strong>等最先进模型<strong>相媲美</strong>的表现。
+                                    </li>
+                                    <li>模型展现出<strong>系统分析</strong>和<strong>上下文整合</strong>等<strong>涌现思维模式</strong>，并具备良好的<strong>分布外泛化能力</strong>。
+                                    </li>
+                                    </p>
+                                </div>
+
+                                <!-- 资源链接区域 -->
+                                <div class="mb-8 grid grid-cols-2 md:grid-cols-3 gap-3">
+                                    <a href="https://arxiv.org/abs/2504.12680" target="_blank"
+                                        class="flex items-center px-4 py-2 bg-red-50 hover:bg-red-100 dark:bg-red-900/20 dark:hover:bg-red-900/30 rounded-lg transition-colors">
+                                        <i class="fas fa-file-pdf text-red-500 mr-2"></i>
+                                        <span class="text-red-700 dark:text-red-300">论文链接</span>
+                                    </a>
+                                    <a href="https://embodiedcity.github.io/Embodied-R/" target="_blank"
+                                        class="flex items-center px-4 py-2 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/20 dark:hover:bg-blue-900/30 rounded-lg transition-colors">
+                                        <i class="fas fa-globe text-blue-500 mr-2"></i>
+                                        <span class="text-blue-700 dark:text-blue-300">项目主页</span>
+                                    </a>
+                                    <a href="https://github.com/EmbodiedCity/Embodied-R.code" target="_blank"
+                                        class="flex items-center px-4 py-2 bg-purple-50 hover:bg-purple-100 dark:bg-purple-900/20 dark:hover:bg-purple-900/30 rounded-lg transition-colors">
+                                        <i class="fab fa-github text-purple-500 mr-2"></i>
+                                        <span class="text-purple-700 dark:text-purple-300">代码链接</span>
+                                    </a>
+                                </div>
+
+                                <!-- 图片展示区域 -->
+                                <div class="mb-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div
+                                        class="p-5 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl hover:shadow-md transition-all duration-300 border border-blue-100 dark:border-blue-900/30">
+                                        <h5
+                                            class="text-blue-600 dark:text-blue-300 font-bold mb-3 flex items-center text-lg">
+                                            <i class="fas fa-project-diagram text-blue-500 mr-2"></i>框架设计
+                                        </h5>
+                                        <div
+                                            class="rounded-lg overflow-hidden flex-none h-64 flex items-center justify-center bg-white/80 dark:bg-gray-800/50 shadow-inner">
+                                            <img src="resource/embodied-r_framework.png" alt="Embodied-R框架图"
+                                                class="max-w-full max-h-full object-contain transform hover:scale-105 transition-transform duration-300">
+                                        </div>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400 text-center mt-3">
+                                            感知-推理解耦协同框架</p>
+                                    </div>
+                                    <div
+                                        class="p-5 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl hover:shadow-md transition-all duration-300 border border-blue-100 dark:border-blue-900/30">
+                                        <h5
+                                            class="text-blue-600 dark:text-blue-300 font-bold mb-3 flex items-center text-lg">
+                                            <i class="fas fa-chart-bar text-blue-500 mr-2"></i>实验结果
+                                        </h5>
+                                        <div
+                                            class="rounded-lg overflow-hidden flex-none h-64 flex items-center justify-center bg-white/80 dark:bg-gray-800/50 shadow-inner">
+                                            <img src="resource/embodied-r_rader.png" alt="Embodied-R实验结果"
+                                                class="max-w-full max-h-full object-contain transform hover:scale-105 transition-transform duration-300">
+                                        </div>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400 text-center mt-3">
+                                            与SOTA模型的性能对比</p>
+                                    </div>
+                                </div>
+
+                                <!-- 负责内容区域 -->
+                                <div class="mb-6 p-5 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <h5 class="font-bold mb-3 flex items-center text-gray-700 dark:text-gray-300">
+                                        <i class="fas fa-tasks text-blue-500 mr-2"></i>负责内容
+                                    </h5>
+                                    <p class="text-gray-700 dark:text-gray-300 mb-0">
+                                        评估并测试多种开源框架；部署多模态大模型，并进行<b>视频与文本的GRPO微调训练</b>；设计并实现<b>核心奖励函数</b>；开发<b>论文展示网页</b>；完成<b>可视化图表的绘制</b>。
+                                    </p>
+                                </div>
+
+                                <!-- 项目成果 -->
+                                <div class="project-outcome">
+                                    <h5 class="font-bold mb-3 flex items-center text-gray-800 dark:text-gray-200">
+                                        <i class="fas fa-trophy text-amber-500 mr-2"></i>项目成果
+                                    </h5>
+                                    <p class="text-gray-700 dark:text-gray-300">
+                                        论文已被<strong class="text-blue-700 dark:text-blue-300">ACM MM 2025</strong>录用；论文累计被引<strong
+                                            class="text-blue-700 dark:text-blue-300">35次</strong>，相关报道累计转发量<strong
+                                            class="text-blue-700 dark:text-blue-300">1800+</strong>。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 项目：AirScape (ACM MM 2025 BNI Track) -->
+                        <div class="timeline-item">
+                            <div class="card p-6 mb-4">
+                                <div class="flex justify-between items-start mb-4">
+                                    <h3 class="text-xl font-bold flex items-center">
+                                        <i class="fas fa-file-alt text-blue-600 dark:text-blue-400 mr-2"></i>ACM MM 2025
+                                        BNI Track (CCF-A, Oral)
+                                    </h3>
+                                    <span
+                                        class="text-sm bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-200 px-3 py-1 rounded-full">2025.04-2025.07</span>
+                                </div>
+
+                                <!-- 论文名称 -->
+                                <div class="mb-5">
+                                    <h4 class="font-bold mb-3 flex items-center text-blue-700 dark:text-blue-300">
+                                        <i class="fas fa-bookmark text-blue-600 dark:text-blue-400 mr-2"></i>论文名称：<span
+                                            class="text-blue-600 dark:text-blue-400">AirScape: An Aerial Generative World
+                                            Model with Motion Controllability</span>
+                                    </h4>
+                                    <div class="mb-2 flex flex-wrap gap-2">
+                                        <span
+                                            class="inline-block px-3 py-1 bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200 rounded-full text-sm font-medium">共同第一作者</span>
+                                        <span
+                                            class="inline-block px-3 py-1 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 rounded-full text-sm font-medium">Oral</span>
+                                    </div>
+                                </div>
+
+                                <!-- 论文概述 -->
+                                <div class="mb-6 p-5 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <h4 class="text-blue-600 dark:text-blue-300 font-bold mb-4 flex items-center">
+                                        <i class="fas fa-info-circle text-blue-500 mr-2"></i>论文概述
+                                    </h4>
+                                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                                    <li>提出<strong>AirScape</strong>，首个专为<strong>六自由度(6DoF)空中智能体</strong>设计的<strong>生成式世界模型</strong>，能基于当前视觉输入和文本运动意图预测未来观察序列。
+                                    </li>
+                                    <li>构建包含<strong>1.1万个视频-意图对</strong>的空中数据集，涵盖多种无人机动作、场景和光照条件，人工标注时长超过<strong>1000小时</strong>。
+                                    </li>
+                                    <li>提出<strong>两阶段训练方法</strong>：先微调视频生成基础模型适应文本和视频分布，再通过<strong>拒绝采样</strong>和<strong>自博弈训练</strong>进一步优化违反空间物理约束的生成结果。
+                                    </li>
+                                    <li>在3D空间想象能力上<strong>显著优于</strong>现有基础模型，运动对齐指标<strong>提升超过50%</strong>。
+                                    </li>
+                                    </p>
+                                </div>
+
+                                <!-- 资源链接区域 -->
+                                <div class="mb-8 grid grid-cols-2 md:grid-cols-4 gap-3">
+                                    <a href="https://arxiv.org/abs/2507.08885" target="_blank"
+                                        class="flex items-center px-4 py-2 bg-red-50 hover:bg-red-100 dark:bg-red-900/20 dark:hover:bg-red-900/30 rounded-lg transition-colors">
+                                        <i class="fas fa-file-pdf text-red-500 mr-2"></i>
+                                        <span class="text-red-700 dark:text-red-300">arXiv</span>
+                                    </a>
+                                    <a href="https://embodiedcity.github.io/AirScape/" target="_blank"
+                                        class="flex items-center px-4 py-2 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/20 dark:hover:bg-blue-900/30 rounded-lg transition-colors">
+                                        <i class="fas fa-globe text-blue-500 mr-2"></i>
+                                        <span class="text-blue-700 dark:text-blue-300">项目主页</span>
+                                    </a>
+                                    <a href="https://github.com/EmbodiedCity/AirScape.code" target="_blank"
+                                        class="flex items-center px-4 py-2 bg-purple-50 hover:bg-purple-100 dark:bg-purple-900/20 dark:hover:bg-purple-900/30 rounded-lg transition-colors">
+                                        <i class="fab fa-github text-purple-500 mr-2"></i>
+                                        <span class="text-purple-700 dark:text-purple-300">代码链接</span>
+                                    </a>
+                                    <a href="https://huggingface.co/datasets/EmbodiedCity/AirScape-Dataset" target="_blank"
+                                        class="flex items-center px-4 py-2 bg-green-50 hover:bg-green-100 dark:bg-green-900/20 dark:hover:bg-green-900/30 rounded-lg transition-colors">
+                                        <i class="fas fa-database text-green-500 mr-2"></i>
+                                        <span class="text-green-700 dark:text-green-300">数据集</span>
+                                    </a>
+                                </div>
+
+                                <!-- 图片展示区域 -->
+                                <div class="mb-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div
+                                        class="p-5 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl hover:shadow-md transition-all duration-300 border border-blue-100 dark:border-blue-900/30">
+                                        <h5
+                                            class="text-blue-600 dark:text-blue-300 font-bold mb-3 flex items-center text-lg">
+                                            <i class="fas fa-project-diagram text-blue-500 mr-2"></i>方法框架
+                                        </h5>
+                                        <div
+                                            class="rounded-lg overflow-hidden flex-none h-64 flex items-center justify-center bg-white/80 dark:bg-gray-800/50 shadow-inner">
+                                            <img src="resource/airscape_method.png" alt="AirScape方法框架"
+                                                class="max-w-full max-h-full object-contain transform hover:scale-105 transition-transform duration-300">
+                                        </div>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400 text-center mt-3">
+                                            两阶段训练方法框架</p>
+                                    </div>
+                                    <div
+                                        class="p-5 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl hover:shadow-md transition-all duration-300 border border-blue-100 dark:border-blue-900/30">
+                                        <h5
+                                            class="text-blue-600 dark:text-blue-300 font-bold mb-3 flex items-center text-lg">
+                                            <i class="fas fa-helicopter text-blue-500 mr-2"></i>场景示例
+                                        </h5>
+                                        <div
+                                            class="rounded-lg overflow-hidden flex-none h-64 flex items-center justify-center bg-white/80 dark:bg-gray-800/50 shadow-inner">
+                                            <img src="resource/airscape_intro.png" alt="AirScape场景示例"
+                                                class="max-w-full max-h-full object-contain transform hover:scale-105 transition-transform duration-300">
+                                        </div>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400 text-center mt-3">
+                                            多场景多动作的空中视觉预测</p>
+                                    </div>
+                                </div>
+
+                                <!-- 负责内容区域 -->
+                                <div class="mb-6 p-5 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <h5 class="font-bold mb-3 flex items-center text-gray-700 dark:text-gray-300">
+                                        <i class="fas fa-tasks text-blue-500 mr-2"></i>负责内容
+                                    </h5>
+                                    <p class="text-gray-700 dark:text-gray-300 mb-0">
+                                        参与<b>两阶段训练方法设计</b>；进行<b>模型微调训练和推理测试</b>；参与<b>论文图表绘制</b>和<b>论文展示网页开发</b>工作。
+                                    </p>
+                                </div>
+
+                                <!-- 项目成果 -->
+                                <div class="project-outcome">
+                                    <h5 class="font-bold mb-3 flex items-center text-gray-800 dark:text-gray-200">
+                                        <i class="fas fa-trophy text-amber-500 mr-2"></i>项目成果
+                                    </h5>
+                                    <p class="text-gray-700 dark:text-gray-300">
+                                        论文已被<strong class="text-blue-700 dark:text-blue-300">ACM MM 2025 BNI Track</strong>录用，并受邀进行<strong
+                                            class="text-blue-700 dark:text-blue-300">口头汇报(Oral)</strong>。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 项目：ACL 2025 Conference -->
                         <div class="timeline-item">
                             <div class="card p-6 mb-4">
                                 <div class="flex justify-between items-start mb-4">
@@ -923,8 +1185,7 @@
                                 <div class="mb-5">
                                     <h4 class="font-bold mb-3 flex items-center text-blue-700 dark:text-blue-300">
                                         <i class="fas fa-bookmark text-blue-600 dark:text-blue-400 mr-2"></i>论文名称：<span
-                                            class="text-blue-600 dark:text-blue-400">Benchmarking Video-Language Models
-                                            for Embodied Motion Cognition in Urban Open-Ended Spaces</span>
+                                            class="text-blue-600 dark:text-blue-400">UrbanVideo-Bench: Benchmarking Vision-Language Models on Embodied Intelligence with Video Data in Urban Spaces</span>
                                     </h4>
                                     <div class="mb-2">
                                         <span
@@ -1018,6 +1279,19 @@
                                         参与<b>基准测试集(benchmark)的设计与构建</b>，负责<b>数据集的优化与改进</b>，同时承担部分<b>图表绘制</b>与<b>论文撰写</b>等工作。
                                     </p>
                                 </div>
+
+                                <!-- 项目成果 -->
+                                <div class="project-outcome">
+                                    <h5 class="font-bold mb-3 flex items-center text-gray-800 dark:text-gray-200">
+                                        <i class="fas fa-trophy text-amber-500 mr-2"></i>项目成果
+                                    </h5>
+                                    <p class="text-gray-700 dark:text-gray-300">
+                                        论文已被<strong class="text-blue-700 dark:text-blue-300">ACL 2025 Main</strong>录用，并受邀进行<strong
+                                            class="text-blue-700 dark:text-blue-300">口头汇报(Oral)</strong>；论文累计被引<strong
+                                            class="text-blue-700 dark:text-blue-300">18次</strong>；数据集月度最高下载量达<strong
+                                            class="text-blue-700 dark:text-blue-300">4600+</strong>。
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
@@ -1071,7 +1345,7 @@
                                 <div
                                     class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg hover:shadow-md transition-shadow mb-8">
                                     <h4 class="font-bold mb-3 flex items-center text-blue-700 dark:text-blue-300">
-                                        <i class="fas fa-file mr-2"></i>论文名称：<a href="paper/引入威胁空间搜索的五子棋深度强化学习方法.pdf"
+                                        <i class="fas fa-file text-blue-500 mr-2"></i>论文名称：<a href="paper/引入威胁空间搜索的五子棋深度强化学习方法.pdf"
                                             class="text-blue-600 dark:text-blue-400 hover:underline"
                                             target="_blank">《引入威胁空间搜索的五子棋深度强化学习方法》</a>
                                     </h4>
@@ -1134,7 +1408,7 @@
                                             <div class="flex-grow flex flex-col">
                                                 <h4
                                                     class="font-bold mb-2 flex items-center text-purple-700 dark:text-purple-300">
-                                                    <i class="fas fa-chart-line mr-2"></i>损失函数值减少
+                                                    <i class="fas fa-chart-line text-purple-500 mr-2"></i>损失函数值减少
                                                 </h4>
                                                 <div class="flex items-baseline">
                                                     <p
@@ -1160,7 +1434,7 @@
                                             <div class="flex-grow flex flex-col">
                                                 <h4
                                                     class="font-bold mb-2 flex items-center text-blue-700 dark:text-blue-300">
-                                                    <i class="fas fa-chart-bar mr-2"></i>平均分支因子降幅
+                                                    <i class="fas fa-chart-bar text-blue-500 mr-2"></i>平均分支因子降幅
                                                 </h4>
                                                 <div class="flex items-baseline">
                                                     <p
@@ -1186,7 +1460,7 @@
                                             <div class="flex-grow flex flex-col">
                                                 <h4
                                                     class="font-bold mb-2 flex items-center text-indigo-700 dark:text-indigo-300">
-                                                    <i class="fas fa-trophy mr-2"></i>TrueSkill评分提升
+                                                    <i class="fas fa-trophy text-indigo-500 mr-2"></i>TrueSkill评分提升
                                                 </h4>
                                                 <div class="flex items-baseline">
                                                     <p
@@ -1202,22 +1476,13 @@
                                         </div>
                                     </div>
 
-                                    <!-- 核心研究发现 - 增强版 -->
-                                    <div
-                                        class="mt-8 p-6 bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-900/20 dark:to-blue-900/20 rounded-xl shadow-inner border border-indigo-100 dark:border-indigo-800/30">
-                                        <h5
-                                            class="font-bold mb-4 flex items-center text-indigo-800 dark:text-indigo-300">
-                                            <i class="fas fa-lightbulb mr-2 text-amber-500 animate-pulse"></i>核心研究发现
+                                    <!-- 项目成果 -->
+                                    <div class="mt-8 project-outcome">
+                                        <h5 class="font-bold mb-3 flex items-center text-gray-800 dark:text-gray-200">
+                                            <i class="fas fa-trophy text-amber-500 mr-2"></i>项目成果
                                         </h5>
                                         <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                                            在个人笔记本上，仅需<span
-                                                class="font-semibold text-indigo-700 dark:text-indigo-300 px-1 bg-indigo-100 dark:bg-indigo-900/30 rounded">200次MCTS模拟</span>的小规模计算，
-                                            进行<span
-                                                class="font-semibold text-indigo-700 dark:text-indigo-300 px-1 bg-indigo-100 dark:bg-indigo-900/30 rounded">100局自博弈训练</span>即可达到
-                                            <span
-                                                class="font-semibold text-amber-600 dark:text-amber-400 px-1 bg-amber-100 dark:bg-amber-900/30 rounded">中国大学生计算机博弈大赛一等奖</span>的水平。
-                                            相比传统方法，我们的算法在训练效率上实现了<span
-                                                class="font-semibold text-indigo-700 dark:text-indigo-300 px-1 bg-indigo-100 dark:bg-indigo-900/30 rounded">数量级的提升</span>。
+                                            论文已被<strong class="text-blue-700 dark:text-blue-300">重庆理工大学学报</strong>（<strong class="text-blue-700 dark:text-blue-300">北大中文核心期刊</strong>）录用；应用该方法，仅用<strong class="text-blue-700 dark:text-blue-300">单GPU(3060Ti)</strong>自博弈训练<strong class="text-blue-700 dark:text-blue-300">7天</strong>，即取得博弈大赛<strong class="text-blue-700 dark:text-blue-300">全国亚军</strong>。
                                         </p>
                                     </div>
 
@@ -1238,14 +1503,14 @@
                                 <div
                                     class="mb-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg shadow-sm">
                                     <h4 class="font-bold mb-3 flex items-center text-indigo-700 dark:text-indigo-300">
-                                        <i class="fas fa-project-diagram mr-2"></i>项目名称：悟空五子棋 & 悟空苏拉卡尔塔棋
+                                        <i class="fas fa-project-diagram text-indigo-500 mr-2"></i>项目名称：悟空五子棋 & 悟空苏拉卡尔塔棋
                                     </h4>
                                     <div class="mb-4">
                                         <span
                                             class="inline-block px-3 py-1 bg-indigo-100 text-indigo-800 dark:bg-indigo-900/40 dark:text-indigo-200 rounded-full text-sm font-medium">核心成员</span>
                                     </div>
                                     <div class="mb-4">
-                                        <h5 class="font-bold mb-2 flex items-center">
+                                        <h5 class="font-bold mb-2 flex items-center text-blue-700 dark:text-blue-300">
                                             <i class="fas fa-info-circle text-blue-500 mr-2"></i>项目概述
                                         </h5>
                                         <p class="text-gray-700 dark:text-gray-300 mb-4 pl-6">
@@ -1255,8 +1520,8 @@
                                         </p>
                                     </div>
                                     <div class="mb-4">
-                                        <h5 class="font-bold mb-2 flex items-center">
-                                            <i class="fas fa-tasks text-green-500 mr-2"></i>负责内容
+                                        <h5 class="font-bold mb-2 flex items-center text-blue-700 dark:text-blue-300">
+                                            <i class="fas fa-tasks text-blue-500 mr-2"></i>负责内容
                                         </h5>
                                         <p class="text-gray-700 dark:text-gray-300 mb-4 pl-6">
                                             <strong>项目核心算法设计与实现</strong>，包括蒙特卡罗树搜索、威胁空间搜索等；<strong>游戏规则系统开发</strong>；<strong>交互界面设计与实现</strong>，确保良好的用户体验。
@@ -1266,8 +1531,8 @@
 
                                 <!-- 项目UI展示 -->
                                 <div class="mb-8">
-                                    <h5 class="font-bold mb-4 flex items-center text-blue-700 dark:text-white-300">
-                                        <i class="fas fa-desktop mr-2"></i>界面展示
+                                    <h5 class="font-bold mb-4 flex items-center text-blue-700 dark:text-blue-300">
+                                        <i class="fas fa-desktop text-blue-500 mr-2"></i>界面展示
                                     </h5>
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div
@@ -1278,7 +1543,7 @@
                                                     class="w-full h-full object-contain">
                                             </div>
                                             <h4 class="font-bold mb-1 text-center text-blue-700 dark:text-blue-300">
-                                                <i class="fas fa-chess-board mr-2"></i>悟空五子棋界面
+                                                <i class="fas fa-chess-board text-blue-500 mr-2"></i>悟空五子棋界面
                                             </h4>
                                         </div>
                                         <div
@@ -1289,29 +1554,28 @@
                                                     class="w-full h-full object-contain">
                                             </div>
                                             <h4 class="font-bold mb-1 text-center text-blue-700 dark:text-blue-300">
-                                                <i class="fas fa-chess mr-2"></i>悟空苏拉卡尔塔界面
+                                                <i class="fas fa-chess text-blue-500 mr-2"></i>悟空苏拉卡尔塔界面
                                             </h4>
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- 项目成果 -->
-                                <div
-                                    class="p-4 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to--800/20 rounded-lg shadow-sm">
-                                    <h5 class="font-bold mb-3 flex items-center text-amber-700 dark:text-black">
-                                        <i class="fas fa-trophy mr-2"></i>项目成果
+                                <div class="project-outcome">
+                                    <h5 class="font-bold mb-3 flex items-center text-gray-800 dark:text-gray-200">
+                                        <i class="fas fa-trophy text-amber-500 mr-2"></i>项目成果
                                     </h5>
                                     <p class="text-gray-700 dark:text-gray-300 pl-6">
                                         2024年中国大学生计算机博弈大赛五子棋项目<strong
-                                            class="text-amber-600 dark:text-red-400">全国亚军</strong>、
-                                        苏拉卡尔塔棋项目<strong class="text-amber-600 dark:text-amber-400">全国冠军</strong>。
+                                            class="text-blue-700 dark:text-blue-300">全国亚军</strong>、
+                                        苏拉卡尔塔棋项目<strong class="text-blue-700 dark:text-blue-300">全国冠军</strong>。
                                     </p>
                                 </div>
 
                                 <!-- 获奖证书展示 -->
                                 <div>
                                     <h5 class="font-bold mb-4 flex items-center text-blue-700 dark:text-blue-300">
-                                        <i class="fas fa-award mr-2"></i>获奖证书
+                                        <i class="fas fa-award text-blue-500 mr-2"></i>获奖证书
                                     </h5>
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div
@@ -1321,7 +1585,7 @@
                                                     class="w-full h-auto object-cover">
                                             </div>
                                             <h4 class="font-bold mb-1 text-center text-blue-700 dark:text-blue-300">
-                                                <i class="fas fa-medal mr-2"></i>计算机博弈大赛五子棋亚军
+                                                <i class="fas fa-medal text-blue-500 mr-2"></i>计算机博弈大赛五子棋亚军
                                             </h4>
                                         </div>
                                         <div
@@ -1331,7 +1595,7 @@
                                                     class="w-full h-auto object-cover">
                                             </div>
                                             <h4 class="font-bold mb-1 text-center text-blue-700 dark:text-blue-300">
-                                                <i class="fas fa-trophy mr-2"></i>计算机博弈大赛苏拉卡尔塔棋冠军
+                                                <i class="fas fa-trophy text-amber-500 mr-2"></i>计算机博弈大赛苏拉卡尔塔棋冠军
                                             </h4>
                                         </div>
                                     </div>
@@ -1349,7 +1613,7 @@
         <section id="awards" class="mb-20 scroll-reveal">
             <div class="flex flex-col md:flex-row">
                 <div class="md:w-1/3 mb-6 md:mb-0">
-                    <h2 class="text-3xl font-bold mb-4 inline-block pb-2 border-b-4 border-blue-500">获奖情况</h2>
+                    <h2 class="text-3xl font-bold mb-4 inline-block pb-2 border-b-4 border-blue-800">获奖情况</h2>
                 </div>
                 <div class="md:w-2/3">
                     <div class="card p-8">
@@ -1590,7 +1854,7 @@
                                         class="hidden md:block md:w-1/4 border-r border-blue-100 dark:border-blue-800/50 bg-blue-50/80 dark:bg-blue-900/40 p-4">
                                         <h4
                                             class="text-sm font-semibold mb-3 text-blue-700 dark:text-blue-400 flex items-center">
-                                            <i class="fas fa-images mr-2"></i>证书导航
+                                            <i class="fas fa-images text-blue-500 mr-2"></i>证书导航
                                         </h4>
                                         <div id="certificate-thumbnails"
                                             class="space-y-3 max-h-[300px] overflow-y-auto pr-2 certificate-thumbs-container">
@@ -1683,7 +1947,7 @@
         <section id="work" class="mb-20 scroll-reveal">
             <div class="flex flex-col md:flex-row">
                 <div class="md:w-1/3 mb-6 md:mb-0">
-                    <h2 class="text-3xl font-bold mb-4 inline-block pb-2 border-b-4 border-blue-500">学生工作</h2>
+                    <h2 class="text-3xl font-bold mb-4 inline-block pb-2 border-b-4 border-blue-800">学生工作</h2>
                 </div>
                 <div class="md:w-2/3">
                     <div class="timeline">
@@ -1699,7 +1963,7 @@
                                 <div
                                     class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow mb-8">
                                     <h4 class="font-bold mb-2 flex items-center text-purple-700 dark:text-purple-300">
-                                        <i class="fas fa-tasks mr-2"></i>主要职责与工作目标
+                                        <i class="fas fa-tasks text-purple-500 mr-2"></i>主要职责与工作目标
                                     </h4>
                                     <ul class="list-disc pl-5 space-y-2 text-purple-600 dark:text-purple-400">
                                         <li>组织班级科技创新活动</li>
@@ -1723,7 +1987,7 @@
                                 <div
                                     class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg hover:shadow-md transition-shadow">
                                     <h4 class="font-bold mb-2 flex items-center text-purple-700 dark:text-purple-300">
-                                        <i class="fas fa-tasks mr-2"></i>主要职责
+                                        <i class="fas fa-tasks text-purple-500 mr-2"></i>主要职责
                                     </h4>
                                     <ul class="list-disc pl-5 space-y-2 text-purple-600 dark:text-purple-400">
                                         <li>策划和组织校内创新创业活动，提升校园创新创业氛围</li>
@@ -1743,7 +2007,7 @@
         <section id="volunteer" class="mb-20 scroll-reveal">
             <div class="flex flex-col md:flex-row">
                 <div class="md:w-1/3 mb-6 md:mb-0">
-                    <h2 class="text-3xl font-bold mb-4 inline-block pb-2 border-b-4 border-blue-500">志愿服务</h2>
+                    <h2 class="text-3xl font-bold mb-4 inline-block pb-2 border-b-4 border-blue-800">志愿服务</h2>
                 </div>
                 <div class="md:w-2/3">
                     <div class="card p-8">
@@ -1773,7 +2037,7 @@
                                     </div>
                                 </div>
                                 <h4 class="font-bold mb-2 flex items-center text-purple-700 dark:text-purple-300">
-                                    <i class="fas fa-tasks mr-2"></i>主要职责
+                                    <i class="fas fa-tasks text-purple-500 mr-2"></i>主要职责
                                 </h4>
                                 <ul class="list-disc pl-5 space-y-2 text-purple-600 dark:text-purple-400">
                                     <li>赛前场地布置与设备调试</li>
@@ -1796,7 +2060,7 @@
                                     </div>
                                 </div>
                                 <h4 class="font-bold mb-2 flex items-center text-purple-700 dark:text-purple-300">
-                                    <i class="fas fa-tasks mr-2"></i>主要职责
+                                    <i class="fas fa-tasks text-purple-500 mr-2"></i>主要职责
                                 </h4>
                                 <ul class="list-disc pl-5 space-y-2 text-purple-600 dark:text-purple-400">
                                     <li>参与竞赛组织与管理</li>
@@ -1813,7 +2077,7 @@
                                     class="w-full h-auto object-cover mb-3 rounded">
                                 <h4
                                     class="font-bold mb-2 flex items-center justify-center text-blue-700 dark:text-blue-600">
-                                    <i class="fas fa-users mr-2"></i>中国大学生程序竞赛志愿者
+                                    <i class="fas fa-users text-blue-500 mr-2"></i>中国大学生程序竞赛志愿者
                                 </h4>
                             </div>
                             <div
@@ -1822,7 +2086,7 @@
                                     class="w-full h-auto object-cover mb-3 rounded">
                                 <h4
                                     class="font-bold mb-2 flex items-center justify-center text-blue-700 dark:text-blue-600">
-                                    <i class="fas fa-laptop-code mr-2"></i>河北省大学生程序设计竞赛志愿者
+                                    <i class="fas fa-laptop-code text-blue-500 mr-2"></i>河北省大学生程序设计竞赛志愿者
                                 </h4>
                             </div>
                         </div>
@@ -1830,124 +2094,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- 联系方式 -->
-        <section id="contact" class="mb-20 scroll-reveal">
-            <div class="flex flex-col md:flex-row">
-                <div class="md:w-1/3 mb-6 md:mb-0">
-                    <h2 class="text-3xl font-bold mb-4 inline-block pb-2 border-b-4 border-blue-500">联系我</h2>
-                </div>
-                <div class="md:w-2/3">
-                    <div class="card p-8">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div
-                                class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg hover:shadow-md transition-shadow">
-                                <h4 class="font-bold mb-2 flex items-center text-blue-700 dark:text-blue-600">
-                                    <i class="fas fa-envelope mr-2"></i>邮箱
-                                </h4>
-                                <a href="mailto:ziyou_neu@163.com"
-                                    class="text-sm text-blue-600 dark:text-blue-400 hover:underline">
-                                    ziyou_neu@163.com
-                                </a>
-                            </div>
-
-                            <div
-                                class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg hover:shadow-md transition-shadow">
-                                <h4 class="font-bold mb-2 flex items-center text-blue-700 dark:text-blue-600">
-                                    <i class="fas fa-phone mr-2"></i>电话
-                                </h4>
-                                <a href="tel:13975555891"
-                                    class="text-sm text-blue-600 dark:text-blue-400 hover:underline">
-                                    13975555891
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="mt-8 text-center">
-                            <p class="text-lg mb-4">欢迎通过以上方式与我联系，期待与您的交流！</p>
-                            <div class="inline-flex space-x-4">
-                                <!-- <a href="#" class="w-10 h-10 rounded-full bg-blue-500 hover:bg-blue-600 flex items-center justify-center text-white transition-colors pulse-animation">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="#" class="w-10 h-10 rounded-full bg-blue-500 hover:bg-blue-600 flex items-center justify-center text-white transition-colors pulse-animation">
-                                    <i class="fab fa-linkedin"></i>
-                                </a>  -->
-                                <a href="#" onclick="showWeChatQR(event)"
-                                    class="w-10 h-10 rounded-full bg-blue-500 hover:bg-blue-600 flex items-center justify-center text-white transition-colors pulse-animation">
-                                    <i class="fab fa-weixin"></i>
-                                </a>
-                                <div id="wechat-qr-popup"
-                                    class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
-                                    <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg max-w-sm w-full">
-                                        <div class="flex justify-between items-center mb-4">
-                                            <h3 class="text-lg font-bold text-gray-800 dark:text-white">微信扫码</h3>
-                                            <button onclick="hideWeChatQR()"
-                                                class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
-                                                <i class="fas fa-times"></i>
-                                            </button>
-                                        </div>
-                                        <img src="resource/WeChat.png" alt="微信二维码" class="w-full h-auto rounded-lg">
-                                    </div>
-                                </div>
-                                <script>
-                                    function showWeChatQR(event) {
-                                        event.preventDefault();
-                                        document.getElementById('wechat-qr-popup').classList.remove('hidden');
-                                        document.body.style.overflow = 'hidden';
-
-                                        // 添加点击外部区域关闭弹窗的事件监听
-                                        setTimeout(() => {
-                                            document.getElementById('wechat-qr-popup').addEventListener('click', function (e) {
-                                                // 如果点击的是弹窗背景（而非弹窗内容），则关闭弹窗
-                                                if (e.target === this) {
-                                                    hideWeChatQR();
-                                                }
-                                            });
-                                        }, 100);
-                                    }
-
-                                    function hideWeChatQR() {
-                                        document.getElementById('wechat-qr-popup').classList.add('hidden');
-                                        document.body.style.overflow = '';
-                                    }
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 页脚 -->
-        <footer class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 py-8">
-            <div class="container mx-auto px-4">
-                <div class="card p-8">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div
-                            class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg hover:shadow-md transition-shadow">
-                            <h4 class="font-bold mb-2 flex items-center text-blue-700 dark:text-blue-600">
-                                <i class="fas fa-user mr-2"></i>王子游
-                            </h4>
-                            <p class="text-sm text-blue-600 dark:text-blue-400">
-                                东北大学 · 计算机科学与技术
-                            </p>
-                        </div>
-                        <div
-                            class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg hover:shadow-md transition-shadow">
-                            <h4 class="font-bold mb-2 flex items-center text-blue-700 dark:text-blue-600">
-                                <i class="fas fa-copyright mr-2"></i>版权信息
-                            </h4>
-                            <p class="text-sm text-blue-600 dark:text-blue-400">
-                                &copy; 2025 王子游. 保留所有权利.
-                            </p>
-                            <p class="text-xs text-blue-500 dark:text-blue-300 mt-1">
-                                最后更新: 2025年3月18日
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
 
         <!-- 主题切换按钮 -->
         <!-- 注释掉暗色模式切换按钮
